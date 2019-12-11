@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Empresas_Ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoHome" translatesAutoresizingMaskIntoConstraints="NO" id="AMd-QE-4Sj">
+                                <rect key="frame" x="50" y="20" width="275" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="kwW-g1-Eq2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEM-VINDO AO EMPRESAS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9U-jO-Hcq">
+                                <rect key="frame" x="69" y="156" width="237" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="rOT-V5-COq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit amet, contetur adipiscing elit. Nunc accumsan" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qic-Fm-SRy">
+                                <rect key="frame" x="69" y="194" width="237" height="45"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="qlK-lw-vS7"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJC-Gr-Pj2">
+                                <rect key="frame" x="36" y="263" width="47" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="gHR-Ka-Ohb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icEmail" translatesAutoresizingMaskIntoConstraints="NO" id="tIT-tX-mhL">
+                                <rect key="frame" x="8" y="258" width="30" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="GAJ-Wd-R7U"/>
+                                    <constraint firstAttribute="height" constant="34" id="brW-rg-sDV"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCadeado" translatesAutoresizingMaskIntoConstraints="NO" id="HPA-YB-KC8">
+                                <rect key="frame" x="8" y="300" width="30" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ZPz-xo-8CV"/>
+                                    <constraint firstAttribute="height" constant="34" id="vcf-6h-dBF"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZK-gP-qdw">
+                                <rect key="frame" x="16" y="591" width="343" height="60"/>
+                                <color key="backgroundColor" red="0.34003096820000001" green="0.73319095369999998" blue="0.7360052466" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GCu-KT-ifd"/>
+                                    <constraint firstAttribute="width" constant="343" id="U9F-eC-P98"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="tintColor" red="0.34003096820000001" green="0.73319095369999998" blue="0.7360052466" alpha="0.99513094189999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="ENTRAR">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="botaoEntrar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NTJ-rF-hOd"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Senha" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWU-90-DGt">
+                                <rect key="frame" x="36" y="305" width="323" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="tmw-o9-hNz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qic-Fm-SRy" firstAttribute="top" secondItem="l9U-jO-Hcq" secondAttribute="bottom" constant="16" id="4N7-4E-Qd8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qic-Fm-SRy" secondAttribute="trailing" constant="69" id="C82-sf-GGL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JZK-gP-qdw" secondAttribute="bottom" constant="16" id="GtK-aJ-M6m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JZK-gP-qdw" secondAttribute="trailing" constant="16" id="O8z-uG-Oji"/>
+                            <constraint firstItem="HPA-YB-KC8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="OSj-kD-6Ur"/>
+                            <constraint firstItem="AMd-QE-4Sj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="RBD-6a-Hd5"/>
+                            <constraint firstItem="FWU-90-DGt" firstAttribute="top" secondItem="oJC-Gr-Pj2" secondAttribute="bottom" constant="18" id="TWP-zN-gnk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AMd-QE-4Sj" secondAttribute="trailing" constant="50" id="XYY-gx-anY"/>
+                            <constraint firstItem="tIT-tX-mhL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="Y6Z-z0-7he"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FWU-90-DGt" secondAttribute="trailing" constant="16" id="Yht-Hg-drM"/>
+                            <constraint firstItem="oJC-Gr-Pj2" firstAttribute="top" secondItem="qic-Fm-SRy" secondAttribute="bottom" constant="24" id="awH-na-nJc"/>
+                            <constraint firstItem="l9U-jO-Hcq" firstAttribute="top" secondItem="AMd-QE-4Sj" secondAttribute="bottom" constant="8" id="eqh-6n-mnP"/>
+                            <constraint firstItem="oJC-Gr-Pj2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="grY-zM-abK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l9U-jO-Hcq" secondAttribute="trailing" constant="69" id="j9N-k2-9t8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tIT-tX-mhL" secondAttribute="trailing" constant="337" id="lDx-8h-PwX"/>
+                            <constraint firstItem="l9U-jO-Hcq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="69" id="lS8-oe-7mD"/>
+                            <constraint firstItem="JZK-gP-qdw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="niG-9L-jHY"/>
+                            <constraint firstItem="tIT-tX-mhL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="258" id="omI-9P-4Ax"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HPA-YB-KC8" secondAttribute="trailing" constant="337" id="tdO-RX-CLY"/>
+                            <constraint firstItem="HPA-YB-KC8" firstAttribute="top" secondItem="tIT-tX-mhL" secondAttribute="bottom" constant="8" id="wIn-ef-8lh"/>
+                            <constraint firstItem="AMd-QE-4Sj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="x6F-iQ-xPZ"/>
+                            <constraint firstItem="FWU-90-DGt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="xJP-JY-RXO"/>
+                            <constraint firstItem="qic-Fm-SRy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="69" id="xdu-ZS-2BT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailDigitado" destination="oJC-Gr-Pj2" id="MJR-2W-VOP"/>
+                        <outlet property="senhaDigitada" destination="FWU-90-DGt" id="PgH-lG-cEX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="112.89355322338831"/>
+        </scene>
+        <!--Empresas View Controller-->
+        <scene sceneID="xId-iw-8SJ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lj1-KZ-ufC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="EmpresasViewController" id="kJz-ya-V2W" customClass="EmpresasViewController" customModule="Empresas_Ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Mm-jF-V3J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Clique na busca para iniciar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLq-1P-3Lf">
+                                <rect key="frame" x="82" y="323" width="210" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="KaT-Rl-2Hd"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="807" y="113"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icCadeado" width="25" height="25"/>
+        <image name="icEmail" width="25" height="25"/>
+        <image name="logoHome" width="159" height="38"/>
+    </resources>
+</document>
