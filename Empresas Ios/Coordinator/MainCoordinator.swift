@@ -25,7 +25,13 @@ class MainCoordinator: Coordinator {
     
     func empresasLista (){
         let vc = EmpresasViewController.instantiate()
-        vc.coordiantor = self
+        vc.coodinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func tableViewList(){
+        let vc = ListarEmpresasTableViewController.instantiate()
+        vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
 }
