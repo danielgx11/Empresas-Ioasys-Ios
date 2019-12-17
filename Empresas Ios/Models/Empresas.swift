@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct EnterpriseTypes: Mappable {
     var id: Int

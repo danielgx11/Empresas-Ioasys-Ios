@@ -11,7 +11,9 @@ import UIKit
 class EmpresasViewController: UIViewController, Storyboarded {
     
      weak var coodinator: MainCoordinator?
-        
+
+    @IBOutlet weak var containerView: UIView!
+    
         var empresas: [Empresas] = []
         let searchController = UISearchBar()
         var searchButton: UIBarButtonItem?
@@ -24,6 +26,7 @@ class EmpresasViewController: UIViewController, Storyboarded {
             let bgColorNavigation = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
             UINavigationBar.appearance().barTintColor = bgColorNavigation
             UINavigationBar.appearance().tintColor = .white
+            containerView.isHidden = true
             self.setUpNavBar()
             
         }
@@ -38,6 +41,7 @@ class EmpresasViewController: UIViewController, Storyboarded {
             self.navigationItem.titleView?.isHidden = true
             self.setUpSeachBar()
             self.navigationItem.rightBarButtonItem = nil
+            containerView.isHidden = false
             
         }
     
@@ -104,6 +108,7 @@ extension EmpresasViewController: UISearchBarDelegate {
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
         searchController.showsCancelButton = false
         searchController.endEditing(true)
+        containerView.isHidden = true
         
     }
 }
