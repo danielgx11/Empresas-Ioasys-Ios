@@ -45,6 +45,16 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
             }
         }
     }
+    
+    
+    //MARK: -Create IMAGE
+    private func createImage(url: URL){
+        var imageView = UIImageView(frame: CGRect(x: 100, y: 150, width: 150, height: 150))
+        //How to convert URL in String
+        var image = UIImage(named: "")
+        imageView.image = image
+        self.view.addSubview(imageView)
+    }
 }
 
 
@@ -68,8 +78,31 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath)
         let company = empresas[indexPath.row]
+        let urlImage = company.photo ?? ""
+        let x = "\(APIRequest.Constants.baseURL)\(APIRequest.Constants.apiPath)\(urlImage)"
+        let imageURL = URL(fileURLWithPath: x)
+        
+        reusableCell.imageView?.loadImage(url: imageURL)
         reusableCell.textLabel?.text = company.enterpriseName
+
         return reusableCell
+    }
+    
+    //TODO: Criar imagem para atribuir url e exibir a imagem
+}
+
+
+extension UIImageView {
+    func loadImage(url: URL){
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url){
+                if let image = UIImage(data: data){
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
     }
 }
 
