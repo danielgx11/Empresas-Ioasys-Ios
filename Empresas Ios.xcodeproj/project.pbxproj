@@ -26,6 +26,8 @@
 		6545B13623A18A5C0050A579 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545B13523A18A5C0050A579 /* Coordinator.swift */; };
 		6545B13823A18AC30050A579 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545B13723A18AC30050A579 /* Storyboarded.swift */; };
 		6545B13A23A18C120050A579 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545B13923A18C120050A579 /* MainCoordinator.swift */; };
+		655687AB23ABDF04002BB7A1 /* EmpresasCelulaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655687AA23ABDF04002BB7A1 /* EmpresasCelulaTableViewCell.swift */; };
+		65A4201323AC0348009B8F6B /* EmpresasDescricaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A4201223AC0348009B8F6B /* EmpresasDescricaoViewController.swift */; };
 		65E2FB1423A1A13600E898D8 /* EmpresasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2FB1323A1A13600E898D8 /* EmpresasViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		6545B13523A18A5C0050A579 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		6545B13723A18AC30050A579 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		6545B13923A18C120050A579 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		655687AA23ABDF04002BB7A1 /* EmpresasCelulaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpresasCelulaTableViewCell.swift; sourceTree = "<group>"; };
+		65A4201223AC0348009B8F6B /* EmpresasDescricaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpresasDescricaoViewController.swift; sourceTree = "<group>"; };
 		65E2FB1323A1A13600E898D8 /* EmpresasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpresasViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +79,7 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		6528D98B23A3BF9F00AC6492 /* fonts */ = {
+		6528D98B23A3BF9F00AC6492 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				6545B12123A15B770050A579 /* AppDelegate.swift */,
@@ -83,20 +87,22 @@
 				6545B12523A15B770050A579 /* ViewController.swift */,
 				65E2FB1323A1A13600E898D8 /* EmpresasViewController.swift */,
 				6530944223A55C5C004B5560 /* ListarEmpresasTableViewController.swift */,
+				655687AA23ABDF04002BB7A1 /* EmpresasCelulaTableViewCell.swift */,
+				65A4201223AC0348009B8F6B /* EmpresasDescricaoViewController.swift */,
 				6545B12A23A15B790050A579 /* Assets.xcassets */,
 				6528D99523A3CFE900AC6492 /* AuthenticationAPI.swift */,
 				6530944423A55CFA004B5560 /* EmpresasAPI.swift */,
 			);
-			path = fonts;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		6528D99223A3C0EC00AC6492 /* Storyboards */ = {
+		6528D99223A3C0EC00AC6492 /* Bases */ = {
 			isa = PBXGroup;
 			children = (
 				6545B12723A15B770050A579 /* Main.storyboard */,
 				6545B12C23A15B790050A579 /* LaunchScreen.storyboard */,
 			);
-			path = Storyboards;
+			path = Bases;
 			sourceTree = "<group>";
 		};
 		6530943F23A548B8004B5560 /* Mappable */ = {
@@ -140,8 +146,8 @@
 				65FB494423A6DD890024BD88 /* Coordinator */,
 				6530944823A55D99004B5560 /* Models */,
 				6530943F23A548B8004B5560 /* Mappable */,
-				6528D99223A3C0EC00AC6492 /* Storyboards */,
-				6528D98B23A3BF9F00AC6492 /* fonts */,
+				6528D99223A3C0EC00AC6492 /* Bases */,
+				6528D98B23A3BF9F00AC6492 /* Storyboards */,
 				6528D98A23A3BF9700AC6492 /* API */,
 			);
 			path = "Empresas Ios";
@@ -239,12 +245,14 @@
 				6545B12223A15B770050A579 /* AppDelegate.swift in Sources */,
 				6530944323A55C5C004B5560 /* ListarEmpresasTableViewController.swift in Sources */,
 				6530944723A55D8B004B5560 /* Empresas.swift in Sources */,
+				65A4201323AC0348009B8F6B /* EmpresasDescricaoViewController.swift in Sources */,
 				6530944523A55CFA004B5560 /* EmpresasAPI.swift in Sources */,
 				6528D99823A3D6E700AC6492 /* Mappable.swift in Sources */,
 				6528D99623A3CFE900AC6492 /* AuthenticationAPI.swift in Sources */,
 				6528D98D23A3C09E00AC6492 /* APIRequest.swift in Sources */,
 				6545B12423A15B770050A579 /* SceneDelegate.swift in Sources */,
 				6528D98F23A3C0AD00AC6492 /* APICacheManager.swift in Sources */,
+				655687AB23ABDF04002BB7A1 /* EmpresasCelulaTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

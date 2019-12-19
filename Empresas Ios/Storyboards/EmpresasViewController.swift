@@ -19,6 +19,7 @@ class EmpresasViewController: UIViewController, Storyboarded {
         var searchButton: UIBarButtonItem?
         var cancelButton: UIBarButtonItem?
         
+        
         override func viewDidLoad() {
             super.viewDidLoad()
            

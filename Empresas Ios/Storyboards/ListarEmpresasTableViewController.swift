@@ -76,19 +76,27 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reusableCell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath)
+        let reusableCell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath) as! EmpresasCelulaTableViewCell
         let company = empresas[indexPath.row]
         let urlImage = company.photo ?? ""
         let x = "\(APIRequest.Constants.baseURL)\(APIRequest.Constants.apiPath)\(urlImage)"
         let imageURL = URL(fileURLWithPath: x)
-        
+
+
+        reusableCell.nomeEmpresaLabel.text = company.enterpriseName
+        //reusableCell.descricaoEmpresaLabel.text =
+        reusableCell.locationEmpresaLabel.text = company.country
         reusableCell.imageView?.loadImage(url: imageURL)
-        reusableCell.textLabel?.text = company.enterpriseName
+        
+        //reusableCell.imageView?.loadImage(url: imageURL)
+        //reusableCell.textLabel?.text = company.enterpriseName
 
         return reusableCell
     }
     
-    //TODO: Criar imagem para atribuir url e exibir a imagem
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
 }
 
 
