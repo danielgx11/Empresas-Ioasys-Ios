@@ -64,7 +64,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZK-gP-qdw">
                                 <rect key="frame" x="16" y="591" width="343" height="60"/>
-                                <color key="backgroundColor" red="0.34003096820000001" green="0.73319095369999998" blue="0.7360052466" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.3411764705882353" green="0.73333333333333328" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="GCu-KT-ifd"/>
                                     <constraint firstAttribute="width" constant="343" id="U9F-eC-P98"/>
@@ -139,15 +139,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-Dh-EQZ">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-Dh-EQZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="93p-CF-ABd" kind="embed" id="INB-Xe-FJc"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="uvV-Dh-EQZ" firstAttribute="bottom" secondItem="KaT-Rl-2Hd" secondAttribute="bottom" id="5Ry-XU-jP8"/>
+                            <constraint firstItem="uvV-Dh-EQZ" firstAttribute="trailing" secondItem="KaT-Rl-2Hd" secondAttribute="trailing" id="HH7-9W-uyX"/>
+                            <constraint firstItem="uvV-Dh-EQZ" firstAttribute="top" secondItem="KaT-Rl-2Hd" secondAttribute="top" id="Psm-tg-F2R"/>
+                            <constraint firstItem="uvV-Dh-EQZ" firstAttribute="leading" secondItem="KaT-Rl-2Hd" secondAttribute="leading" id="Zn3-12-IKh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KaT-Rl-2Hd"/>
                     </view>
                     <connections>
@@ -183,7 +188,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="FaP-u1-16K"/>
                                                 <constraint firstAttribute="width" constant="235" id="iek-lx-sCb"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -192,8 +197,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="78Y-VK-afo"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fy4-pC-3s0">
@@ -201,8 +206,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20.5" id="XJG-sX-dbl"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -243,10 +248,10 @@
             </objects>
             <point key="canvasLocation" x="1492" y="112.89355322338831"/>
         </scene>
-        <!--Empresas Descricao View Controller-->
+        <!--Detalhe Empresa View Controller-->
         <scene sceneID="1ng-mu-SIX">
             <objects>
-                <viewController storyboardIdentifier="EmpresasDescricaoViewController" id="T1c-o8-8db" customClass="EmpresasDescricaoViewController" customModule="Empresas_Ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetalheEmpresaViewController" id="T1c-o8-8db" customClass="DetalheEmpresaViewController" customModule="Empresas_Ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vMY-DO-0gS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,7 +275,8 @@
                     </view>
                     <connections>
                         <outlet property="descricaoEmpresaImageView" destination="eDz-Nt-35U" id="UZi-Fg-1zP"/>
-                        <outlet property="empresaImageView" destination="JPg-SN-3JP" id="2tH-3F-e5A"/>
+                        <outlet property="descricaoEmpresaTextView" destination="eDz-Nt-35U" id="Nu9-Nb-vDh"/>
+                        <outlet property="empresaImageView" destination="JPg-SN-3JP" id="1xa-II-dhY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr6-4V-e7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

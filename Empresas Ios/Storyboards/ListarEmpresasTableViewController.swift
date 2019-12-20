@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     
@@ -49,9 +50,9 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     
     //MARK: -Create IMAGE
     private func createImage(url: URL){
-        var imageView = UIImageView(frame: CGRect(x: 100, y: 150, width: 150, height: 150))
+        let imageView = UIImageView(frame: CGRect(x: 100, y: 150, width: 150, height: 150))
         //How to convert URL in String
-        var image = UIImage(named: "")
+        let image = UIImage(named: "")
         imageView.image = image
         self.view.addSubview(imageView)
     }
@@ -79,38 +80,26 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath) as! EmpresasCelulaTableViewCell
         let company = empresas[indexPath.row]
         let urlImage = company.photo ?? ""
-        let x = "\(APIRequest.Constants.baseURL)\(APIRequest.Constants.apiPath)\(urlImage)"
-        let imageURL = URL(fileURLWithPath: x)
-
-
-        reusableCell.nomeEmpresaLabel.text = company.enterpriseName
-        //reusableCell.descricaoEmpresaLabel.text =
-        reusableCell.locationEmpresaLabel.text = company.country
-        reusableCell.imageView?.loadImage(url: imageURL)
+        let imageURL = "\(APIRequest.Constants.baseURL)\(APIRequest.Constants.apiPath)\(urlImage)"
+        let defaultImage = UIImage(named: "imgEmpresaDefault")
         
-        //reusableCell.imageView?.loadImage(url: imageURL)
-        //reusableCell.textLabel?.text = company.enterpriseName
+        //Caso a URL da imagem da empresa seja nula
+        if urlImage == "<null>" {
+            reusableCell.imageView?.image = #imageLiteral(resourceName: "imgEmpresaDefault")
+        }
+        else {
+            reusableCell.imageView?.kf.indicatorType = .activity
+            reusableCell.imageView?.kf.setImage(with: URL(string: imageURL), placeholder: defaultImage, options: [.transition(.fade(0.5))], progressBlock: nil)
+        }
+        
+        reusableCell.nomeEmpresaLabel.text = company.enterpriseName
+        //reusableCell.descricaoEmpresaLabel.text = company.enterpriseType.ent
+        reusableCell.locationEmpresaLabel.text = company.country
 
         return reusableCell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-}
-
-
-extension UIImageView {
-    func loadImage(url: URL){
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url){
-                if let image = UIImage(data: data){
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.empresasDescricoes(to: empresas[indexPath.row])
     }
 }
-

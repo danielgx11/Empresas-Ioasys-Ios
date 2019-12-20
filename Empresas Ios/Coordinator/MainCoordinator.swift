@@ -35,8 +35,9 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func empresasDescricoes(){
-        let vc = EmpresasDescricaoViewController.instantiate()
+    func empresasDescricoes(to empresaSelecionada: Empresas){
+        let vc = DetalheEmpresaViewController.instantiate()
+        vc.empresaSelecionada = empresaSelecionada
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
