@@ -21,6 +21,7 @@ class ViewController: UIViewController, Storyboarded {
     func allertController (titulo: String, message: String){
         let alertController = UIAlertController(title: titulo, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
+        alertController.addAction(confirmAction)
         present(alertController, animated: true, completion: nil)
     }
     //MARK: -Life cycle
@@ -39,6 +40,7 @@ class ViewController: UIViewController, Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        allertController(titulo: "Bem-vindo!", message: "Usuário e senha estão setados para facilitar a utilização do aplicativo, favor apenas clicar para logar!")
     }
     
     @IBOutlet weak var emailDigitado: UITextField! {
@@ -58,6 +60,8 @@ class ViewController: UIViewController, Storyboarded {
     @IBAction func botaoEntrar(_ sender: Any) {
 //        let username: String = emailDigitado.text!
 //        let password: String = senhaDigitada.text!
+        
+        //Usuários e senha setados para facilitar a utilização do app
         
         let username: String = "testeapple@ioasys.com.br"
         let password: String = "12341234"
