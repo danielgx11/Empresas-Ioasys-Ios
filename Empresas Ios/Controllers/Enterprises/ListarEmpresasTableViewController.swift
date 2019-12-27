@@ -18,68 +18,113 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     //MARK: -Variables
     
     weak var coordinator: MainCoordinator?
-    var empresas = [Empresas]()
-    
-    //MARK: -Life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        empresasRequest()
-        navigationItem.hidesBackButton = true
-    }
-    
-    private func empresasRequest() {
-        EmpresasAPI.getCompanies { (response, error, cache) in
-            if response != nil {
-                self.empresas = response ?? []
-                debugPrint("Success!")
-                self.tableView.reloadData()
-                //Reload Data
-            } else if let error = error {
-                let viewController = ViewController()
-                if let urlResponse = error.urlResponse, urlResponse.statusCode == 401 {
-                    viewController.allertController(titulo: "Error 401", message: urlResponse as! String)
-                } else if let responseObject = error.responseObject as? [String: Any], let errorMessage = responseObject["error_message"] {
-                    viewController.allertController(titulo: "Response error", message: errorMessage as! String)
-                } else {
-                    viewController.allertController(titulo: "Error localized description", message: error as! String)
-                }
-            }
+    //var empresas = [Empresas]()
+    let searchBar = UISearchBar()
+    var cancelButton: UIBarButtonItem?
+    var companies: [Empresas] = []{
+        didSet {
+            self.tableView.reloadData()
         }
     }
     
+    //MARK: -Life cycle
     
-    //Create IMAGE
-    private func createImage(url: URL){
-        let imageView = UIImageView(frame: CGRect(x: 100, y: 150, width: 150, height: 150))
-        //How to convert URL in String
-        let image = UIImage(named: "")
-        imageView.image = image
-        self.view.addSubview(imageView)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+        searchBar.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // Hide bottom lines of the cells
+        tableView.tableFooterView = UIView()
+        
+        self.setUpNavBar()
+        self.setUpSeachBar()
+    }
+  
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(searchBar.text! != ""){
+            //startActivityIndicatorView()
+            EmpresasAPI.getCompanies(enterprise_name: searchBar.text!){ (response, error, cache) in
+                if let response = response {
+                    self.companies = response
+                    //self.stopActivityIndicatorView()
+                } else if let error = error {
+                    if let urlResponse = error.urlResponse, urlResponse.statusCode == 401 {
+                        //self.stopActivityIndicatorView()
+                    } else if let responseObject = error.responseObject as? [String: Any], let _ = responseObject["error_message"] {
+                        //self.stopActivityIndicatorView()
+                    } else {
+                        //self.stopActivityIndicatorView()
+                    }
+                }
+            }
+        }else{
+            self.companies = []
+        }
     }
     
+        @objc func cancelTapped(_ sender:UIBarButtonItem!){
+            self.navigationItem.searchController = nil
+    }
+        
+    //MARK: Setup
+    
+    func setUpNavBar(){
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.white
+        self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
+        
+        
+    }
+    func setUpSeachBar(){
+        searchBar.text = ""
+        searchBar.showsCancelButton = true
+        searchBar.placeholder = "Pesquisar"
+        UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = UIColor.white
+        searchBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+        searchBar.becomeFirstResponder()
+        self.navigationItem.titleView = searchBar
+        }
+    
+    //Ocult SearchBar
+    private func hideSearchBar() {
+        self.navigationItem.titleView = nil // Remove a searchBar da navigation
+        self.searchBar.resignFirstResponder() // Esconde o teclado
+        self.coordinator?.start()
+    }
+    
+    private func addNavBarImage() {
+        let image = UIImage(named: "logoHome.png")
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: 136, y: 30, width: 102.7, height: 25)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
 }
-
-
 
 // MARK: -Table view data source and delegate
 
 extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDataSource {
 
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return empresas.count
+        
+        return companies.count
     }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath) as! EmpresasCelulaTableViewCell
-        let company = empresas[indexPath.row]
+        let company = companies[indexPath.row]
         let urlImage = company.photo ?? ""
         let imageURL = "\(APIRequest.Constants.baseURL)\(urlImage)"
         let defaultImage = UIImage(named: "imgEmpresaDefault")
@@ -101,7 +146,21 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.empresasDescricoes(to: empresas[indexPath.row])
+        coordinator?.empresasDescricoes(to: companies[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+//MARK: -UISearchBarDelegate
+
+    extension ListarEmpresasTableViewController: UISearchBarDelegate {
+        //Cancel button
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            self.coordinator?.empresasLista()
+            self.navigationItem.searchController = nil
+            self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
+            searchBar.showsCancelButton = false
+            searchBar.endEditing(true)
+        
     }
 }

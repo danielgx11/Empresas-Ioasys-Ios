@@ -18,7 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        navigationBarAppearace.tintColor = UIColor(red: 255, green: 0, blue: 127, alpha: 2.0)
         
         let navigationApparence = UINavigationBar.appearance()
         navigationApparence.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]

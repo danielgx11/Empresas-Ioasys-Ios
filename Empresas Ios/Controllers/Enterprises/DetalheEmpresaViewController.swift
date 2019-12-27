@@ -26,7 +26,7 @@ class DetalheEmpresaViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         self.navigationItem.title = selectEnterprise.enterprise_name
         self.navigationItem.hidesBackButton = true
         backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButton"), style: .done, target: self, action: #selector(DetalheEmpresaViewController.addTapped(_:)))
