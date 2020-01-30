@@ -18,7 +18,6 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     //MARK: -Variables
     
     weak var coordinator: MainCoordinator?
-    //var empresas = [Empresas]()
     let searchBar = UISearchBar()
     var cancelButton: UIBarButtonItem?
     var companies: [Empresas] = []{
@@ -43,25 +42,22 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
         self.setUpSeachBar()
     }
   
+    //MARK: -Funcs
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(searchBar.text! != ""){
-            //startActivityIndicatorView()
+            
             EmpresasAPI.getCompanies(enterprise_name: searchBar.text!){ (response, error, cache) in
                 if let response = response {
                     self.companies = response
-                    //self.stopActivityIndicatorView()
                 } else if let error = error {
                     if let urlResponse = error.urlResponse, urlResponse.statusCode == 401 {
-                        //self.stopActivityIndicatorView()
                     } else if let responseObject = error.responseObject as? [String: Any], let _ = responseObject["error_message"] {
-                        //self.stopActivityIndicatorView()
-                    } else {
-                        //self.stopActivityIndicatorView()
                     }
                 }
             }
-        }else{
+        }
+        else {
             self.companies = []
         }
     }
@@ -69,10 +65,9 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
         @objc func cancelTapped(_ sender:UIBarButtonItem!){
             self.navigationItem.searchController = nil
     }
-        
-    //MARK: Setup
     
     func setUpNavBar(){
+        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.prefersLargeTitles = false
@@ -80,9 +75,11 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.white
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
         
-        
     }
+    
     func setUpSeachBar(){
+        
+        searchBar.searchTextField.backgroundColor = .white
         searchBar.text = ""
         searchBar.showsCancelButton = true
         searchBar.placeholder = "Pesquisar"
@@ -90,6 +87,7 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
         searchBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         searchBar.becomeFirstResponder()
         self.navigationItem.titleView = searchBar
+        
         }
     
     //Ocult SearchBar
@@ -100,11 +98,13 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     }
     
     private func addNavBarImage() {
+        
         let image = UIImage(named: "logoHome.png")
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: 136, y: 30, width: 102.7, height: 25)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+        
     }
 }
 
@@ -123,6 +123,7 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath) as! EmpresasCelulaTableViewCell
         let company = companies[indexPath.row]
         let urlImage = company.photo ?? ""
@@ -143,6 +144,7 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
         reusableCell.locationEmpresaLabel.text = company.country
 
         return reusableCell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -161,6 +163,5 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
             self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
             searchBar.showsCancelButton = false
             searchBar.endEditing(true)
-        
     }
 }

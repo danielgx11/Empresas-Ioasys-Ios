@@ -13,11 +13,12 @@ class DetalheEmpresaViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     
-
     //MARK: -Outlets
     @IBOutlet weak var empresaImageView: UIImageView!
     @IBOutlet weak var descricaoEmpresaLabel: UILabel!
     
+    //MARK: -Variables
+
     var selectEnterprise: Empresas!
     var photoString: String?
     var backButton: UIBarButtonItem?
@@ -25,6 +26,7 @@ class DetalheEmpresaViewController: UIViewController, Storyboarded {
     //MARK: -Life cycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         self.navigationItem.title = selectEnterprise.enterprise_name
@@ -42,9 +44,9 @@ class DetalheEmpresaViewController: UIViewController, Storyboarded {
         }
     }
     
+    //MARK: -Funcs
+    
     @objc func addTapped(_ sender:UIBarButtonItem!){
         self.coordinator?.tableViewList()
-        
     }
-    
 }

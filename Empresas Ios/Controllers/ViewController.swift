@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Empresas Ios
 //
-//  Created by ioasys on 11/12/19.
+//  Created by Daniel G on 11/12/19.
 //  Copyright © 2019 danielgomes. All rights reserved.
 //
 
@@ -12,20 +12,16 @@ import UIKit
 class ViewController: UIViewController, Storyboarded {
     
     //MARK: -Outlets
+    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailError: UITextField!
     @IBOutlet weak var passwordError: UITextField!
     
+    //MARK: -Variables
     
-    //Create Allert
-    func allertController (titulo: String, message: String){
-        let alertController = UIAlertController(title: titulo, message: message, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
-        alertController.addAction(confirmAction)
-        present(alertController, animated: true, completion: nil)
-    }
-    //MARK: -Life cycle
     weak var coordinator: MainCoordinator?
+    
+    //MARK: -Life cycle
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -37,10 +33,19 @@ class ViewController: UIViewController, Storyboarded {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         allertController(titulo: "Bem-vindo!", message: "Usuário e senha estão setados para facilitar a utilização do aplicativo, favor apenas clicar para logar!")
+    }
+    
+    //MARK: -Funcs
+    
+    //Create Allert
+    func allertController (titulo: String, message: String){
+        let alertController = UIAlertController(title: titulo, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBOutlet weak var emailDigitado: UITextField! {
@@ -60,6 +65,8 @@ class ViewController: UIViewController, Storyboarded {
     @IBAction func botaoEntrar(_ sender: Any) {
 //        let username: String = emailDigitado.text!
 //        let password: String = senhaDigitada.text!
+        
+        //MARK: -Set User/Password
         
         //Usuários e senha setados para facilitar a utilização do app
         

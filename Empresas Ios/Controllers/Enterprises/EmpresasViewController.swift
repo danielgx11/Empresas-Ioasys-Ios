@@ -2,7 +2,7 @@
 //  EmpresasViewController.swift
 //  Empresas Ios
 //
-//  Created by ioasys on 11/12/19.
+//  Created by Daniel G on 11/12/19.
 //  Copyright © 2019 danielgomes. All rights reserved.
 //
 
@@ -11,6 +11,7 @@ import UIKit
 class EmpresasViewController: UIViewController, Storyboarded {
     
         //MARK: -Variables
+    
         weak var coodinator: MainCoordinator?
         var empresas: [Empresas] = []
         let searchBar = UISearchBar()
@@ -18,6 +19,7 @@ class EmpresasViewController: UIViewController, Storyboarded {
         
         
         //MARK: -Life cycle
+    
         override func viewDidLoad() {
             super.viewDidLoad()
            
@@ -27,10 +29,13 @@ class EmpresasViewController: UIViewController, Storyboarded {
             UINavigationBar.appearance().barTintColor = bgColorNavigation
             UINavigationBar.appearance().tintColor = .white
             self.setUpNavBar()
+            
         }
         
-        //Button config
+        //MARK: -Funcs
+    
         @objc func addTapped(_ sender:UIBarButtonItem!){
+            
             self.navigationItem.rightBarButtonItem = nil
             self.navigationItem.titleView?.isHidden = true
             //self.setUpSeachBar()
@@ -39,22 +44,24 @@ class EmpresasViewController: UIViewController, Storyboarded {
             
         }
     
-        
-        //MARK: Setup
             func setUpNavBar(){
+                
                 self.navigationController?.setNavigationBarHidden(false, animated: true)
                 self.navigationItem.hidesBackButton = true
                 self.navigationController?.navigationBar.prefersLargeTitles = false
                 self.navigationItem.hidesSearchBarWhenScrolling = false
                 self.navigationItem.rightBarButtonItem = searchButton
                 self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
+                
             }
     
         private func addNavBarImage() {
+            
             let image = UIImage(named: "logoHome.png")
             let imageView = UIImageView(image: image)
             imageView.frame = CGRect(x: 136, y: 30, width: 102.7, height: 25)
             imageView.contentMode = .scaleAspectFit
             self.navigationItem.titleView = imageView
+            
     }
 }
