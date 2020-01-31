@@ -1,4 +1,4 @@
-# Empresas-Ios---IOasys
+# Empresas-Ios-IOasys
 Projeto de inserção na equipe de desenvolvimento IOS - Ioasys
 
 - ESCOPO DO PROJETO
