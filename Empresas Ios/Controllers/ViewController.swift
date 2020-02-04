@@ -40,7 +40,18 @@ class ViewController: UIViewController, Storyboarded {
     
     //MARK: -Funcs
     
-    //Create Allert
+    //Load alert
+    func loadAllert(){
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.startAnimating()
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    //Create alert
     func allertController (titulo: String, message: String){
         let alertController = UIAlertController(title: titulo, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
@@ -66,7 +77,7 @@ class ViewController: UIViewController, Storyboarded {
 //        let username: String = emailDigitado.text!
 //        let password: String = senhaDigitada.text!
         
-        //MARK: -Set User/Password
+        //MARK: -Set User&Password
         
         //Usuários e senha setados para facilitar a utilização do app
         
@@ -89,7 +100,7 @@ class ViewController: UIViewController, Storyboarded {
                 }
             }
         }
-        
+        self.loadAllert()
     }
 }
 

@@ -23,6 +23,8 @@ class EmpresasViewController: UIViewController, Storyboarded {
         override func viewDidLoad() {
             super.viewDidLoad()
            
+            //Hide load alert
+            dismiss(animated: false, completion: nil)
             searchBar.delegate = self as? UISearchBarDelegate
             searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(EmpresasViewController.addTapped(_:)))
             let bgColorNavigation = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
