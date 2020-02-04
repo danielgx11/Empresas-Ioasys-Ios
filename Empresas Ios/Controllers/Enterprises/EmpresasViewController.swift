@@ -16,6 +16,7 @@ class EmpresasViewController: UIViewController, Storyboarded {
         var empresas: [Empresas] = []
         let searchBar = UISearchBar()
         var searchButton: UIBarButtonItem?
+        var backButton: UIBarButtonItem?
         
         
         //MARK: -Life cycle
@@ -25,8 +26,10 @@ class EmpresasViewController: UIViewController, Storyboarded {
            
             //Hide load alert
             dismiss(animated: false, completion: nil)
+            
             searchBar.delegate = self as? UISearchBarDelegate
             searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(EmpresasViewController.addTapped(_:)))
+            backButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(EmpresasViewController.logoutTapped(_:)))
             let bgColorNavigation = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
             UINavigationBar.appearance().barTintColor = bgColorNavigation
             UINavigationBar.appearance().tintColor = .white
@@ -46,16 +49,23 @@ class EmpresasViewController: UIViewController, Storyboarded {
             
         }
     
-            func setUpNavBar(){
+        func setUpNavBar(){
                 
-                self.navigationController?.setNavigationBarHidden(false, animated: true)
-                self.navigationItem.hidesBackButton = true
-                self.navigationController?.navigationBar.prefersLargeTitles = false
-                self.navigationItem.hidesSearchBarWhenScrolling = false
-                self.navigationItem.rightBarButtonItem = searchButton
-                self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            self.navigationItem.hidesBackButton = true
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationItem.hidesSearchBarWhenScrolling = false
+            self.navigationItem.rightBarButtonItem = searchButton
+            self.navigationItem.leftBarButtonItem = backButton
+            self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
                 
             }
+    
+        @objc func logoutTapped(_ sender:UIBarButtonItem!){
+            
+            self.coodinator?.start()
+            
+        }
     
         private func addNavBarImage() {
             

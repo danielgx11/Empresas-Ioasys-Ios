@@ -35,7 +35,7 @@ class ViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        allertController(titulo: "Bem-vindo!", message: "Usuário e senha estão setados para facilitar a utilização do aplicativo, favor apenas clicar para logar!")
+
     }
     
     //MARK: -Funcs
