@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		0078C77C469368C39E9EF023 /* Pods_Empresas_Ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D645DC814A991A0AB5F0FE5E /* Pods_Empresas_Ios.framework */; };
 		5C0DC5AF24291EBF009FCA54 /* LoginViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC5AE24291EBF009FCA54 /* LoginViewPresenter.swift */; };
-		5C0DC5B224293306009FCA54 /* CompanyViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC5B124293306009FCA54 /* CompanyViewPresenter.swift */; };
-		5C0DC5B4242937E5009FCA54 /* ListCompaniesViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC5B3242937E5009FCA54 /* ListCompaniesViewPresenter.swift */; };
-		5CEEC2C424293EEE0054F503 /* DetailCompanyViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEEC2C324293EEE0054F503 /* DetailCompanyViewPresenter.swift */; };
 		6528D98D23A3C09E00AC6492 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6528D98C23A3C09E00AC6492 /* APIRequest.swift */; };
 		6528D98F23A3C0AD00AC6492 /* APICacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6528D98E23A3C0AD00AC6492 /* APICacheManager.swift */; };
 		6528D99123A3C0BC00AC6492 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6528D99023A3C0BC00AC6492 /* API.swift */; };
@@ -40,9 +37,6 @@
 /* Begin PBXFileReference section */
 		58BF0ACD4DAE01A74EA85E5F /* Pods-Empresas Ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Empresas Ios.release.xcconfig"; path = "Target Support Files/Pods-Empresas Ios/Pods-Empresas Ios.release.xcconfig"; sourceTree = "<group>"; };
 		5C0DC5AE24291EBF009FCA54 /* LoginViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewPresenter.swift; sourceTree = "<group>"; };
-		5C0DC5B124293306009FCA54 /* CompanyViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewPresenter.swift; sourceTree = "<group>"; };
-		5C0DC5B3242937E5009FCA54 /* ListCompaniesViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCompaniesViewPresenter.swift; sourceTree = "<group>"; };
-		5CEEC2C324293EEE0054F503 /* DetailCompanyViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCompanyViewPresenter.swift; sourceTree = "<group>"; };
 		6528D98C23A3C09E00AC6492 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		6528D98E23A3C0AD00AC6492 /* APICacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICacheManager.swift; sourceTree = "<group>"; };
 		6528D99023A3C0BC00AC6492 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -88,19 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				5C0DC5AE24291EBF009FCA54 /* LoginViewPresenter.swift */,
-				5C0DC5B124293306009FCA54 /* CompanyViewPresenter.swift */,
-				5C0DC5B3242937E5009FCA54 /* ListCompaniesViewPresenter.swift */,
-				5CEEC2C324293EEE0054F503 /* DetailCompanyViewPresenter.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		5C0DC5B0242932E5009FCA54 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				655687AA23ABDF04002BB7A1 /* EmpresasCelulaTableViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		6528D98A23A3BF9700AC6492 /* API */ = {
@@ -198,9 +181,9 @@
 		6593F9FD23B5721D00C79B12 /* Enterprises */ = {
 			isa = PBXGroup;
 			children = (
-				5C0DC5B0242932E5009FCA54 /* Cell */,
 				65E2FB1323A1A13600E898D8 /* EmpresasViewController.swift */,
 				6530944223A55C5C004B5560 /* ListarEmpresasTableViewController.swift */,
+				655687AA23ABDF04002BB7A1 /* EmpresasCelulaTableViewCell.swift */,
 				65A4201423AC1C6D009B8F6B /* DetalheEmpresaViewController.swift */,
 			);
 			path = Enterprises;
@@ -358,13 +341,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CEEC2C424293EEE0054F503 /* DetailCompanyViewPresenter.swift in Sources */,
 				6528D99A23A3E2EC00AC6492 /* User.swift in Sources */,
 				658787A223B4166900DCDB76 /* Constants.swift in Sources */,
 				65A4201523AC1C6D009B8F6B /* DetalheEmpresaViewController.swift in Sources */,
 				6545B13623A18A5C0050A579 /* Coordinator.swift in Sources */,
 				65E2FB1423A1A13600E898D8 /* EmpresasViewController.swift in Sources */,
-				5C0DC5B224293306009FCA54 /* CompanyViewPresenter.swift in Sources */,
 				6545B13A23A18C120050A579 /* MainCoordinator.swift in Sources */,
 				6545B12623A15B770050A579 /* ViewController.swift in Sources */,
 				6528D99123A3C0BC00AC6492 /* API.swift in Sources */,
@@ -377,7 +358,6 @@
 				6528D99623A3CFE900AC6492 /* AuthenticationAPI.swift in Sources */,
 				5C0DC5AF24291EBF009FCA54 /* LoginViewPresenter.swift in Sources */,
 				6528D98D23A3C09E00AC6492 /* APIRequest.swift in Sources */,
-				5C0DC5B4242937E5009FCA54 /* ListCompaniesViewPresenter.swift in Sources */,
 				6545B12423A15B770050A579 /* SceneDelegate.swift in Sources */,
 				6528D98F23A3C0AD00AC6492 /* APICacheManager.swift in Sources */,
 				655687AB23ABDF04002BB7A1 /* EmpresasCelulaTableViewCell.swift in Sources */,

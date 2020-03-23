@@ -11,13 +11,12 @@ import Kingfisher
 
 class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     
-    //MARK: - Outlets
+    //MARK: -Outlets
     
     @IBOutlet var tableView: UITableView!
     
-    //MARK: - Variables
+    //MARK: -Variables
     
-    lazy var listCompaniesPresenter = ListCompaniesViewPresenter(with: self)
     weak var coordinator: MainCoordinator?
     let searchBar = UISearchBar()
     var cancelButton: UIBarButtonItem?
@@ -27,36 +26,27 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
         }
     }
     
-    //MARK: - Life cycle
+    //MARK: -Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setTableView()
-        self.setUpNavBar()
-        self.setUpSeachBar()
-    }
-    
-    //MARK: - Funcs
-        
-    @objc func cancelTapped(_ sender:UIBarButtonItem!) {
-        self.navigationItem.searchController = nil
-    }
-}
-
-
-// MARK: - Extensions
-
-extension ListarEmpresasTableViewController: ListCompanyPresenter {
-    
-    func setTableView() {
+        navigationItem.hidesBackButton = true
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Hide bottom lines of the cells
         tableView.tableFooterView = UIView()
+        
+        self.setUpNavBar()
+        self.setUpSeachBar()
     }
+  
+    //MARK: -Funcs
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if(searchBar.text! != "") {
+        if(searchBar.text! != ""){
+            
             CompaniesAPI.getCompanies(enterprise_name: searchBar.text!){ (response, error, cache) in
                 if let response = response {
                     self.companies = response
@@ -66,13 +56,17 @@ extension ListarEmpresasTableViewController: ListCompanyPresenter {
                     }
                 }
             }
-        } else {
+        }
+        else {
             self.companies = []
         }
     }
     
+        @objc func cancelTapped(_ sender:UIBarButtonItem!){
+            self.navigationItem.searchController = nil
+    }
+    
     func setUpNavBar(){
-        navigationItem.hidesBackButton = true
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.prefersLargeTitles = false
@@ -90,15 +84,16 @@ extension ListarEmpresasTableViewController: ListCompanyPresenter {
         searchBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         searchBar.becomeFirstResponder()
         self.navigationItem.titleView = searchBar
-    }
+        }
     
-    func hideSearchBar() {
+    //Ocult SearchBar
+    private func hideSearchBar() {
         self.navigationItem.titleView = nil // Remove a searchBar da navigation
         self.searchBar.resignFirstResponder() // Esconde o teclado
         self.coordinator?.start()
     }
     
-    func addNavBarImage() {
+    private func addNavBarImage() {
         let image = UIImage(named: "logoHome.png")
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: 136, y: 30, width: 102.7, height: 25)
@@ -107,7 +102,7 @@ extension ListarEmpresasTableViewController: ListCompanyPresenter {
     }
 }
 
-// MARK: - Table view data source and delegate
+// MARK: -Table view data source and delegate
 
 extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDataSource {
 
@@ -120,6 +115,7 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath) as! EmpresasCelulaTableViewCell
         let company = companies[indexPath.row]
         let urlImage = company.photo ?? ""
@@ -129,14 +125,15 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
         //Caso a URL da imagem da empresa seja nula
         if urlImage == "<null>" {
             reusableCell.imageView?.image = #imageLiteral(resourceName: "imgEmpresaDefault")
-        } else {
+        }
+        else {
             reusableCell.imageView?.kf.indicatorType = .activity
             reusableCell.imageView?.kf.setImage(with: URL(string: imageURL), placeholder: defaultImage, options: [.transition(.fade(0.5))], progressBlock: nil)
         }
         
-        reusableCell.companyNameLabel.text = company.enterprise_name
-        reusableCell.companyDescriptionLabel.text = company.enterprise_type_name
-        reusableCell.companyLocationLabel.text = company.country
+        reusableCell.nomeEmpresaLabel.text = company.enterprise_name
+        reusableCell.descricaoEmpresaLabel.text = company.enterprise_type_name
+        reusableCell.locationEmpresaLabel.text = company.country
 
         return reusableCell
     }
@@ -147,9 +144,10 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
     }
 }
 
-//MARK: - UISearchBarDelegate
+//MARK: -UISearchBarDelegate
 
     extension ListarEmpresasTableViewController: UISearchBarDelegate {
+        //Cancel button
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
             self.coordinator?.companyList()
             self.navigationItem.searchController = nil

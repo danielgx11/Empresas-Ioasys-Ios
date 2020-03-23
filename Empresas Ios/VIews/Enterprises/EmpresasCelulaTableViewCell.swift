@@ -12,10 +12,10 @@ class EmpresasCelulaTableViewCell: UITableViewCell {
     
     //MARK: -Outlets
     
-    @IBOutlet weak var companyImageView: UIImageView!
-    @IBOutlet weak var companyNameLabel: UILabel!
-    @IBOutlet weak var companyDescriptionLabel: UILabel!
-    @IBOutlet weak var companyLocationLabel: UILabel!
+    @IBOutlet weak var empresaImageView: UIImageView!
+    @IBOutlet weak var nomeEmpresaLabel: UILabel!
+    @IBOutlet weak var descricaoEmpresaLabel: UILabel!
+    @IBOutlet weak var locationEmpresaLabel: UILabel!
     
     //MARK: -Life cycle
     

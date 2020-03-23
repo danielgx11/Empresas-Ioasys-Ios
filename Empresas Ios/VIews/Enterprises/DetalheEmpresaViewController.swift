@@ -12,18 +12,17 @@ import Kingfisher
 class DetalheEmpresaViewController: UIViewController, Storyboarded {
         
     //MARK: -Outlets
-    @IBOutlet weak var companyImageView: UIImageView!
-    @IBOutlet weak var companyDescriptionLabel: UILabel!
+    @IBOutlet weak var empresaImageView: UIImageView!
+    @IBOutlet weak var descricaoEmpresaLabel: UILabel!
     
     //MARK: -Variables
 
-    lazy var detailCompanyPresenter = DetailCompanyViewPresenter(with: self)
     var selectEnterprise: Companies!
     var photoString: String?
     var backButton: UIBarButtonItem?
     weak var coordinator: MainCoordinator?
 
-    // MARK: - Life cycle
+    //MARK: -Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,26 +30,10 @@ class DetalheEmpresaViewController: UIViewController, Storyboarded {
         setOutlets()
     }
     
-    // MARK: - Funcs
+    //MARK: -Funcs
     
     @objc func backTapped(_ sender:UIBarButtonItem!) {
         self.coordinator?.tableViewList()
-    }
-}
-
-// MARK: - Extensions
-
-extension DetalheEmpresaViewController: DetailCompanyPresenter {
-    
-    func setOutlets() {
-        companyDescriptionLabel.text = selectEnterprise.description
-        let urlPhoto = selectEnterprise.photo
-        if urlPhoto != nil {
-            self.companyImageView.image = #imageLiteral(resourceName: "imgEmpresaDefault")
-        } else {
-            let url = URL(string: "https://empresas.ioasys.com.br"+urlPhoto!)
-            self.companyImageView.kf.setImage(with: url)
-        }
     }
     
     func setNavigationController() {
@@ -59,5 +42,17 @@ extension DetalheEmpresaViewController: DetailCompanyPresenter {
         self.navigationItem.hidesBackButton = true
         backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButton"), style: .done, target: self, action: #selector(DetalheEmpresaViewController.backTapped(_:)))
         self.navigationItem.leftBarButtonItem = backButton
+    }
+    
+    func setOutlets() {
+        descricaoEmpresaLabel.text = selectEnterprise.description
+        let urlPhoto = selectEnterprise.photo
+        if urlPhoto != nil {
+            self.empresaImageView.image = #imageLiteral(resourceName: "imgEmpresaDefault")
+        }
+        else {
+            let url = URL(string: "https://empresas.ioasys.com.br"+urlPhoto!)
+            self.empresaImageView.kf.setImage(with: url)
+        }
     }
 }

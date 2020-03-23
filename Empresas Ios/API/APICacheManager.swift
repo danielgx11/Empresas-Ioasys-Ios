@@ -160,7 +160,7 @@ extension APICacheManager {
             
             let cacheURL = self.URLForFileName(cacheFileName)
             let fileData = NSMutableData()
-    
+            
             let archiver = NSKeyedArchiver(forWritingWith: fileData)
             archiver.encode(["data": data], forKey: "data")
             archiver.finishEncoding()
