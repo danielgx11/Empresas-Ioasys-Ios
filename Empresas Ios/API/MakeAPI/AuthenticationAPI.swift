@@ -27,7 +27,7 @@ class AuthenticationAPI: APIRequest {
         }
         request.shouldSaveInCache = false
         request.makeRequest()
-
+        
         return request
     }
 }

@@ -13,7 +13,7 @@ class EmpresasViewController: UIViewController, Storyboarded {
         //MARK: -Variables
     
         weak var coodinator: MainCoordinator?
-        var empresas: [Empresas] = []
+        var companies: [Companies] = []
         let searchBar = UISearchBar()
         var searchButton: UIBarButtonItem?
         var backButton: UIBarButtonItem?
@@ -40,17 +40,13 @@ class EmpresasViewController: UIViewController, Storyboarded {
         //MARK: -Funcs
     
         @objc func addTapped(_ sender:UIBarButtonItem!){
-            
             self.navigationItem.rightBarButtonItem = nil
             self.navigationItem.titleView?.isHidden = true
-            //self.setUpSeachBar()
             self.navigationItem.rightBarButtonItem = nil
             self.coodinator?.tableViewList()
-            
         }
     
         func setUpNavBar(){
-                
             self.navigationController?.setNavigationBarHidden(false, animated: true)
             self.navigationItem.hidesBackButton = true
             self.navigationController?.navigationBar.prefersLargeTitles = false
@@ -58,22 +54,17 @@ class EmpresasViewController: UIViewController, Storyboarded {
             self.navigationItem.rightBarButtonItem = searchButton
             self.navigationItem.leftBarButtonItem = backButton
             self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
-                
             }
     
         @objc func logoutTapped(_ sender:UIBarButtonItem!){
-            
             self.coodinator?.start()
-            
         }
     
         private func addNavBarImage() {
-            
             let image = UIImage(named: "logoHome.png")
             let imageView = UIImageView(image: image)
             imageView.frame = CGRect(x: 136, y: 30, width: 102.7, height: 25)
             imageView.contentMode = .scaleAspectFit
             self.navigationItem.titleView = imageView
-            
     }
 }

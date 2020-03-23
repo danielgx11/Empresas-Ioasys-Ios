@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Empresas: Mappable {
+struct Companies: Mappable {
     
     var enterprise_name: String = ""
     var photo: String? = ""

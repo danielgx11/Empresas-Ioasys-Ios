@@ -52,28 +52,28 @@ class ViewController: UIViewController, Storyboarded {
     }
     
     //Create alert
-    func allertController (titulo: String, message: String){
-        let alertController = UIAlertController(title: titulo, message: message, preferredStyle: .alert)
+    func allertController (title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
         alertController.addAction(confirmAction)
         present(alertController, animated: true, completion: nil)
     }
     
-    @IBOutlet weak var emailDigitado: UITextField! {
+    @IBOutlet weak var typedEmail: UITextField! {
         didSet {
-            emailDigitado.setPadding()
-            emailDigitado.setBorderBotton()
+            typedEmail.setPadding()
+            typedEmail.setBorderBotton()
         }
     }
-    @IBOutlet weak var senhaDigitada: UITextField! {
+    @IBOutlet weak var typedPassword: UITextField! {
         didSet {
-            senhaDigitada.setPadding()
-            senhaDigitada.setBorderBotton()
-            senhaDigitada.isSecureTextEntry = true
+            typedPassword.setPadding()
+            typedPassword.setBorderBotton()
+            typedPassword.isSecureTextEntry = true
         }
     }
     
-    @IBAction func botaoEntrar(_ sender: Any) {
+    @IBAction func loginButton(_ sender: Any) {
 //        let username: String = emailDigitado.text!
 //        let password: String = senhaDigitada.text!
         
@@ -86,14 +86,14 @@ class ViewController: UIViewController, Storyboarded {
         
         AuthenticationAPI.loginWith(email: username, password: password){ (response, error, cache) in
             if response != nil { //Request ok
-                self.coordinator?.empresasLista()
+                self.coordinator?.companyList()
             }
             else if let error = error {
                 if let urlResponse = error.urlResponse, urlResponse.statusCode == 401 {
-                    self.allertController(titulo: "Error 401", message: "URLResponse error 401")
+                    self.allertController(title: "Error 401", message: "URLResponse error 401")
                 }
                 else if let responseObject = error.responseObject as? [String: Any], let errorMessage = responseObject["error_message"]{
-                    self.allertController(titulo: "Response error", message: errorMessage as! String)
+                    self.allertController(title: "Response error", message: errorMessage as! String)
                 }
                 else {
                     self.coordinator?.start()

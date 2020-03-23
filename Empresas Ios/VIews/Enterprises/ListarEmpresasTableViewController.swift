@@ -20,7 +20,7 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     weak var coordinator: MainCoordinator?
     let searchBar = UISearchBar()
     var cancelButton: UIBarButtonItem?
-    var companies: [Empresas] = []{
+    var companies: [Companies] = []{
         didSet {
             self.tableView.reloadData()
         }
@@ -47,7 +47,7 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(searchBar.text! != ""){
             
-            EmpresasAPI.getCompanies(enterprise_name: searchBar.text!){ (response, error, cache) in
+            CompaniesAPI.getCompanies(enterprise_name: searchBar.text!){ (response, error, cache) in
                 if let response = response {
                     self.companies = response
                 } else if let error = error {
@@ -67,18 +67,15 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     }
     
     func setUpNavBar(){
-        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.hidesSearchBarWhenScrolling = false
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.white
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
-        
     }
     
     func setUpSeachBar(){
-        
         searchBar.searchTextField.backgroundColor = .white
         searchBar.text = ""
         searchBar.showsCancelButton = true
@@ -87,7 +84,6 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
         searchBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         searchBar.becomeFirstResponder()
         self.navigationItem.titleView = searchBar
-        
         }
     
     //Ocult SearchBar
@@ -98,13 +94,11 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
     }
     
     private func addNavBarImage() {
-        
         let image = UIImage(named: "logoHome.png")
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: 136, y: 30, width: 102.7, height: 25)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
-        
     }
 }
 
@@ -113,12 +107,10 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
 extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return companies.count
     }
     
@@ -144,11 +136,10 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
         reusableCell.locationEmpresaLabel.text = company.country
 
         return reusableCell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.empresasDescricoes(to: companies[indexPath.row])
+        coordinator?.companyDescriptions(to: companies[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -158,7 +149,7 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
     extension ListarEmpresasTableViewController: UISearchBarDelegate {
         //Cancel button
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            self.coordinator?.empresasLista()
+            self.coordinator?.companyList()
             self.navigationItem.searchController = nil
             self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
             searchBar.showsCancelButton = false

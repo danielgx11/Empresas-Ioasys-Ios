@@ -23,7 +23,7 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: false)
     }
     
-    func empresasLista (){
+    func companyList (){
         let vc = EmpresasViewController.instantiate()
         vc.coodinator = self
         navigationController.pushViewController(vc, animated: true)
@@ -35,19 +35,11 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    
-    func empresasDescricoes(to empresaSelecionada: Empresas){
+    func companyDescriptions(to selectedEnterprise: Companies){
         let vc = DetalheEmpresaViewController.instantiate()
-        vc.selectEnterprise = empresaSelecionada
+        vc.selectEnterprise = selectedEnterprise
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
 }
-
-//extension MainCoordinator: ListarEmpresasTableViewControllerDelegate {
-//    
-//    func goToDetailsEnterprise(enterprise: Empresas, on viewController: UIViewController) {
-//        empresasDescricoes(of: enterprise)
-//    }
-//}

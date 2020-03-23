@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C616ED89-5DF4-440C-83E3-EE59CE035AA5"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "212CA1BF-F312-467B-A35F-6A084831C4C4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Empresas Ios/Controllers/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "212CA1BF-F312-467B-A35F-6A084831C4C4 - 24fd196ff2a3167d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Empresas_Ios.ViewController.typedPassword.modify : Swift.Optional&lt;__C.UITextField&gt;"
+                  moduleName = "Empresas Ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgx/Desktop/Empresas-Ioasys-Ios/Empresas%20Ios/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "212CA1BF-F312-467B-A35F-6A084831C4C4 - d9dc59a5cdc83afa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Empresas_Ios.ViewController.typedPassword.modify : Swift.Optional&lt;__C.UITextField&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Empresas Ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgx/Desktop/Empresas-Ioasys-Ios/Empresas%20Ios/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  uuid = "212CA1BF-F312-467B-A35F-6A084831C4C4 - decdee38c3d4748"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Empresas_Ios.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Empresas_Ios.ViewController"
+                  moduleName = "Empresas Ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgx/Desktop/Empresas-Ioasys-Ios/Empresas%20Ios/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "567">
+               </Location>
+               <Location
+                  uuid = "212CA1BF-F312-467B-A35F-6A084831C4C4 - 6910d39ff3bc6672"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Empresas_Ios.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Empresas_Ios.ViewController&gt;"
+                  moduleName = "Empresas Ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielgx/Desktop/Empresas-Ioasys-Ios/Empresas%20Ios/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "499">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
