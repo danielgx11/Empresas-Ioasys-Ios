@@ -181,7 +181,7 @@ struct API {
         
         func fileInfo(for data: Data) -> (mimeType: String, extension: String?) {
             
-            var bytes = [UInt8](data)
+            let bytes = [UInt8](data)
             
             switch bytes[0] {
             case 0xFF:

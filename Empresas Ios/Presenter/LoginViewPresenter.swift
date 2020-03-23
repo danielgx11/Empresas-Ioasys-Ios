@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PresenterViewController: class {
+protocol LoginPresenter: class {
     func loadAllert()
     func allertController (title: String, message: String)
 }
@@ -17,7 +17,10 @@ class LoginViewPresenter {
     
     // MARK: -Variables
     
-    weak var view: PresenterViewController?
+    weak var view: LoginPresenter?
     
+    init(with view: LoginPresenter) {
+        self.view = view
+    }
 
 }

@@ -10,16 +10,62 @@ import UIKit
 
 
 class ViewController: UIViewController, Storyboarded {
+        
+    // MARK: - Variables
     
-    //MARK: -Outlets
+    lazy var loginPresenter = LoginViewPresenter(with: self)
+    weak var coordinator: MainCoordinator?
+    
+    // MARK: -Outlets
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailError: UITextField!
     @IBOutlet weak var passwordError: UITextField!
     
-    //MARK: -Variables
+    @IBOutlet weak var typedEmail: UITextField! {
+        didSet {
+            typedEmail.setPadding()
+            typedEmail.setBorderBotton()
+        }
+    }
+    @IBOutlet weak var typedPassword: UITextField! {
+        didSet {
+            typedPassword.setPadding()
+            typedPassword.setBorderBotton()
+            typedPassword.isSecureTextEntry = true
+        }
+    }
     
-    weak var coordinator: MainCoordinator?
+    // MARK: -Actions Button
+     
+    @IBAction func loginButton(_ sender: Any) {
+        let username: String = typedEmail.text!
+        let password: String = typedPassword.text!
+        
+        //MARK: -Set User&Password
+        
+        //Usuários e senha setados para facilitar a utilização do app
+        
+//        let username: String = "testeapple@ioasys.com.br"
+//        let password: String = "12341234"
+        
+        AuthenticationAPI.loginWith(email: username, password: password){ (response, error, cache) in
+            if response != nil {
+                self.loadAllert()
+            }
+            else if let error = error {
+                if let urlResponse = error.urlResponse, urlResponse.statusCode == 401 {
+                    self.allertController(title: "Error 401", message: "URLResponse error 401")
+                }
+                else if let responseObject = error.responseObject as? [String: Any], let errorMessage = responseObject["error_message"]{
+                    self.allertController(title: "Response error", message: errorMessage as! String)
+                }
+                else {
+                    self.coordinator?.start()
+                }
+            }
+        }
+    }
     
     //MARK: -Life cycle
     
@@ -37,74 +83,32 @@ class ViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
 
     }
+}
+
+//MARK: -Extensions
+
+extension ViewController: LoginPresenter {
     
-    //MARK: -Funcs
-    
-    //Load alert
     func loadAllert(){
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.startAnimating()
+        alert.dismiss(animated: true, completion: nil)
         
         alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: {Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
+            self.dismiss(animated: true, completion: self.coordinator?.companyList)
+            }})
     }
     
-    //Create alert
     func allertController (title: String, message: String){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
         alertController.addAction(confirmAction)
         present(alertController, animated: true, completion: nil)
     }
-    
-    @IBOutlet weak var typedEmail: UITextField! {
-        didSet {
-            typedEmail.setPadding()
-            typedEmail.setBorderBotton()
-        }
-    }
-    @IBOutlet weak var typedPassword: UITextField! {
-        didSet {
-            typedPassword.setPadding()
-            typedPassword.setBorderBotton()
-            typedPassword.isSecureTextEntry = true
-        }
-    }
-    
-    @IBAction func loginButton(_ sender: Any) {
-//        let username: String = emailDigitado.text!
-//        let password: String = senhaDigitada.text!
-        
-        //MARK: -Set User&Password
-        
-        //Usuários e senha setados para facilitar a utilização do app
-        
-        let username: String = "testeapple@ioasys.com.br"
-        let password: String = "12341234"
-        
-        AuthenticationAPI.loginWith(email: username, password: password){ (response, error, cache) in
-            if response != nil { //Request ok
-                self.coordinator?.companyList()
-            }
-            else if let error = error {
-                if let urlResponse = error.urlResponse, urlResponse.statusCode == 401 {
-                    self.allertController(title: "Error 401", message: "URLResponse error 401")
-                }
-                else if let responseObject = error.responseObject as? [String: Any], let errorMessage = responseObject["error_message"]{
-                    self.allertController(title: "Response error", message: errorMessage as! String)
-                }
-                else {
-                    self.coordinator?.start()
-                }
-            }
-        }
-        self.loadAllert()
-    }
 }
-
-//MARK: -Extensions
 
 extension UITextField {
     
