@@ -21,7 +21,7 @@ class DetailCompanyViewController: UIViewController, Storyboarded {
     var selectEnterprise: Companies!
     var photoString: String?
     var backButton: UIBarButtonItem?
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: DetailCompaniesCoordinator?
 
     // MARK: - Life cycle
     
@@ -31,10 +31,15 @@ class DetailCompanyViewController: UIViewController, Storyboarded {
         setOutlets()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        coordinator?.didFinishDetailCompanies()
+    }
+    
     // MARK: - Funcs
     
     @objc func backTapped(_ sender:UIBarButtonItem!) {
-        self.coordinator?.tableViewList()
+        self.coordinator?.parentCoordinator?.tableViewList()
     }
 }
 

@@ -18,7 +18,7 @@ class ListCompaniesTableView: UIViewController, Storyboarded {
     //MARK: - Variables
     
     lazy var listCompaniesPresenter = ListCompaniesViewPresenter(with: self)
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: ListCompaniesCoordinator?
     let searchBar = UISearchBar()
     var cancelButton: UIBarButtonItem?
     var companies: [Companies] = []{
@@ -31,9 +31,14 @@ class ListCompaniesTableView: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setTableView()
-        self.setUpNavBar()
-        self.setUpSeachBar()
+        setTableView()
+        setUpNavBar()
+        setUpSeachBar()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        coordinator?.didFinishListCompanies()
     }
     
     //MARK: - Funcs
@@ -141,7 +146,7 @@ extension ListCompaniesTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.companyDescriptions(to: companies[indexPath.row])
+        coordinator?.parentCoordinator?.companyDescriptions(to: companies[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -150,7 +155,7 @@ extension ListCompaniesTableView: UITableViewDelegate, UITableViewDataSource {
 
     extension ListCompaniesTableView: UISearchBarDelegate {
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            self.coordinator?.companyList()
+            self.coordinator?.parentCoordinator?.companyList()
             self.navigationItem.searchController = nil
             self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
             searchBar.showsCancelButton = false

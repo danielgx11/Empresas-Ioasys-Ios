@@ -13,7 +13,7 @@ class CompaniesViewController: UIViewController, Storyboarded {
     // MARK: -Variables
     
     lazy var companyPresenter = CompanyViewPresenter(with: self)
-    weak var coodinator: MainCoordinator?
+    weak var coordinator: CompaniesCoordinator?
     var companies: [Companies] = []
     let searchBar = UISearchBar()
     var searchButton: UIBarButtonItem?
@@ -26,17 +26,22 @@ class CompaniesViewController: UIViewController, Storyboarded {
         setNavigationBar()
     }
     
-    // MARK: - Funcs
-    
-    @objc func addTapped(_ sender:UIBarButtonItem!){
-        self.navigationItem.rightBarButtonItem = nil
-        self.navigationItem.titleView?.isHidden = true
-        self.navigationItem.rightBarButtonItem = nil
-        self.coodinator?.tableViewList()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        coordinator?.didFinishCompanies()
     }
     
-    @objc func logoutTapped(_ sender:UIBarButtonItem!){
-        self.coodinator?.start()
+    // MARK: - Funcs
+    
+    @objc func addTapped(){
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.titleView?.isHidden = true
+        navigationItem.rightBarButtonItem = nil
+        coordinator?.parentCoordinator?.tableViewList()
+    }
+    
+    @objc func logoutTapped(){
+        coordinator?.parentCoordinator?.start()
     }
 }
 
@@ -45,8 +50,8 @@ class CompaniesViewController: UIViewController, Storyboarded {
 extension CompaniesViewController: CompanyPresenter {
     func setNavigationBar () {
         searchBar.delegate = self as? UISearchBarDelegate
-        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(CompaniesViewController.addTapped(_:)))
-        backButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(CompaniesViewController.logoutTapped(_:)))
+        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(addTapped))
+        backButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(logoutTapped))
         let bgColorNavigation = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
         UINavigationBar.appearance().barTintColor = bgColorNavigation
         UINavigationBar.appearance().tintColor = .white

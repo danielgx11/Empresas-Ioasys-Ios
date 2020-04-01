@@ -24,22 +24,36 @@ class MainCoordinator: Coordinator {
     }
     
     func companyList (){
-        let vc = CompaniesViewController.instantiate()
-        vc.coodinator = self
-        navigationController.pushViewController(vc, animated: false)
+        let child = CompaniesCoordinator(navigationController: navigationController)
+        childCoordinators.append(child)
+        child.parentCoordinator = self
+        child.start()
     }
     
     func tableViewList(){
-        let vc = ListCompaniesTableView.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+        let child = ListCompaniesCoordinator(navigationController: navigationController)
+        childCoordinators.append(child)
+        child.parentCoordinator = self
+        child.start()
     }
     
     func companyDescriptions(to selectedEnterprise: Companies){
-        let vc = DetailCompanyViewController.instantiate()
-        vc.selectEnterprise = selectedEnterprise
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+        let child = DetailCompaniesCoordinator(navigationController: navigationController)
+        child.selectedCompany = selectedEnterprise
+        childCoordinators.append(child)
+        child.parentCoordinator = self
+        child.start()
+    }
+    
+    // MARK: - Child Coordinators
+    
+    func childDidFinish(_ child: Coordinator?) {
+        for (index, coordinator) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+                break
+            }
+        }
     }
     
 }
