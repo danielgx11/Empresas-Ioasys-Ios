@@ -1,14 +1,14 @@
 //
-//  EmpresasViewController.swift
+//  CompaniesViewController.swift
 //  Empresas Ios
 //
-//  Created by Daniel G on 11/12/19.
-//  Copyright © 2019 danielgomes. All rights reserved.
+//  Created by Daniel Gx on 01/04/20.
+//  Copyright © 2020 danielgomes. All rights reserved.
 //
 
 import UIKit
 
-class EmpresasViewController: UIViewController, Storyboarded {
+class CompaniesViewController: UIViewController, Storyboarded {
     
     // MARK: -Variables
     
@@ -42,11 +42,11 @@ class EmpresasViewController: UIViewController, Storyboarded {
 
 // MARK: - Extensions
 
-extension EmpresasViewController: CompanyPresenter {
+extension CompaniesViewController: CompanyPresenter {
     func setNavigationBar () {
         searchBar.delegate = self as? UISearchBarDelegate
-        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(EmpresasViewController.addTapped(_:)))
-        backButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(EmpresasViewController.logoutTapped(_:)))
+        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(CompaniesViewController.addTapped(_:)))
+        backButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(CompaniesViewController.logoutTapped(_:)))
         let bgColorNavigation = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
         UINavigationBar.appearance().barTintColor = bgColorNavigation
         UINavigationBar.appearance().tintColor = .white

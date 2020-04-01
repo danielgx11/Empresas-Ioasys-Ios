@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ViewController: UIViewController, Storyboarded {
+class LoginViewController: UIViewController, Storyboarded {
         
     // MARK: - Variables
     
@@ -41,13 +41,6 @@ class ViewController: UIViewController, Storyboarded {
     @IBAction func loginButton(_ sender: Any) {
         let username: String = typedEmail.text!
         let password: String = typedPassword.text!
-        
-        //MARK: -Set User&Password
-        
-        //Usuários e senha setados para facilitar a utilização do app
-        
-//        let username: String = "testeapple@ioasys.com.br"
-//        let password: String = "12341234"
         
         AuthenticationAPI.loginWith(email: username, password: password){ (response, error, cache) in
             if response != nil {
@@ -87,7 +80,7 @@ class ViewController: UIViewController, Storyboarded {
 
 //MARK: -Extensions
 
-extension ViewController: LoginPresenter {
+extension LoginViewController: LoginPresenter {
     
     func loadAllert(){
         let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)

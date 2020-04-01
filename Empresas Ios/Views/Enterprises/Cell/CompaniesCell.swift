@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmpresasCelulaTableViewCell: UITableViewCell {
+class CompaniesCell: UITableViewCell {
     
     //MARK: -Outlets
     

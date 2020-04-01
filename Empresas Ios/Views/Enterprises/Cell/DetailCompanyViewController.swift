@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class DetalheEmpresaViewController: UIViewController, Storyboarded {
+class DetailCompanyViewController: UIViewController, Storyboarded {
         
     //MARK: -Outlets
     @IBOutlet weak var companyImageView: UIImageView!
@@ -40,7 +40,7 @@ class DetalheEmpresaViewController: UIViewController, Storyboarded {
 
 // MARK: - Extensions
 
-extension DetalheEmpresaViewController: DetailCompanyPresenter {
+extension DetailCompanyViewController: DetailCompanyPresenter {
     
     func setOutlets() {
         companyDescriptionLabel.text = selectEnterprise.description
@@ -57,7 +57,7 @@ extension DetalheEmpresaViewController: DetailCompanyPresenter {
         self.navigationController?.navigationBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         self.navigationItem.title = selectEnterprise.enterprise_name
         self.navigationItem.hidesBackButton = true
-        backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButton"), style: .done, target: self, action: #selector(DetalheEmpresaViewController.backTapped(_:)))
+        backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButton"), style: .done, target: self, action: #selector(DetailCompanyViewController.backTapped(_:)))
         self.navigationItem.leftBarButtonItem = backButton
     }
 }

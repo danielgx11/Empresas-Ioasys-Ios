@@ -18,28 +18,28 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = ViewController.instantiate()
+        let vc = LoginViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
     
     func companyList (){
-        let vc = EmpresasViewController.instantiate()
+        let vc = CompaniesViewController.instantiate()
         vc.coodinator = self
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: false)
     }
     
     func tableViewList(){
-        let vc = ListarEmpresasTableViewController.instantiate()
+        let vc = ListCompaniesTableView.instantiate()
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: false)
     }
     
     func companyDescriptions(to selectedEnterprise: Companies){
-        let vc = DetalheEmpresaViewController.instantiate()
+        let vc = DetailCompanyViewController.instantiate()
         vc.selectEnterprise = selectedEnterprise
         vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: false)
     }
     
 }

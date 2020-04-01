@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ListarEmpresasTableViewController: UIViewController, Storyboarded {
+class ListCompaniesTableView: UIViewController, Storyboarded {
     
     //MARK: - Outlets
     
@@ -46,7 +46,7 @@ class ListarEmpresasTableViewController: UIViewController, Storyboarded {
 
 // MARK: - Extensions
 
-extension ListarEmpresasTableViewController: ListCompanyPresenter {
+extension ListCompaniesTableView: ListCompanyPresenter {
     
     func setTableView() {
         searchBar.delegate = self
@@ -93,8 +93,8 @@ extension ListarEmpresasTableViewController: ListCompanyPresenter {
     }
     
     func hideSearchBar() {
-        self.navigationItem.titleView = nil // Remove a searchBar da navigation
-        self.searchBar.resignFirstResponder() // Esconde o teclado
+        self.navigationItem.titleView = nil
+        self.searchBar.resignFirstResponder()
         self.coordinator?.start()
     }
     
@@ -109,7 +109,7 @@ extension ListarEmpresasTableViewController: ListCompanyPresenter {
 
 // MARK: - Table view data source and delegate
 
-extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDataSource {
+extension ListCompaniesTableView: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -120,13 +120,12 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reusableCell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath) as! EmpresasCelulaTableViewCell
+        let reusableCell = tableView.dequeueReusableCell(withIdentifier: "reusableCell", for: indexPath) as! CompaniesCell
         let company = companies[indexPath.row]
         let urlImage = company.photo ?? ""
         let imageURL = "\(APIRequest.Constants.baseURL)\(urlImage)"
         let defaultImage = UIImage(named: "imgEmpresaDefault")
         
-        //Caso a URL da imagem da empresa seja nula
         if urlImage == "<null>" {
             reusableCell.imageView?.image = #imageLiteral(resourceName: "imgEmpresaDefault")
         } else {
@@ -149,7 +148,7 @@ extension ListarEmpresasTableViewController: UITableViewDelegate, UITableViewDat
 
 //MARK: - UISearchBarDelegate
 
-    extension ListarEmpresasTableViewController: UISearchBarDelegate {
+    extension ListCompaniesTableView: UISearchBarDelegate {
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
             self.coordinator?.companyList()
             self.navigationItem.searchController = nil
