@@ -8,44 +8,39 @@
 
 import UIKit
 
-class CompaniesViewController: UIViewController, Storyboarded {
+class CompaniesViewController: UIViewController, StoryboardInitializable {
     
     // MARK: -Variables
     
     lazy var companyPresenter = CompanyViewPresenter(with: self)
-    weak var coordinator: CompaniesCoordinator?
+    var coordinator: CompaniesFlow?
     var companies: [Companies] = []
     let searchBar = UISearchBar()
     var searchButton: UIBarButtonItem?
     var backButton: UIBarButtonItem?
     
-    // MARK: - Life cycle
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        coordinator?.didFinishCompanies()
-    }
-    
-    // MARK: - Funcs
+
+    // MARK: - Methods
     
     @objc func addTapped(){
         navigationItem.rightBarButtonItem = nil
         navigationItem.titleView?.isHidden = true
         navigationItem.rightBarButtonItem = nil
-        coordinator?.parentCoordinator?.tableViewList()
+        coordinator?.coordinateToListOfCompanies()
     }
     
     @objc func logoutTapped(){
-        coordinator?.parentCoordinator?.start()
+        coordinator?.coordinateTologout()
     }
 }
 
-// MARK: - Extensions
+// MARK: - Setup Company Presenter
 
 extension CompaniesViewController: CompanyPresenter {
     func setNavigationBar () {

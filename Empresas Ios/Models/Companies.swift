@@ -26,3 +26,4 @@ struct Companies: Mappable {
         self.enterprise_type_name = mapper.keyPath("enterprise_type.enterprise_type_name")
     }
 }
+

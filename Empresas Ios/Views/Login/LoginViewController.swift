@@ -8,13 +8,12 @@
 
 import UIKit
 
-
-class LoginViewController: UIViewController, Storyboarded {
-        
+class LoginViewController: UIViewController, StoryboardInitializable {
+    
     // MARK: - Variables
     
     lazy var loginPresenter = LoginViewPresenter(with: self)
-    weak var coordinator: MainCoordinator?
+    var coordinator: LoginFlow?
     
     // MARK: -Outlets
     
@@ -37,10 +36,12 @@ class LoginViewController: UIViewController, Storyboarded {
     }
     
     // MARK: -Actions Button
-     
+    
     @IBAction func loginButton(_ sender: Any) {
-        let username: String = typedEmail.text!
-        let password: String = typedPassword.text!
+//        let username: String = typedEmail.text!
+//        let password: String = typedPassword.text!
+        let username = "testeapple@ioasys.com.br"
+        let password = "12341234"
         
         AuthenticationAPI.loginWith(email: username, password: password){ (response, error, cache) in
             if response != nil {
@@ -54,7 +55,7 @@ class LoginViewController: UIViewController, Storyboarded {
                     self.allertController(title: "Response error", message: errorMessage as! String)
                 }
                 else {
-                    self.coordinator?.start()
+//                    self.coordinator?.start()
                 }
             }
         }
@@ -69,12 +70,13 @@ class LoginViewController: UIViewController, Storyboarded {
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(true)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 }
 
@@ -91,7 +93,7 @@ extension LoginViewController: LoginPresenter {
         
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: {Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
-            self.dismiss(animated: true, completion: self.coordinator?.companyList)
+            self.dismiss(animated: true, completion: self.coordinator?.coordinateToTabBar)
             }})
     }
     

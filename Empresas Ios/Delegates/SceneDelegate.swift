@@ -9,25 +9,17 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
-    var coordinator: MainCoordinator?
+    
     var window: UIWindow?
+    var coordinator: AppCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let appWindow = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        appWindow.windowScene = windowScene
-        
-        let navController = UINavigationController()
-        coordinator = MainCoordinator(navigationController: navController)
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        coordinator = AppCoordinator(window: window!)
         coordinator?.start()
-        
-        appWindow.rootViewController = navController
-        appWindow.makeKeyAndVisible()
-        
-        window = appWindow
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -57,7 +49,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
 

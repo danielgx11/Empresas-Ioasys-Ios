@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class DetailCompanyViewController: UIViewController, Storyboarded {
+class DetailCompanyViewController: UIViewController, StoryboardInitializable {
         
     //MARK: -Outlets
     @IBOutlet weak var companyImageView: UIImageView!
@@ -21,9 +21,9 @@ class DetailCompanyViewController: UIViewController, Storyboarded {
     var selectEnterprise: Companies!
     var photoString: String?
     var backButton: UIBarButtonItem?
-    weak var coordinator: DetailCompaniesCoordinator?
+    var coordinator: DetailCompaniesFlow?
 
-    // MARK: - Life cycle
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,15 +31,28 @@ class DetailCompanyViewController: UIViewController, Storyboarded {
         setOutlets()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        coordinator?.didFinishDetailCompanies()
+    // MARK: - Methods
+    
+    func isPossible(_ company: Companies) -> Bool{
+        if FavoriteItems.sharedInstance.array.contains(where: {$0.enterprise_name == company.enterprise_name}) {
+            return false
+        } else {
+            return true
+        }
     }
     
-    // MARK: - Funcs
+    @objc func favoriteTapped() {
+        if isPossible(selectEnterprise) {
+            FavoriteItems.sharedInstance.array.insert(selectEnterprise, at: 0)
+        } else {
+            let ac = UIAlertController(title: "Warning", message: "This item is already favorite!", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(ac, animated: true)
+        }
+    }
     
     @objc func backTapped(_ sender:UIBarButtonItem!) {
-        self.coordinator?.parentCoordinator?.tableViewList()
+        coordinator?.dismissDetailCompanies()
     }
 }
 
@@ -63,6 +76,9 @@ extension DetailCompanyViewController: DetailCompanyPresenter {
         self.navigationItem.title = selectEnterprise.enterprise_name
         self.navigationItem.hidesBackButton = true
         backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButton"), style: .done, target: self, action: #selector(DetailCompanyViewController.backTapped(_:)))
-        self.navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem = backButton
+        let saveButton = UIBarButtonItem(image: UIImage(named: "star"), style: .done, target: self, action: #selector(favoriteTapped))
+        saveButton.tintColor = .white
+        navigationItem.rightBarButtonItem = saveButton
     }
 }

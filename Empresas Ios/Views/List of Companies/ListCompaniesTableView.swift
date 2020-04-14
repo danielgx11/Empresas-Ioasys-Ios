@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ListCompaniesTableView: UIViewController, Storyboarded {
+class ListCompaniesTableView: UIViewController, StoryboardInitializable {
     
     //MARK: - Outlets
     
@@ -18,7 +18,7 @@ class ListCompaniesTableView: UIViewController, Storyboarded {
     //MARK: - Variables
     
     lazy var listCompaniesPresenter = ListCompaniesViewPresenter(with: self)
-    weak var coordinator: ListCompaniesCoordinator?
+    var coordinator: ListCompaniesFlow?
     let searchBar = UISearchBar()
     var cancelButton: UIBarButtonItem?
     var companies: [Companies] = []{
@@ -35,17 +35,8 @@ class ListCompaniesTableView: UIViewController, Storyboarded {
         setUpNavBar()
         setUpSeachBar()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        coordinator?.didFinishListCompanies()
-    }
-    
-    //MARK: - Funcs
         
-    @objc func cancelTapped(_ sender:UIBarButtonItem!) {
-        self.navigationItem.searchController = nil
-    }
+    //MARK: - Funcs
 }
 
 
@@ -78,12 +69,12 @@ extension ListCompaniesTableView: ListCompanyPresenter {
     
     func setUpNavBar(){
         navigationItem.hidesBackButton = true
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationItem.hidesBackButton = true
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.hidesBackButton = true
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.hidesSearchBarWhenScrolling = false
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.white
-        self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
+        navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
     }
     
     func setUpSeachBar(){
@@ -94,13 +85,13 @@ extension ListCompaniesTableView: ListCompanyPresenter {
         UIBarButtonItem.appearance(whenContainedInInstancesOf:[UISearchBar.self]).tintColor = UIColor.white
         searchBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         searchBar.becomeFirstResponder()
-        self.navigationItem.titleView = searchBar
+        navigationItem.titleView = searchBar
     }
     
     func hideSearchBar() {
         self.navigationItem.titleView = nil
         self.searchBar.resignFirstResponder()
-        self.coordinator?.start()
+        coordinator?.coordinateToCancelSearch()
     }
     
     func addNavBarImage() {
@@ -115,10 +106,6 @@ extension ListCompaniesTableView: ListCompanyPresenter {
 // MARK: - Table view data source and delegate
 
 extension ListCompaniesTableView: UITableViewDelegate, UITableViewDataSource {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return companies.count
@@ -146,19 +133,19 @@ extension ListCompaniesTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.parentCoordinator?.companyDescriptions(to: companies[indexPath.row])
+        coordinator?.coordinateToCompanyDetail(to: companies[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 //MARK: - UISearchBarDelegate
 
-    extension ListCompaniesTableView: UISearchBarDelegate {
-        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            self.coordinator?.parentCoordinator?.companyList()
-            self.navigationItem.searchController = nil
-            self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
-            searchBar.showsCancelButton = false
-            searchBar.endEditing(true)
+extension ListCompaniesTableView: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        coordinator?.coordinateToCancelSearch()
+        navigationItem.searchController = nil
+        navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
+        searchBar.showsCancelButton = false
+        searchBar.endEditing(true)
     }
 }
