@@ -17,7 +17,7 @@ class FavoritesCoordinator: Coordinator, FavoritesFlow {
     // MARK: - Properties
     
     let navigationController: UINavigationController
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

@@ -15,7 +15,7 @@ class FavoritesTableView: UIViewController {
     var coordinator: FavoritesFlow?
     var favoriteCompanies: [Companies] = []
     var companyImage: UIImage?
-    
+    lazy var favoritesViewPresenter = FavoritesViewPresenter(with: self)
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: "Cell")
@@ -38,20 +38,12 @@ class FavoritesTableView: UIViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-    
-    // MARK: - Methods
-    
-    func customizeNavigationController() {
-        title = "Favorite Companies"
-        navigationController?.navigationBar.tintColor = .white
-        let navigationBarBackgroundColor = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
-        navigationController?.navigationBar.backgroundColor = navigationBarBackgroundColor
-    }
 }
 
 // MARK: - UI Setup
 
 extension FavoritesTableView {
+    
     private func setupUI() {
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
@@ -63,6 +55,7 @@ extension FavoritesTableView {
         NSLayoutConstraint.activate([tableView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
                                      tableView.heightAnchor.constraint(equalTo: self.view.heightAnchor)])
     }
+    
 }
 
 // MARK: - TableView Delegate & DataSource
@@ -92,4 +85,15 @@ extension FavoritesTableView: UITableViewDelegate, UITableViewDataSource {
         FavoriteItems.sharedInstance.array.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
+    
+}
+
+// MARK: - Presenter
+
+extension FavoritesTableView: FavoritesPresenter {
+    
+    func customizeNavigationController() {
+        navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
+    }
+    
 }

@@ -17,7 +17,6 @@ class CompaniesViewController: UIViewController, StoryboardInitializable {
     var companies: [Companies] = []
     let searchBar = UISearchBar()
     var searchButton: UIBarButtonItem?
-    var backButton: UIBarButtonItem?
     
     // MARK: - Life Cycle
     
@@ -34,10 +33,6 @@ class CompaniesViewController: UIViewController, StoryboardInitializable {
         navigationItem.rightBarButtonItem = nil
         coordinator?.coordinateToListOfCompanies()
     }
-    
-    @objc func logoutTapped(){
-        coordinator?.coordinateTologout()
-    }
 }
 
 // MARK: - Setup Company Presenter
@@ -46,7 +41,6 @@ extension CompaniesViewController: CompanyPresenter {
     func setNavigationBar () {
         searchBar.delegate = self as? UISearchBarDelegate
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(addTapped))
-        backButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(logoutTapped))
         let bgColorNavigation = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
         UINavigationBar.appearance().barTintColor = bgColorNavigation
         UINavigationBar.appearance().tintColor = .white
@@ -59,7 +53,6 @@ extension CompaniesViewController: CompanyPresenter {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.rightBarButtonItem = searchButton
-        self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
     }
     

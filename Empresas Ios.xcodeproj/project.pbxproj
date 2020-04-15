@@ -11,11 +11,17 @@
 		5C0DC5AF24291EBF009FCA54 /* LoginViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC5AE24291EBF009FCA54 /* LoginViewPresenter.swift */; };
 		5C0DC5B224293306009FCA54 /* CompanyViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC5B124293306009FCA54 /* CompanyViewPresenter.swift */; };
 		5C0DC5B4242937E5009FCA54 /* ListCompaniesViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC5B3242937E5009FCA54 /* ListCompaniesViewPresenter.swift */; };
+		5C5F779E244642E8006D6C8B /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F779D244642E8006D6C8B /* ProfileCoordinator.swift */; };
+		5C5F77A224464390006D6C8B /* ProfileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F77A124464390006D6C8B /* ProfileTableView.swift */; };
+		5C5F77A424464507006D6C8B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F77A324464507006D6C8B /* Profile.swift */; };
 		5C634EEE243E4207009D1835 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C634EED243E4207009D1835 /* AppCoordinator.swift */; };
 		5C634EF1243E426F009D1835 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C634EF0243E426F009D1835 /* LoginCoordinator.swift */; };
 		5C8F02B8243FBEB40034C72B /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F02B7243FBEB40034C72B /* TabBarCoordinator.swift */; };
 		5C8F02BA243FBEC70034C72B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F02B9243FBEC70034C72B /* TabBarController.swift */; };
 		5C9B0C00243E4F1B00025B70 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6545B12523A15B770050A579 /* LoginViewController.swift */; };
+		5CA319A1244778BE00D125DE /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA319A0244778BE00D125DE /* ProfileCell.swift */; };
+		5CA319A3244796C800D125DE /* FavoritesViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA319A2244796C800D125DE /* FavoritesViewPresenter.swift */; };
+		5CA319A5244796D500D125DE /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA319A4244796D500D125DE /* ProfileViewPresenter.swift */; };
 		5CA7980524352FFF0016CFFB /* CompaniesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7980424352FFF0016CFFB /* CompaniesViewController.swift */; };
 		5CA7980A243535AE0016CFFB /* CompaniesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA79809243535AE0016CFFB /* CompaniesCoordinator.swift */; };
 		5CA7980C2435373A0016CFFB /* ListCompaniesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA7980B2435373A0016CFFB /* ListCompaniesCoordinator.swift */; };
@@ -51,10 +57,16 @@
 		5C0DC5AE24291EBF009FCA54 /* LoginViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewPresenter.swift; sourceTree = "<group>"; };
 		5C0DC5B124293306009FCA54 /* CompanyViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewPresenter.swift; sourceTree = "<group>"; };
 		5C0DC5B3242937E5009FCA54 /* ListCompaniesViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCompaniesViewPresenter.swift; sourceTree = "<group>"; };
+		5C5F779D244642E8006D6C8B /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		5C5F77A124464390006D6C8B /* ProfileTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableView.swift; sourceTree = "<group>"; };
+		5C5F77A324464507006D6C8B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5C634EED243E4207009D1835 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		5C634EF0243E426F009D1835 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		5C8F02B7243FBEB40034C72B /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		5C8F02B9243FBEC70034C72B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5CA319A0244778BE00D125DE /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		5CA319A2244796C800D125DE /* FavoritesViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewPresenter.swift; sourceTree = "<group>"; };
+		5CA319A4244796D500D125DE /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
 		5CA7980424352FFF0016CFFB /* CompaniesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesViewController.swift; sourceTree = "<group>"; };
 		5CA79809243535AE0016CFFB /* CompaniesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCoordinator.swift; sourceTree = "<group>"; };
 		5CA7980B2435373A0016CFFB /* ListCompaniesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCompaniesCoordinator.swift; sourceTree = "<group>"; };
@@ -109,6 +121,8 @@
 				5C0DC5B124293306009FCA54 /* CompanyViewPresenter.swift */,
 				5C0DC5B3242937E5009FCA54 /* ListCompaniesViewPresenter.swift */,
 				5CEEC2C324293EEE0054F503 /* DetailCompanyViewPresenter.swift */,
+				5CA319A2244796C800D125DE /* FavoritesViewPresenter.swift */,
+				5CA319A4244796D500D125DE /* ProfileViewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -119,6 +133,16 @@
 				655687AA23ABDF04002BB7A1 /* CompaniesCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		5C5F779C244642CA006D6C8B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5CA3199F244778A700D125DE /* Profile Cell */,
+				5C5F779D244642E8006D6C8B /* ProfileCoordinator.swift */,
+				5C5F77A124464390006D6C8B /* ProfileTableView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		5C634EEF243E4260009D1835 /* Login */ = {
@@ -137,6 +161,14 @@
 				5C8F02B9243FBEC70034C72B /* TabBarController.swift */,
 			);
 			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		5CA3199F244778A700D125DE /* Profile Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5CA319A0244778BE00D125DE /* ProfileCell.swift */,
+			);
+			path = "Profile Cell";
 			sourceTree = "<group>";
 		};
 		5CA79806243531AF0016CFFB /* List of Companies */ = {
@@ -170,10 +202,9 @@
 		5CD069782444DD110037C13F /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				5CD0697F2444F2000037C13F /* Favorite Cell */,
 				5CD069792444DD220037C13F /* FavoritesCoordinator.swift */,
 				5CD0697B2444DD2F0037C13F /* FavoritesTableView.swift */,
-				5CD0697F2444F2000037C13F /* Favorite Cell */,
-				5CD0697D2444E4C40037C13F /* FavoriteItems.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -206,6 +237,7 @@
 				5CA79806243531AF0016CFFB /* List of Companies */,
 				5CA798082435338F0016CFFB /* Detail Companies */,
 				5CD069782444DD110037C13F /* Favorites */,
+				5C5F779C244642CA006D6C8B /* Profile */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +265,8 @@
 				6528D99923A3E2EC00AC6492 /* User.swift */,
 				6530944623A55D8B004B5560 /* Companies.swift */,
 				658787A123B4166900DCDB76 /* Constants.swift */,
+				5C5F77A324464507006D6C8B /* Profile.swift */,
+				5CD0697D2444E4C40037C13F /* FavoriteItems.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -436,11 +470,13 @@
 				5CA7980A243535AE0016CFFB /* CompaniesCoordinator.swift in Sources */,
 				5CEEC2C424293EEE0054F503 /* DetailCompanyViewPresenter.swift in Sources */,
 				5C634EF1243E426F009D1835 /* LoginCoordinator.swift in Sources */,
+				5C5F779E244642E8006D6C8B /* ProfileCoordinator.swift in Sources */,
 				5CD0697A2444DD220037C13F /* FavoritesCoordinator.swift in Sources */,
 				6528D99A23A3E2EC00AC6492 /* User.swift in Sources */,
 				5CD0697C2444DD2F0037C13F /* FavoritesTableView.swift in Sources */,
 				658787A223B4166900DCDB76 /* Constants.swift in Sources */,
 				65A4201523AC1C6D009B8F6B /* DetailCompanyViewController.swift in Sources */,
+				5CA319A1244778BE00D125DE /* ProfileCell.swift in Sources */,
 				5CA7980C2435373A0016CFFB /* ListCompaniesCoordinator.swift in Sources */,
 				5C634EEE243E4207009D1835 /* AppCoordinator.swift in Sources */,
 				6545B13623A18A5C0050A579 /* Coordinator.swift in Sources */,
@@ -449,6 +485,7 @@
 				5CA7980524352FFF0016CFFB /* CompaniesViewController.swift in Sources */,
 				6528D99123A3C0BC00AC6492 /* API.swift in Sources */,
 				5CD0697E2444E4C40037C13F /* FavoriteItems.swift in Sources */,
+				5CA319A3244796C800D125DE /* FavoritesViewPresenter.swift in Sources */,
 				6545B13823A18AC30050A579 /* StoryboardInitializable.swift in Sources */,
 				6545B12223A15B770050A579 /* AppDelegate.swift in Sources */,
 				6530944323A55C5C004B5560 /* ListCompaniesTableView.swift in Sources */,
@@ -456,10 +493,13 @@
 				6530944523A55CFA004B5560 /* CompaniesAPI.swift in Sources */,
 				6528D99823A3D6E700AC6492 /* Mappable.swift in Sources */,
 				6528D99623A3CFE900AC6492 /* AuthenticationAPI.swift in Sources */,
+				5C5F77A424464507006D6C8B /* Profile.swift in Sources */,
 				5C0DC5AF24291EBF009FCA54 /* LoginViewPresenter.swift in Sources */,
 				6528D98D23A3C09E00AC6492 /* APIRequest.swift in Sources */,
 				5C8F02BA243FBEC70034C72B /* TabBarController.swift in Sources */,
+				5CA319A5244796D500D125DE /* ProfileViewPresenter.swift in Sources */,
 				5CD069812444F2130037C13F /* FavoriteCell.swift in Sources */,
+				5C5F77A224464390006D6C8B /* ProfileTableView.swift in Sources */,
 				5C0DC5B4242937E5009FCA54 /* ListCompaniesViewPresenter.swift in Sources */,
 				5CA7980E243538100016CFFB /* DetailCompaniesCoordinator.swift in Sources */,
 				6545B12423A15B770050A579 /* SceneDelegate.swift in Sources */,

@@ -30,12 +30,17 @@ class TabBarCoordinator: Coordinator {
         favoritesNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         let favoritesCoordinator = FavoritesCoordinator(navigationController: favoritesNavigationController)
         
-        tabBarController.viewControllers = [companiesNavigationController, favoritesNavigationController]
+        let profileNavigationController = UINavigationController()
+        profileNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
+        let profileCoordinator = ProfileCoordinator(navigationController: profileNavigationController)
+        
+        tabBarController.viewControllers = [companiesNavigationController, favoritesNavigationController, profileNavigationController]
         
         tabBarController.modalPresentationStyle = .fullScreen
         navigationController.present(tabBarController, animated: false, completion: nil)
         
         coordinate(to: companiesCoordinator)
         coordinate(to: favoritesCoordinator)
+        coordinate(to: profileCoordinator)
     }
 }

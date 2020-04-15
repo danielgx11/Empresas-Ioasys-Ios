@@ -10,7 +10,6 @@ import UIKit
 
 protocol CompaniesFlow {
     func coordinateToListOfCompanies()
-    func coordinateTologout()
 }
 
 class CompaniesCoordinator: Coordinator, CompaniesFlow {
@@ -34,10 +33,5 @@ class CompaniesCoordinator: Coordinator, CompaniesFlow {
     func coordinateToListOfCompanies() {
         let listCompaniesCoordinator = ListCompaniesCoordinator(navigationController: navigationController)
         coordinate(to: listCompaniesCoordinator)
-    }
-    
-    func coordinateTologout() {
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-        coordinate(to: loginCoordinator)
     }
 }
