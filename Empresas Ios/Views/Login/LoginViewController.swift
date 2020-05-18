@@ -55,7 +55,7 @@ class LoginViewController: UIViewController, StoryboardInitializable {
                     self.allertController(title: "Response error", message: errorMessage as! String)
                 }
                 else {
-//                    self.coordinator?.start()
+                    debugPrint("Request failed...")
                 }
             }
         }

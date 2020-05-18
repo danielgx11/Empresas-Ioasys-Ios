@@ -10,7 +10,7 @@ import Foundation
 
 protocol DetailCompanyPresenter: class {
     func setNavigationController()
-    func setOutlets()
+    func setOutlets() throws
 }
 
 class DetailCompanyViewPresenter {

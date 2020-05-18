@@ -41,8 +41,7 @@ extension CompaniesViewController: CompanyPresenter {
     func setNavigationBar () {
         searchBar.delegate = self as? UISearchBarDelegate
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(addTapped))
-        let bgColorNavigation = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
-        UINavigationBar.appearance().barTintColor = bgColorNavigation
+        UINavigationBar.appearance().barTintColor = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
         UINavigationBar.appearance().tintColor = .white
         self.setUpNavBar()
     }

@@ -34,7 +34,7 @@ class DetailCompanyViewController: UIViewController, StoryboardInitializable {
     // MARK: - Methods
     
     func isPossible(_ company: Companies) -> Bool{
-        if FavoriteItems.sharedInstance.array.contains(where: {$0.enterprise_name == company.enterprise_name}) {
+    if FavoriteItems.sharedInstance.array.contains(where: {$0.enterprise_name == company.enterprise_name}) {
             return false
         } else {
             return true
