@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LoginFlow: class {
-    // TODO: Flow Methods
+    func coordinateToCompaniesView()
 }
 
 class LoginCoordinator: Coordinator, LoginFlow {
@@ -29,4 +29,9 @@ class LoginCoordinator: Coordinator, LoginFlow {
     }
     
     // MARK: - Flow Methods
+    
+    func coordinateToCompaniesView() {
+        let companiesCoordinator = CompaniesCoordinator(navigationController: navigationController)
+        coordinate(to: companiesCoordinator)
+    }
 }

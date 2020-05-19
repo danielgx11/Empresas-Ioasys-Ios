@@ -61,6 +61,9 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VXz-Du-bLt"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLs-w6-bCe">
                                 <rect key="frame" x="26" y="360" width="368" height="2"/>
@@ -77,12 +80,12 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Senha" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWU-90-DGt">
-                                <rect key="frame" x="56" y="394" width="50" height="22"/>
+                                <rect key="frame" x="75" y="394" width="314" height="22"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJC-Gr-Pj2">
-                                <rect key="frame" x="56" y="335" width="61.5" height="21"/>
+                                <rect key="frame" x="75" y="335" width="326" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -102,7 +105,6 @@
                         <constraints>
                             <constraint firstItem="tIT-tX-mhL" firstAttribute="centerX" secondItem="HPA-YB-KC8" secondAttribute="centerX" id="2sK-SZ-CNa"/>
                             <constraint firstItem="zeU-lu-wA2" firstAttribute="top" secondItem="FWU-90-DGt" secondAttribute="bottom" constant="4" id="3od-Ea-qH2"/>
-                            <constraint firstItem="qic-Fm-SRy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="6hC-e8-Z6v"/>
                             <constraint firstItem="tIT-tX-mhL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="289.5" id="B1D-EX-kTw"/>
                             <constraint firstItem="oJC-Gr-Pj2" firstAttribute="top" secondItem="qic-Fm-SRy" secondAttribute="bottom" constant="86" id="BXm-Ux-C5s"/>
                             <constraint firstItem="FWU-90-DGt" firstAttribute="trailing" secondItem="JZK-gP-qdw" secondAttribute="trailing" id="HsG-se-buJ"/>
@@ -132,15 +134,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="emailText" destination="oJC-Gr-Pj2" id="8XE-wO-9M3"/>
+                        <outlet property="passwordText" destination="FWU-90-DGt" id="3UN-UC-Old"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="112.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Companies View-->
         <scene sceneID="xId-iw-8SJ">
             <objects>
-                <viewController id="kJz-ya-V2W" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompaniesView" id="kJz-ya-V2W" customClass="CompaniesView" customModule="Companies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Mm-jF-V3J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
