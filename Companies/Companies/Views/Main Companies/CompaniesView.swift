@@ -28,7 +28,7 @@ class CompaniesView: UIViewController, StoryboardInitialize {
     let startLabel: UILabel = {
         let label = UILabel()
         label.text = "Clique na busca para iniciar"
-        label.font = UIFont(name: "Marker Felt", size: 18)
+        label.font = UIFont(name: "System", size: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -73,7 +73,6 @@ class CompaniesView: UIViewController, StoryboardInitialize {
     }
     
     func customCell( _ cell: UITableViewCell) {
-        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.font = UIFont(name: "Marker Felt", size: 18)
         cell.textLabel?.textAlignment = .center
         cell.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
@@ -165,5 +164,7 @@ extension CompaniesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let company = enterprises?.enterprises?[indexPath.row] else { return }
+        coordinator?.coordinateToCompanyDetail(company: company)
     }
 }

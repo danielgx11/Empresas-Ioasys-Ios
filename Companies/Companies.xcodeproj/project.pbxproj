@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5C39B90F2480515D001C63E1 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39B90E2480515D001C63E1 /* Authentication.swift */; };
+		5C39B91224805645001C63E1 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39B91124805645001C63E1 /* DetailCoordinator.swift */; };
+		5C39B91424805799001C63E1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39B91324805799001C63E1 /* DetailView.swift */; };
 		5C6A9E4D2474642300C3729D /* CompaniesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A9E4C2474642300C3729D /* CompaniesCoordinator.swift */; };
 		5C6A9E4F2474647D00C3729D /* CompaniesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A9E4E2474647D00C3729D /* CompaniesView.swift */; };
 		5C715D2624730A4D006C4142 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C715D2524730A4D006C4142 /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		1075121CC3C6ED9B5DBFA854 /* Pods_Companies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Companies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C39B90E2480515D001C63E1 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		5C39B91124805645001C63E1 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		5C39B91324805799001C63E1 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		5C6A9E4C2474642300C3729D /* CompaniesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCoordinator.swift; sourceTree = "<group>"; };
 		5C6A9E4E2474647D00C3729D /* CompaniesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesView.swift; sourceTree = "<group>"; };
 		5C715D2224730A4D006C4142 /* Companies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Companies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C39B91024805624001C63E1 /* Detail Company */ = {
+			isa = PBXGroup;
+			children = (
+				5C39B91124805645001C63E1 /* DetailCoordinator.swift */,
+				5C39B91324805799001C63E1 /* DetailView.swift */,
+			);
+			path = "Detail Company";
+			sourceTree = "<group>";
+		};
 		5C6A9E4B2474637E00C3729D /* Main Companies */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +122,7 @@
 			children = (
 				5C715D47247310C0006C4142 /* Login */,
 				5C6A9E4B2474637E00C3729D /* Main Companies */,
+				5C39B91024805624001C63E1 /* Detail Company */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,11 +348,13 @@
 				5C39B90F2480515D001C63E1 /* Authentication.swift in Sources */,
 				5C715D4B2473117C006C4142 /* LoginView.swift in Sources */,
 				5CDA8FCA247318B2005A0F2B /* Company.swift in Sources */,
+				5C39B91224805645001C63E1 /* DetailCoordinator.swift in Sources */,
 				5C715D4224730DC0006C4142 /* AppCoordinator.swift in Sources */,
 				5C715D4424730E9F006C4142 /* StoryboardInitialize.swift in Sources */,
 				5C715D512473140C006C4142 /* User.swift in Sources */,
 				5C715D2624730A4D006C4142 /* AppDelegate.swift in Sources */,
 				5C715D2824730A4D006C4142 /* SceneDelegate.swift in Sources */,
+				5C39B91424805799001C63E1 /* DetailView.swift in Sources */,
 				5C715D4024730B20006C4142 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

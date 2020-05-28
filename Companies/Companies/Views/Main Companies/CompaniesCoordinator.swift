@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CompaniesFlow: class {
-    //
+    func coordinateToCompanyDetail(company: Companies)
 }
 
 class CompaniesCoordinator: Coordinator, CompaniesFlow {
@@ -29,4 +29,9 @@ class CompaniesCoordinator: Coordinator, CompaniesFlow {
     }
     
     // MARK: - Flow Methods
+    
+    func coordinateToCompanyDetail(company: Companies) {
+        let detailCoordinator = DetailCoordinator(navigationController: navigationController, selectedCompany: company)
+        coordinate(to: detailCoordinator)
+    }
 }

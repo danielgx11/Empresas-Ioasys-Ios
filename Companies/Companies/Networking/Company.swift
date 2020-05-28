@@ -66,6 +66,6 @@ extension Company: TargetType {
     }
     
     public var validationType: ValidationType {
-        return .none
+        return .successCodes
     }
 }

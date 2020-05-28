@@ -52,7 +52,7 @@ class LoginView: UIViewController, StoryboardInitialize {
     }
     
     func doAuthentication() {
-        self.provider.request(.login) { (result) in
+        provider.request(.login) { (result) in
             switch result {
             case .success(let response):
                 guard 200...299 ~= response.statusCode else { return } // TODO: Error Handling

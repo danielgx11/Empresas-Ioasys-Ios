@@ -80,16 +80,16 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Senha" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWU-90-DGt">
-                                <rect key="frame" x="75" y="394" width="314" height="22"/>
+                                <rect key="frame" x="-66.5" y="394" width="172.5" height="22"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJC-Gr-Pj2">
-                                <rect key="frame" x="75" y="335" width="326" height="21"/>
+                                <rect key="frame" x="-66.5" y="335" width="184" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Lorem ipsum dolor sit amet, contetur adipiscing elit. Nunc accumsan" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qic-Fm-SRy">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Lorem ipsum dolor sit amet, contetur adipiscing elit. Nunc accumsan" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qic-Fm-SRy">
                                 <rect key="frame" x="75" y="223" width="264" height="39"/>
                                 <color key="backgroundColor" red="0.91787856820000002" green="0.91514194010000005" blue="0.8317008615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
