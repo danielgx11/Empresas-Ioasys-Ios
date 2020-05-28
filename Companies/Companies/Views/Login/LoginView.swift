@@ -23,6 +23,7 @@ class LoginView: UIViewController, StoryboardInitialize {
     
     @IBAction func signInButton(_ sender: UIButton) {
         getCredentials()
+        doAuthentication()
     }
     
     // MARK: - Life Cycle
@@ -35,29 +36,34 @@ class LoginView: UIViewController, StoryboardInitialize {
     // MARK: - Methods
     
     func getCredentials() {
-        guard let email = emailText.text  else { return } //TODO: Error handling login
-        guard let password = passwordText.text else { return }
+        guard let email = emailText.text, let password = passwordText.text else { return }
         Company.loginKey = email
         Company.passwordKey = password
-        callAPI()
     }
     
     func hideNavigationController() {
         navigationController?.isNavigationBarHidden = true
     }
     
-    func callAPI() {
-        provider.request(.login) { result in
+    func alertController(_ title: String, message: String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(ac, animated: true)
+    }
+    
+    func doAuthentication() {
+        self.provider.request(.login) { (result) in
             switch result {
             case .success(let response):
-                do {
-                    debugPrint(try response.mapJSON())
+                guard 200...299 ~= response.statusCode else { return } // TODO: Error Handling
+                Authentication.shared?.retrieveAndSaveHeaders(response)
+                DispatchQueue.main.async {
                     self.coordinator?.coordinateToCompaniesView()
-                } catch {
-                    debugPrint("Error doCatch")
                 }
-            case .failure:
-                debugPrint("Case failure")
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.alertController("Warning", message: error.localizedDescription)
+                }
             }
         }
     }

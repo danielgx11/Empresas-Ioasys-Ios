@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C39B90F2480515D001C63E1 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39B90E2480515D001C63E1 /* Authentication.swift */; };
 		5C6A9E4D2474642300C3729D /* CompaniesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A9E4C2474642300C3729D /* CompaniesCoordinator.swift */; };
 		5C6A9E4F2474647D00C3729D /* CompaniesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A9E4E2474647D00C3729D /* CompaniesView.swift */; };
 		5C715D2624730A4D006C4142 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C715D2524730A4D006C4142 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		1075121CC3C6ED9B5DBFA854 /* Pods_Companies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Companies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C39B90E2480515D001C63E1 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		5C6A9E4C2474642300C3729D /* CompaniesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCoordinator.swift; sourceTree = "<group>"; };
 		5C6A9E4E2474647D00C3729D /* CompaniesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesView.swift; sourceTree = "<group>"; };
 		5C715D2224730A4D006C4142 /* Companies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Companies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				5CDA8FC9247318B2005A0F2B /* Company.swift */,
+				5C39B90E2480515D001C63E1 /* Authentication.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				5C6A9E4D2474642300C3729D /* CompaniesCoordinator.swift in Sources */,
 				5C715D49247310CB006C4142 /* LoginCoordinator.swift in Sources */,
 				5C715D4F24731393006C4142 /* Companies.swift in Sources */,
+				5C39B90F2480515D001C63E1 /* Authentication.swift in Sources */,
 				5C715D4B2473117C006C4142 /* LoginView.swift in Sources */,
 				5CDA8FCA247318B2005A0F2B /* Company.swift in Sources */,
 				5C715D4224730DC0006C4142 /* AppCoordinator.swift in Sources */,
