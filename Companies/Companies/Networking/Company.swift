@@ -9,8 +9,8 @@
 import Moya
 
 public enum Company {
-    static var loginKey = "testeapple@ioasys.com.br"
-    static var passwordKey = "12341234"
+    static var loginKey = ""
+    static var passwordKey = ""
     
     case companies
     case login
@@ -54,10 +54,18 @@ extension Company: TargetType {
     }
     
     public var headers: [String : String]? {
-        return ["Content-Type" : "application/json"]
+        switch self {
+        case .login: return ["Content-Type" : "application/json"]
+        case .companies: return [
+            "Content-Type" : "application/json",
+            "access-token" : User.current?.token ?? "",
+            "client" : User.current?.id ?? "",
+            "uid" : User.current?.email ?? ""
+                                ]
+        }
     }
     
     public var validationType: ValidationType {
-        return .successCodes
+        return .none
     }
 }

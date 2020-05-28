@@ -23,7 +23,7 @@ class CompaniesCoordinator: Coordinator, CompaniesFlow {
     }
     
     func start() {
-        let companiesView = CompaniesView.initFromStoryboard()
+        let companiesView = CompaniesView()
         companiesView.coordinator = self
         navigationController.pushViewController(companiesView, animated: false)
     }
