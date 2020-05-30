@@ -8,12 +8,17 @@
 
 import Moya
 
+public enum EnterpriseOptions {
+    case all
+    case filter(name: String)
+}
+
 public enum Company {
     static var loginKey = ""
     static var passwordKey = ""
     
-    case companies
     case login
+    case enterprise(EnterpriseOptions)
 }
 
 extension Company: TargetType {
@@ -23,15 +28,19 @@ extension Company: TargetType {
     
     public var path: String {
         switch self {
-        case .companies: return "/enterprises/"
         case .login: return "/users/auth/sign_in"
+        case .enterprise(let option):
+            switch option {
+            case .all: return "/enterprises/"
+            case .filter: return "/enterprises"
+            }
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .companies: return .get
         case .login: return .post
+        case .enterprise: return .get
         }
     }
     
@@ -41,11 +50,13 @@ extension Company: TargetType {
     
     public var task: Task {
         switch self {
-        case .companies:
-            return .requestPlain
         case .login:
-            let authParams = [ "email" : Company.loginKey, "password" : Company.passwordKey ]
-            return .requestCompositeParameters(bodyParameters: authParams, bodyEncoding: JSONEncoding.default, urlParameters: [:])
+            return .requestCompositeParameters(bodyParameters: [ "email" : Company.loginKey, "password" : Company.passwordKey ], bodyEncoding: JSONEncoding.default, urlParameters: [:])
+        case .enterprise(let option):
+            switch option {
+            case .all: return .requestPlain
+            case .filter(let name): return .requestParameters(parameters: ["name" : name], encoding: URLEncoding.default)
+            }
         }
     }
     
@@ -56,12 +67,12 @@ extension Company: TargetType {
     public var headers: [String : String]? {
         switch self {
         case .login: return ["Content-Type" : "application/json"]
-        case .companies: return [
-            "Content-Type" : "application/json",
-            "access-token" : User.current?.token ?? "",
-            "client" : User.current?.id ?? "",
-            "uid" : User.current?.email ?? ""
-                                ]
+        case .enterprise: return    [
+                    "Content-Type" : "application/json",
+                    "access-token" : User.current?.token ?? "",
+                    "client" : User.current?.id ?? "",
+                    "uid" : User.current?.email ?? ""
+                                    ]
         }
     }
     

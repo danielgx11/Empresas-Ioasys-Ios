@@ -40,12 +40,9 @@ class CompaniesView: UIViewController, StoryboardInitialize {
         setupTableView()
     }
     
-    @objc func logoutTapped() {
-        //coordinator?.coordinateToLogout()
-    }
-    
     @objc func cancelTapped() {
-        //coordinator?.coordinateToStart()
+        tableView.isHidden = true
+        startLabel.isHidden = false
     }
     
     // MARK: - Life Cycle
@@ -65,7 +62,6 @@ class CompaniesView: UIViewController, StoryboardInitialize {
         navigationItem.hidesBackButton = true
         navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(logoutTapped))
         navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
         navigationController?.navigationBar.tintColor = .white
         
@@ -78,8 +74,8 @@ class CompaniesView: UIViewController, StoryboardInitialize {
         cell.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
     }
     
-    func getCompanies() {
-        self.provider.request(.companies) { [weak self] result in
+    func getAllCompanies() {
+        self.provider.request(.enterprise(.all)) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -96,6 +92,25 @@ class CompaniesView: UIViewController, StoryboardInitialize {
             case .failure(let error):
                 debugPrint(error.localizedDescription)
                 break
+            }
+        }
+    }
+    
+    func filterCompany(_ name: String) {
+        provider.request(.enterprise(.filter(name: name.lowercased()))) { [weak self] (result) in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let response):
+                do {
+                    self.enterprises = try JSONDecoder().decode(Enterprises.self, from: response.data)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                } catch {
+                    debugPrint("Error DoCatch")
+                }
+            case .failure(let error): debugPrint(error.localizedDescription)
             }
         }
     }
@@ -117,7 +132,11 @@ extension CompaniesView: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //
+        if searchText.isEmpty {
+            getAllCompanies()
+        } else {
+            filterCompany(searchText)
+        }
     }
 }
 
@@ -139,7 +158,8 @@ extension CompaniesView {
     }
     
     private func setupTableView() {
-        getCompanies()
+        getAllCompanies()
+        tableView.isHidden = false
         startLabel.isHidden = true
         view.addSubview(tableView)
         tableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
