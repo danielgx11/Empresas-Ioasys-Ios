@@ -13,15 +13,12 @@ public enum EnterpriseOptions {
     case filter(name: String)
 }
 
-public enum Company {
-    static var loginKey = ""
-    static var passwordKey = ""
-    
-    case login
+public enum Session {
+    case login(bodyParameters: [String: Any])
     case enterprise(EnterpriseOptions)
 }
 
-extension Company: TargetType {
+extension Session: TargetType {
     public var baseURL: URL {
         return URL(string: "https://empresas.ioasys.com.br/api/v1")!
     }
@@ -50,8 +47,8 @@ extension Company: TargetType {
     
     public var task: Task {
         switch self {
-        case .login:
-            return .requestCompositeParameters(bodyParameters: [ "email" : Company.loginKey, "password" : Company.passwordKey ], bodyEncoding: JSONEncoding.default, urlParameters: [:])
+        case .login(let bodyParameters):
+            return .requestCompositeParameters(bodyParameters: bodyParameters, bodyEncoding: JSONEncoding.default, urlParameters: [:])
         case .enterprise(let option):
             switch option {
             case .all: return .requestPlain
@@ -77,6 +74,6 @@ extension Company: TargetType {
     }
     
     public var validationType: ValidationType {
-        return .successCodes
+        return .none
     }
 }

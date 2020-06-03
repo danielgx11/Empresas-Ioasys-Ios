@@ -14,7 +14,6 @@ class Authentication {
     // MARK: - Properties
     
     static var shared: Authentication? = Authentication()
-    var responseHeadersDictionary: [AnyHashable : Any]?
     
     // MARK: - Methods
     

@@ -14,8 +14,13 @@ class CompaniesView: UIViewController, StoryboardInitialize {
     // MARK: - Properties
     
     var coordinator: CompaniesFlow?
-    var enterprises: Enterprises?
-    let provider = MoyaProvider<Company>()
+    var enterprises: Enterprises? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    private var decoder = JSONDecoder()
+    let provider = MoyaProvider<Session>()
     lazy var searchBar: UISearchBar = UISearchBar()
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -74,45 +79,28 @@ class CompaniesView: UIViewController, StoryboardInitialize {
         cell.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
     }
     
+    func alertController(_ title: String, message: String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(ac, animated: true)
+    }
+    
     func getAllCompanies() {
-        self.provider.request(.enterprise(.all)) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let response):
-                do {
-                    self.enterprises = try JSONDecoder().decode(Enterprises.self, from: response.data)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    debugPrint("Error DoCatch")
-                }
-                break
-            case .failure(let error):
-                debugPrint(error.localizedDescription)
-                break
-            }
-        }
+        GetCompanies.shared?.getCompanies(target: Session.enterprise(.all), completionHandler: { (response, error) in
+            guard error != nil else {
+                self.enterprises = response
+                return }
+            self.alertController("Warning", message: error ?? "Unknown")
+        })
     }
     
     func filterCompany(_ name: String) {
-        provider.request(.enterprise(.filter(name: name.lowercased()))) { [weak self] (result) in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let response):
-                do {
-                    self.enterprises = try JSONDecoder().decode(Enterprises.self, from: response.data)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    debugPrint("Error DoCatch")
-                }
-            case .failure(let error): debugPrint(error.localizedDescription)
-            }
-        }
+        GetCompanies.shared?.getCompanies(target: Session.enterprise(.filter(name: name)), completionHandler: { (response, error) in
+            guard error != nil else {
+                self.enterprises = response
+                return }
+            self.alertController("Warning", message: error ?? "Unknown")
+        })
     }
 }
 

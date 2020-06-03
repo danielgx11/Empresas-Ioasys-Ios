@@ -10,7 +10,6 @@ import Foundation
 
 struct Enterprises: Codable {
     var enterprises: [Companies]?
-    //var success: Bool
 }
 
 struct EnterpriseType: Codable {
