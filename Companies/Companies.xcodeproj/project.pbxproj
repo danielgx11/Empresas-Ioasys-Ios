@@ -26,6 +26,7 @@
 		5C715D4B2473117C006C4142 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C715D4A2473117C006C4142 /* LoginView.swift */; };
 		5C715D4F24731393006C4142 /* Companies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C715D4E24731393006C4142 /* Companies.swift */; };
 		5C715D512473140C006C4142 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C715D502473140C006C4142 /* User.swift */; };
+		5C9DEE3B2489BEAE00A693F3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DEE3A2489BEAE00A693F3 /* Util.swift */; };
 		5CDA8FCA247318B2005A0F2B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA8FC9247318B2005A0F2B /* Session.swift */; };
 		B23806AF8D14CEF199925002 /* Pods_Companies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1075121CC3C6ED9B5DBFA854 /* Pods_Companies.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		5C715D4A2473117C006C4142 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5C715D4E24731393006C4142 /* Companies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Companies.swift; sourceTree = "<group>"; };
 		5C715D502473140C006C4142 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5C9DEE3A2489BEAE00A693F3 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		5CDA8FC9247318B2005A0F2B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		B4F6C97B8C350518C067482A /* Pods-Companies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Companies.debug.xcconfig"; path = "Target Support Files/Pods-Companies/Pods-Companies.debug.xcconfig"; sourceTree = "<group>"; };
 		C655F2F9520849F00245C5A8 /* Pods-Companies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Companies.release.xcconfig"; path = "Target Support Files/Pods-Companies/Pods-Companies.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,7 +123,9 @@
 				5C715D3D24730A73006C4142 /* Resources */,
 				5C715D3B24730A61006C4142 /* Delegates */,
 				5C715D3C24730A68006C4142 /* Coordinator */,
+				5CCA8517248AFA650038876A /* Protocol */,
 				5CDA8FC8247315F1005A0F2B /* Networking */,
+				5C9DEE2D2489BAB800A693F3 /* Extensions */,
 				5C715D3A24730A60006C4142 /* Models */,
 				5C715D3924730A5E006C4142 /* Views */,
 				5C715D3E24730AA3006C4142 /* Storyboards */,
@@ -193,13 +197,28 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		5C9DEE2D2489BAB800A693F3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C9DEE3A2489BEAE00A693F3 /* Util.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5CCA8517248AFA650038876A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5C39B90E2480515D001C63E1 /* Authentication.swift */,
+				5C2509D72482F375001066AE /* GetCompanies.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		5CDA8FC8247315F1005A0F2B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				5C2509D42482D2DA001066AE /* Errors */,
 				5CDA8FC9247318B2005A0F2B /* Session.swift */,
-				5C39B90E2480515D001C63E1 /* Authentication.swift */,
-				5C2509D72482F375001066AE /* GetCompanies.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -367,6 +386,7 @@
 				5C2509D62482D323001066AE /* ResponseErrors.swift in Sources */,
 				5C715D4224730DC0006C4142 /* AppCoordinator.swift in Sources */,
 				5C715D4424730E9F006C4142 /* StoryboardInitialize.swift in Sources */,
+				5C9DEE3B2489BEAE00A693F3 /* Util.swift in Sources */,
 				5C715D512473140C006C4142 /* User.swift in Sources */,
 				5C715D2624730A4D006C4142 /* AppDelegate.swift in Sources */,
 				5C715D2824730A4D006C4142 /* SceneDelegate.swift in Sources */,

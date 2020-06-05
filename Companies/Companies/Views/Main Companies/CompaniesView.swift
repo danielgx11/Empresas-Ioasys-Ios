@@ -9,22 +9,19 @@
 import UIKit
 import Moya
 
-class CompaniesView: UIViewController, StoryboardInitialize {
+class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
     
     // MARK: - Properties
     
     var coordinator: CompaniesFlow?
-    var enterprises: Enterprises? {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    var enterprises: Enterprises?
     private var decoder = JSONDecoder()
     let provider = MoyaProvider<Session>()
     lazy var searchBar: UISearchBar = UISearchBar()
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reusableCell")
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +72,8 @@ class CompaniesView: UIViewController, StoryboardInitialize {
     
     func customCell( _ cell: UITableViewCell) {
         cell.textLabel?.font = UIFont(name: "Marker Felt", size: 18)
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.darkGray.cgColor
         cell.textLabel?.textAlignment = .center
         cell.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
     }
@@ -85,22 +84,16 @@ class CompaniesView: UIViewController, StoryboardInitialize {
         present(ac, animated: true)
     }
     
-    func getAllCompanies() {
-        GetCompanies.shared?.getCompanies(target: Session.enterprise(.all), completionHandler: { (response, error) in
+    func getCompanies(withTarget target: TargetType) {
+        getCompanies(target: target) { [weak self] (response, error) in
+            guard let self = self else { return }
             guard error != nil else {
                 self.enterprises = response
-                return }
+                self.tableView.reloadData()
+                return
+            }
             self.alertController("Warning", message: error ?? "Unknown")
-        })
-    }
-    
-    func filterCompany(_ name: String) {
-        GetCompanies.shared?.getCompanies(target: Session.enterprise(.filter(name: name)), completionHandler: { (response, error) in
-            guard error != nil else {
-                self.enterprises = response
-                return }
-            self.alertController("Warning", message: error ?? "Unknown")
-        })
+        }
     }
 }
 
@@ -121,9 +114,9 @@ extension CompaniesView: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            getAllCompanies()
+            getCompanies(withTarget: Session.enterprise(.all))
         } else {
-            filterCompany(searchText)
+            getCompanies(withTarget: Session.enterprise(.filter(name: searchText)))
         }
     }
 }
@@ -146,7 +139,7 @@ extension CompaniesView {
     }
     
     private func setupTableView() {
-        getAllCompanies()
+        getCompanies(withTarget: Session.enterprise(.all))
         tableView.isHidden = false
         startLabel.isHidden = true
         view.addSubview(tableView)
