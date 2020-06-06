@@ -8,6 +8,7 @@
 
 import UIKit
 import Moya
+import Lottie
 
 class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
     
@@ -15,8 +16,9 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
     
     var coordinator: CompaniesFlow?
     var enterprises: Enterprises?
-    private var decoder = JSONDecoder()
+    var animationView: AnimationView?
     let provider = MoyaProvider<Session>()
+    private var decoder = JSONDecoder()
     lazy var searchBar: UISearchBar = UISearchBar()
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -27,6 +29,7 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
     let startLabel: UILabel = {
         let label = UILabel()
         label.text = "Clique na busca para iniciar"
@@ -72,8 +75,8 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
     
     func customCell( _ cell: UITableViewCell) {
         cell.textLabel?.font = UIFont(name: "Marker Felt", size: 18)
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor.darkGray.cgColor
+        cell.layer.borderWidth = 0.25
+        cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.textLabel?.textAlignment = .center
         cell.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
     }
@@ -95,6 +98,29 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
             self.alertController("Warning", message: error ?? "Unknown")
         }
     }
+    
+    func setupAnimation() {
+        animationView = .init(name: "tableLoad")
+        animationView?.frame = view.bounds
+        animationView?.contentMode = .scaleAspectFit
+        animationView?.loopMode = .loop
+        animationView?.animationSpeed = 1.5
+        tableView.addSubview(animationView!)
+        animationView?.play()
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { [weak self] (_) in
+            guard let self = self else { return }
+            self.animationView?.stop()
+            self.animationView?.removeFromSuperview()
+        }
+    }
+    
+    func isPosible() -> Bool {
+        if enterprises == nil {
+            return true
+        }
+        return false
+    }
+
 }
 
 // MARK: - Search Controller
@@ -139,10 +165,15 @@ extension CompaniesView {
     }
     
     private func setupTableView() {
+        if isPosible() {
+            setupAnimation()
+        }
+        
         getCompanies(withTarget: Session.enterprise(.all))
         tableView.isHidden = false
         startLabel.isHidden = true
         view.addSubview(tableView)
+        
         tableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         tableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
     }

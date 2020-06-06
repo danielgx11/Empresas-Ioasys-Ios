@@ -55,7 +55,6 @@ class LoginView: UIViewController, StoryboardInitialize, Authentication {
     
     // MARK: - Methods
     
-    
     func getCredentials() -> Dictionary<String, String>? {
         guard let email = emailText.text, let password = passwordText.text else { return nil}
         return ["email" : email, "password" : password]
