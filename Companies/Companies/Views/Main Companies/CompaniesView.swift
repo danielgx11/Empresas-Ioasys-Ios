@@ -73,7 +73,7 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         cancelTapped()
     }
     
-    func customCell( _ cell: UITableViewCell) {
+    func customCell(_ cell: UITableViewCell) {
         cell.textLabel?.font = UIFont(name: "Marker Felt", size: 18)
         cell.layer.borderWidth = 0.25
         cell.layer.borderColor = UIColor.lightGray.cgColor
@@ -114,7 +114,7 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         }
     }
     
-    func isPosible() -> Bool {
+    func isPossible() -> Bool {
         if enterprises == nil {
             return true
         }
@@ -165,7 +165,7 @@ extension CompaniesView {
     }
     
     private func setupTableView() {
-        if isPosible() {
+        if isPossible() {
             setupAnimation()
         }
         

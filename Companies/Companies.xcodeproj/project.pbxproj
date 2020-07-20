@@ -160,7 +160,6 @@
 			children = (
 				5C715D2524730A4D006C4142 /* AppDelegate.swift */,
 				5C715D2724730A4D006C4142 /* SceneDelegate.swift */,
-				5C715D4124730DC0006C4142 /* AppCoordinator.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -170,6 +169,7 @@
 			children = (
 				5C715D3F24730B20006C4142 /* Coordinator.swift */,
 				5C715D4324730E9F006C4142 /* StoryboardInitialize.swift */,
+				5C715D4124730DC0006C4142 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
