@@ -126,7 +126,7 @@
 				5CCA8518248B08F90038876A /* Lottie Files */,
 				5C715D3B24730A61006C4142 /* Delegates */,
 				5C715D3C24730A68006C4142 /* Coordinator */,
-				5CCA8517248AFA650038876A /* Protocol */,
+				5CCA8517248AFA650038876A /* Protocols */,
 				5CDA8FC8247315F1005A0F2B /* Networking */,
 				5C9DEE2D2489BAB800A693F3 /* Extensions */,
 				5C715D3A24730A60006C4142 /* Models */,
@@ -208,13 +208,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		5CCA8517248AFA650038876A /* Protocol */ = {
+		5CCA8517248AFA650038876A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				5C39B90E2480515D001C63E1 /* Authentication.swift */,
 				5C2509D72482F375001066AE /* GetCompanies.swift */,
 			);
-			path = Protocol;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		5CCA8518248B08F90038876A /* Lottie Files */ = {
