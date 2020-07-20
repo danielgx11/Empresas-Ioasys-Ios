@@ -52,7 +52,7 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         tableView.isHidden = true
         startLabel.isHidden = false
     }
-
+    
     
     // MARK: - Life Cycle
     
@@ -61,6 +61,7 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         customizeNavigationController()
         setupUI()
         
+        tableView.keyboardDismissMode = .onDrag
                 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 64
