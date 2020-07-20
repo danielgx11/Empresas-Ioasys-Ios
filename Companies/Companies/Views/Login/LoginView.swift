@@ -42,11 +42,19 @@ class LoginView: UIViewController, StoryboardInitialize, Authentication {
         coordinator?.coordinateToCompaniesView()
     }
     
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        emailText.resignFirstResponder()
+        passwordText.resignFirstResponder()
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideNavigationController()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

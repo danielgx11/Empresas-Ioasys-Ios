@@ -50,6 +50,10 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         startLabel.isHidden = false
     }
     
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        searchBar.resignFirstResponder()
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -158,6 +162,9 @@ extension CompaniesView {
         view.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
         
         view.addSubview(startLabel)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        view.addGestureRecognizer(tapGesture)
         
         startLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         startLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
