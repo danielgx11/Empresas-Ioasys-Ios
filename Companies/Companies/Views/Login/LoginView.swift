@@ -11,6 +11,7 @@ import Moya
 
 class LoginView: UIViewController, StoryboardInitialize, Authentication {
     
+    
     // MARK: - Properties
     
     var coordinator: LoginFlow?
@@ -18,6 +19,7 @@ class LoginView: UIViewController, StoryboardInitialize, Authentication {
     
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
+    
     
     // MARK: - Actions
     
@@ -47,6 +49,7 @@ class LoginView: UIViewController, StoryboardInitialize, Authentication {
         passwordText.resignFirstResponder()
     }
     
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -57,9 +60,6 @@ class LoginView: UIViewController, StoryboardInitialize, Authentication {
         view.addGestureRecognizer(tapGesture)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
     
     // MARK: - Methods
     
@@ -70,11 +70,5 @@ class LoginView: UIViewController, StoryboardInitialize, Authentication {
     
     func hideNavigationController() {
         navigationController?.isNavigationBarHidden = true
-    }
-    
-    func alertController(_ title: String, message: String) {
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(ac, animated: true)
     }
 }

@@ -14,6 +14,7 @@ protocol LoginFlow: class {
 
 class LoginCoordinator: Coordinator, LoginFlow {
     
+    
     // MARK: - Properties
     
     let navigationController: UINavigationController
@@ -27,6 +28,7 @@ class LoginCoordinator: Coordinator, LoginFlow {
         loginView.coordinator = self
         navigationController.pushViewController(loginView, animated: true)
     }
+    
     
     // MARK: - Flow Methods
     

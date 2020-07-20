@@ -14,6 +14,7 @@ protocol CompaniesFlow: class {
 
 class CompaniesCoordinator: Coordinator, CompaniesFlow {
     
+    
     // MARK: - Properties
     
     let navigationController: UINavigationController
@@ -27,6 +28,7 @@ class CompaniesCoordinator: Coordinator, CompaniesFlow {
         companiesView.coordinator = self
         navigationController.pushViewController(companiesView, animated: false)
     }
+    
     
     // MARK: - Flow Methods
     

@@ -10,6 +10,7 @@ import UIKit
 
 class DetailView: UIViewController {
     
+    
     // MARK: - Properties
     
     var coordinator: DetailFlow?
@@ -35,6 +36,7 @@ class DetailView: UIViewController {
         return label
     }()
     
+    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -42,6 +44,7 @@ class DetailView: UIViewController {
         setupUI()
         setLabels()
     }
+    
     
     // MARK: - Methods
     
@@ -60,7 +63,7 @@ extension DetailView {
             overrideUserInterfaceStyle = .light
         }
         
-        view.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
+        view.backgroundColor = backgroundColor
         view.addSubview(enterpriseName)
         view.addSubview(enterpriseDescription)
         

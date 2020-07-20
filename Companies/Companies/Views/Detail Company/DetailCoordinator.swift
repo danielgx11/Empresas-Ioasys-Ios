@@ -8,11 +8,10 @@
 
 import UIKit
 
-protocol DetailFlow: class {
-    //
-}
+protocol DetailFlow: class { }
 
 class DetailCoordinator: Coordinator, DetailFlow {
+    
     
     // MARK: - Properties
     
@@ -30,7 +29,4 @@ class DetailCoordinator: Coordinator, DetailFlow {
         detailView.enterprise = selectedCompany
         navigationController.present(detailView, animated: true)
     }
-    
-    // MARK: - Flow Methods
-    
 }

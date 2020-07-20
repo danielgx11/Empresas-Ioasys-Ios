@@ -12,6 +12,7 @@ import Lottie
 
 class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
     
+    
     // MARK: - Properties
     
     var coordinator: CompaniesFlow?
@@ -19,6 +20,7 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
     var animationView: AnimationView?
     let provider = MoyaProvider<Session>()
     private var decoder = JSONDecoder()
+    
     lazy var searchBar: UISearchBar = UISearchBar()
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -38,6 +40,7 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         return label
     }()
     
+    
     // MARK: - Actions
     
     @objc func searchTapped() {
@@ -49,10 +52,7 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         tableView.isHidden = true
         startLabel.isHidden = false
     }
-    
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        searchBar.resignFirstResponder()
-    }
+
     
     // MARK: - Life Cycle
     
@@ -60,18 +60,21 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         super.viewDidLoad()
         customizeNavigationController()
         setupUI()
+        
+                
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 64
     }
+    
     
     // MARK: - Methods
     
     @objc func customizeNavigationController() {
         navigationController?.isNavigationBarHidden = false
         navigationItem.hidesBackButton = true
-        navigationItem.titleView = UIImageView(image: UIImage(named: "logoIcon"))
+        navigationItem.titleView = UIImageView(image: titleImageView)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-        navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
+        navigationController?.navigationBar.barTintColor = barTintColor
         navigationController?.navigationBar.tintColor = .white
         
         cancelTapped()
@@ -82,13 +85,7 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         cell.layer.borderWidth = 0.25
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.textLabel?.textAlignment = .center
-        cell.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
-    }
-    
-    func alertController(_ title: String, message: String) {
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(ac, animated: true)
+        cell.backgroundColor = backgroundColor
     }
     
     func getCompanies(withTarget target: TargetType) {
@@ -124,7 +121,6 @@ class CompaniesView: UIViewController, StoryboardInitialize, GetCompanies {
         }
         return false
     }
-
 }
 
 // MARK: - Search Controller
@@ -159,12 +155,9 @@ extension CompaniesView {
             overrideUserInterfaceStyle = .light
         }
         
-        view.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
+        view.backgroundColor = backgroundColor
         
         view.addSubview(startLabel)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        view.addGestureRecognizer(tapGesture)
         
         startLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         startLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
