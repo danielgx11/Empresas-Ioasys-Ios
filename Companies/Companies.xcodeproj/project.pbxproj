@@ -121,12 +121,9 @@
 		5C715D2424730A4D006C4142 /* Companies */ = {
 			isa = PBXGroup;
 			children = (
-				5C715D3324730A50006C4142 /* Info.plist */,
-				5C715D3D24730A73006C4142 /* Resources */,
-				5CCA8518248B08F90038876A /* Lottie Files */,
+				5C8A1BFE24C72428002C39B0 /* Supporting Files */,
 				5C715D3B24730A61006C4142 /* Delegates */,
 				5C715D3C24730A68006C4142 /* Coordinator */,
-				5CCA8517248AFA650038876A /* Protocols */,
 				5CDA8FC8247315F1005A0F2B /* Networking */,
 				5C9DEE2D2489BAB800A693F3 /* Extensions */,
 				5C715D3A24730A60006C4142 /* Models */,
@@ -174,14 +171,6 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		5C715D3D24730A73006C4142 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5C715D2E24730A50006C4142 /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		5C715D3E24730AA3006C4142 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +187,16 @@
 				5C715D4A2473117C006C4142 /* LoginView.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		5C8A1BFE24C72428002C39B0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5C715D3324730A50006C4142 /* Info.plist */,
+				5C715D2E24730A50006C4142 /* Assets.xcassets */,
+				5CCA8518248B08F90038876A /* Lottie Files */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		5C9DEE2D2489BAB800A693F3 /* Extensions */ = {
@@ -229,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				5C2509D42482D2DA001066AE /* Errors */,
+				5CCA8517248AFA650038876A /* Protocols */,
 				5CDA8FC9247318B2005A0F2B /* Session.swift */,
 			);
 			path = Networking;
@@ -542,7 +542,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 53L9Q56SAD;
-				INFOPLIST_FILE = Companies/Info.plist;
+				INFOPLIST_FILE = "Companies/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -561,7 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 53L9Q56SAD;
-				INFOPLIST_FILE = Companies/Info.plist;
+				INFOPLIST_FILE = "Companies/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
