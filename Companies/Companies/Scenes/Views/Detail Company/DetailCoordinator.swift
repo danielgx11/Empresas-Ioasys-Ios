@@ -14,7 +14,6 @@ class DetailCoordinator: Coordinator, DetailFlow {
     
     
     // MARK: - Properties
-    
     let navigationController: UINavigationController
     var selectedCompany: Companies
     
@@ -24,9 +23,9 @@ class DetailCoordinator: Coordinator, DetailFlow {
     }
     
     func start() {
-        let detailView = DetailView()
-        detailView.coordinator = self
-        detailView.enterprise = selectedCompany
-        navigationController.present(detailView, animated: true)
+        let detailViewController = DetailViewController()
+        detailViewController.coordinator = self
+        detailViewController.enterprise = selectedCompany
+        navigationController.present(detailViewController, animated: true)
     }
 }

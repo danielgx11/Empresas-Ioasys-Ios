@@ -14,19 +14,6 @@ extension UIViewController {
     
     
     // MARK: - Properties
-    
-    var backgroundColor: UIColor {
-        return UIColor(red: 234/255, green: 233/255, blue: 213/255, alpha: 1)
-    }
-    
-    var barTintColor: UIColor {
-        return UIColor(red: 255/255, green: 0/255, blue: 128/255, alpha: 1.0)
-    }
-    
-    var cellBorderColor: CGColor {
-        return UIColor.lightGray.cgColor
-    }
-    
     var titleImageView: UIImage {
         let image = "logoIcon"
         if let path = Bundle.main.path(forResource: image, ofType: nil) {
@@ -34,13 +21,11 @@ extension UIViewController {
                 return imageFinished
             }
         }
-        
         return #imageLiteral(resourceName: "logoIcon")
     }
     
     
     // MARK: - Methods
-        
     func showSpinner() {
         aView = UIView(frame: self.view.bounds)
         aView?.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)

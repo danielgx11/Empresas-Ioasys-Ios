@@ -16,7 +16,6 @@ class CompaniesCoordinator: Coordinator, CompaniesFlow {
     
     
     // MARK: - Properties
-    
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -24,14 +23,13 @@ class CompaniesCoordinator: Coordinator, CompaniesFlow {
     }
     
     func start() {
-        let companiesView = CompaniesView()
-        companiesView.coordinator = self
-        navigationController.pushViewController(companiesView, animated: false)
+        let companiesViewController = CompaniesViewController()
+        companiesViewController.coordinator = self
+        navigationController.pushViewController(companiesViewController, animated: false)
     }
     
     
     // MARK: - Flow Methods
-    
     func coordinateToCompanyDetail(company: Companies) {
         let detailCoordinator = DetailCoordinator(navigationController: navigationController, selectedCompany: company)
         coordinate(to: detailCoordinator)

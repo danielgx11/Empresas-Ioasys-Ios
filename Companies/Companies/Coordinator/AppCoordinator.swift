@@ -10,8 +10,8 @@ import UIKit
 
 class AppCoordinator: Coordinator {
     
-    // MARK: - Properties
     
+    // MARK: - Properties
     let window: UIWindow
     
     init(window: UIWindow) {

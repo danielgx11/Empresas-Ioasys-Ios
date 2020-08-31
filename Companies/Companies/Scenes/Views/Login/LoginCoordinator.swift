@@ -16,7 +16,6 @@ class LoginCoordinator: Coordinator, LoginFlow {
     
     
     // MARK: - Properties
-    
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -24,14 +23,13 @@ class LoginCoordinator: Coordinator, LoginFlow {
     }
     
     func start() {
-        let loginView = LoginView.initFromStoryboard()
-        loginView.coordinator = self
-        navigationController.pushViewController(loginView, animated: true)
+        let loginViewController = LoginViewController()
+        loginViewController.coordinator = self
+        navigationController.pushViewController(loginViewController, animated: true)
     }
     
     
     // MARK: - Flow Methods
-    
     func coordinateToCompaniesView() {
         let companiesCoordinator = CompaniesCoordinator(navigationController: navigationController)
         coordinate(to: companiesCoordinator)
