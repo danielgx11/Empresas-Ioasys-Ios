@@ -29,6 +29,8 @@
 		5C752A5024F433F00097B257 /* CompaniesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C752A4F24F433F00097B257 /* CompaniesViewController.swift */; };
 		5C90ED0B24ED7396003CE492 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90ED0A24ED7396003CE492 /* LoginPresenter.swift */; };
 		5C90ED0D24ED7D89003CE492 /* CompaniesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C90ED0C24ED7D89003CE492 /* CompaniesPresenter.swift */; };
+		5C98712D24FE955A0062F8D2 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C98712B24FE955A0062F8D2 /* KeychainItemAccessibility.swift */; };
+		5C98712E24FE955A0062F8D2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C98712C24FE955A0062F8D2 /* KeychainWrapper.swift */; };
 		5C9DEE3B2489BEAE00A693F3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DEE3A2489BEAE00A693F3 /* Util.swift */; };
 		5CAE772524F01AAC00ED5C36 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE772424F01AAC00ED5C36 /* DetailViewController.swift */; };
 		5CB1219524ED9C5B0041DC8C /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB1219424ED9C5B0041DC8C /* DetailPresenter.swift */; };
@@ -64,6 +66,8 @@
 		5C752A4F24F433F00097B257 /* CompaniesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesViewController.swift; sourceTree = "<group>"; };
 		5C90ED0A24ED7396003CE492 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		5C90ED0C24ED7D89003CE492 /* CompaniesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesPresenter.swift; sourceTree = "<group>"; };
+		5C98712B24FE955A0062F8D2 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		5C98712C24FE955A0062F8D2 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		5C9DEE3A2489BEAE00A693F3 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		5CAE772424F01AAC00ED5C36 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5CB1219424ED9C5B0041DC8C /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				5C715D3324730A50006C4142 /* Info.plist */,
 				5C715D2E24730A50006C4142 /* Assets.xcassets */,
 				5CCA8518248B08F90038876A /* Lottie Files */,
+				5C98712A24FE95330062F8D2 /* Keychain */,
 				5C715D3024730A50006C4142 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
@@ -219,6 +224,15 @@
 				5CB1219424ED9C5B0041DC8C /* DetailPresenter.swift */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		5C98712A24FE95330062F8D2 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				5C98712B24FE955A0062F8D2 /* KeychainItemAccessibility.swift */,
+				5C98712C24FE955A0062F8D2 /* KeychainWrapper.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		5C9DEE2D2489BAB800A693F3 /* Extensions */ = {
@@ -428,6 +442,7 @@
 				5C715D49247310CB006C4142 /* LoginCoordinator.swift in Sources */,
 				5C752A5024F433F00097B257 /* CompaniesViewController.swift in Sources */,
 				5C715D4F24731393006C4142 /* Companies.swift in Sources */,
+				5C98712E24FE955A0062F8D2 /* KeychainWrapper.swift in Sources */,
 				5CB1219524ED9C5B0041DC8C /* DetailPresenter.swift in Sources */,
 				5C39B90F2480515D001C63E1 /* Authentication.swift in Sources */,
 				5C715D4B2473117C006C4142 /* LoginView.swift in Sources */,
@@ -442,6 +457,7 @@
 				5C715D512473140C006C4142 /* User.swift in Sources */,
 				5C715D2624730A4D006C4142 /* AppDelegate.swift in Sources */,
 				5C715D2824730A4D006C4142 /* SceneDelegate.swift in Sources */,
+				5C98712D24FE955A0062F8D2 /* KeychainItemAccessibility.swift in Sources */,
 				5C39B91424805799001C63E1 /* DetailView.swift in Sources */,
 				5C715D4024730B20006C4142 /* Coordinator.swift in Sources */,
 			);

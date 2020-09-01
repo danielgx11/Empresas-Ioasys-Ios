@@ -21,11 +21,11 @@ class User {
     private static let current_email = "CURRENT_SESSION_EMAIL"
     
     private init?() {
-        let userDefaults = UserDefaults.standard
-        
-        let id = userDefaults.value(forKey: User.current_id) as? String
-        let email = userDefaults.value(forKey: User.current_email) as? String
-        let token = userDefaults.value(forKey: User.current_token) as? String
+        guard
+            let id = KeychainWrapper.standard.string(forKey: User.current_id),
+            let email = KeychainWrapper.standard.string(forKey: User.current_email),
+            let token = KeychainWrapper.standard.string(forKey: User.current_token)
+            else { return }
         
         self.id = id
         self.email = email
@@ -33,14 +33,12 @@ class User {
     }
     
     static func toSave(email: String?, id: String?, token: String?) {
-        let userDefaults = UserDefaults.standard
-        
         User.current?.id = id
         User.current?.email = email
         User.current?.token = token
         
-        userDefaults.set(id, forKey: User.current_id)
-        userDefaults.set(email, forKey: User.current_email)
-        userDefaults.set(token, forKey: User.current_token)
+        KeychainWrapper.standard.set(id ?? "", forKey: User.current_id)
+        KeychainWrapper.standard.set(email ?? "", forKey: User.current_email)
+        KeychainWrapper.standard.set(token ?? "", forKey: User.current_token)
     }
 }

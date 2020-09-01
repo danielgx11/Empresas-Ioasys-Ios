@@ -26,6 +26,7 @@ class LoginViewController: UIViewController, Authentication {
         loginView.passwordText.resignFirstResponder()
     }
     
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
