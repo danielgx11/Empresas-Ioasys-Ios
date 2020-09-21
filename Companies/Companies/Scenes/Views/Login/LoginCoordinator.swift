@@ -23,7 +23,9 @@ class LoginCoordinator: Coordinator, LoginFlow {
     }
     
     func start() {
-        let loginViewController = LoginViewController()
+        let loginPresenter = LoginPresenter(withCoordinator: self)
+        let loginViewController = LoginViewController(presenter: loginPresenter)
+        loginPresenter.attach(loginViewController)
         loginViewController.coordinator = self
         navigationController.pushViewController(loginViewController, animated: true)
     }
@@ -33,5 +35,11 @@ class LoginCoordinator: Coordinator, LoginFlow {
     func coordinateToCompaniesView() {
         let companiesCoordinator = CompaniesCoordinator(navigationController: navigationController)
         coordinate(to: companiesCoordinator)
+    }
+}
+
+extension LoginCoordinator: LoginSceneCoordinating {
+    func showCompaniesView() {
+        coordinateToCompaniesView()
     }
 }
