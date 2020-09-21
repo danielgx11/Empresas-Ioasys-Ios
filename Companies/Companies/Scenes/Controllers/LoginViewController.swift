@@ -20,7 +20,6 @@ class LoginViewController: UIViewController {
     private lazy var loginView = LoginView()
     var presenter: LoginPresenting
     var presentable: LoginPresenter?
-    var coordinator: LoginFlow?
     
     init(presenter: LoginPresenting) {
         self.presenter = presenter
@@ -96,6 +95,6 @@ extension LoginViewController: LoginViewable {
     }
     
     func userDidLogin() {
-        coordinator?.coordinateToCompaniesView()
+        presenter.login()
     }
 }

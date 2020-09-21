@@ -8,11 +8,8 @@
 
 import UIKit
 
-protocol LoginFlow: class {
-    func coordinateToCompaniesView()
-}
 
-class LoginCoordinator: Coordinator, LoginFlow {
+class LoginCoordinator: Coordinator {
     
     
     // MARK: - Properties
@@ -26,7 +23,6 @@ class LoginCoordinator: Coordinator, LoginFlow {
         let loginPresenter = LoginPresenter(withCoordinator: self)
         let loginViewController = LoginViewController(presenter: loginPresenter)
         loginPresenter.attach(loginViewController)
-        loginViewController.coordinator = self
         navigationController.pushViewController(loginViewController, animated: true)
     }
     
@@ -38,6 +34,8 @@ class LoginCoordinator: Coordinator, LoginFlow {
     }
 }
 
+
+// MARK: - SceneCoordinating
 extension LoginCoordinator: LoginSceneCoordinating {
     func showCompaniesView() {
         coordinateToCompaniesView()

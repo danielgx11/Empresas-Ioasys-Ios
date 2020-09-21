@@ -8,14 +8,24 @@
 
 import UIKit
 
+protocol DetailPresenting { }
+
 class DetailViewController: UIViewController {
     
     
     // MARK: - Properties
-    private lazy var presenter = DetailPresenter(with: self)
     private lazy var detailView = DetailView()
-    var coordinator: DetailFlow?
+    private var presenter: DetailPresenting
     var enterprise: Companies?
+    
+    init(presenter: DetailPresenting) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     // MARK: - Life Cycle
@@ -31,7 +41,7 @@ class DetailViewController: UIViewController {
 
 
 // MARK: - Presenter
-extension DetailViewController: DetailViewPresenter {
+extension DetailViewController: DetailViewable {
     func setLabels() {
         detailView.enterpriseName.text = enterprise?.enterpriseName
         detailView.enterpriseDescription.text = enterprise?.description

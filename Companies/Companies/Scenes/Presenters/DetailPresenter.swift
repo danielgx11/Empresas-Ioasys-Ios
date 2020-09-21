@@ -8,17 +8,33 @@
 
 import Foundation
 
-protocol DetailViewPresenter: class {
+public protocol DetailViewable: AnyObject {
     func setLabels()
 }
 
-class DetailPresenter {
+public protocol DetailSceneCoordinating { }
+
+public protocol DetailPresentable {
+    var view: DetailViewable? { get }
+    var coordinator: DetailSceneCoordinating? { get }
+}
+
+
+class DetailPresenter: DetailPresentable {
     
     
     // MARK: - Properties
-    private weak var view: DetailViewPresenter?
+    internal weak var view: DetailViewable?
+    internal var coordinator: DetailSceneCoordinating?
     
-    init(with view: DetailViewPresenter) {
+    required public init(withCoordinator coordinator: DetailSceneCoordinating) {
+        self.coordinator = coordinator
+    }
+    
+    func attatch(_ view: DetailViewable) {
         self.view = view
     }
 }
+
+
+extension DetailPresenter: DetailPresenting { }

@@ -8,9 +8,8 @@
 
 import UIKit
 
-protocol DetailFlow: class { }
 
-class DetailCoordinator: Coordinator, DetailFlow {
+class DetailCoordinator: Coordinator {
     
     
     // MARK: - Properties
@@ -23,9 +22,14 @@ class DetailCoordinator: Coordinator, DetailFlow {
     }
     
     func start() {
-        let detailViewController = DetailViewController()
-        detailViewController.coordinator = self
+        let detailPresenter = DetailPresenter(withCoordinator: self)
+        let detailViewController = DetailViewController(presenter: detailPresenter)
+        detailPresenter.attatch(detailViewController)
         detailViewController.enterprise = selectedCompany
         navigationController.present(detailViewController, animated: true)
     }
 }
+
+
+// MARK: - SceneCoordinating
+extension DetailCoordinator: DetailSceneCoordinating { }

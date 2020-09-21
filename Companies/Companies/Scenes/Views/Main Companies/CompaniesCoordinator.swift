@@ -8,11 +8,8 @@
 
 import UIKit
 
-protocol CompaniesFlow: class {
-    func coordinateToCompanyDetail(company: Companies)
-}
 
-class CompaniesCoordinator: Coordinator, CompaniesFlow {
+class CompaniesCoordinator: Coordinator {
     
     
     // MARK: - Properties
@@ -23,8 +20,9 @@ class CompaniesCoordinator: Coordinator, CompaniesFlow {
     }
     
     func start() {
-        let companiesViewController = CompaniesViewController()
-        companiesViewController.coordinator = self
+        let companiesPresenter = CompaniesPresenter(withCoordinator: self)
+        let companiesViewController = CompaniesViewController(presenter: companiesPresenter)
+        companiesPresenter.attach(companiesViewController)
         navigationController.pushViewController(companiesViewController, animated: false)
     }
     
@@ -33,5 +31,13 @@ class CompaniesCoordinator: Coordinator, CompaniesFlow {
     func coordinateToCompanyDetail(company: Companies) {
         let detailCoordinator = DetailCoordinator(navigationController: navigationController, selectedCompany: company)
         coordinate(to: detailCoordinator)
+    }
+}
+
+
+// MARK: - SceneCoordinating
+extension CompaniesCoordinator: CompaniesSceneCoordinating {
+    func showCompanyDetail(company: Companies) {
+        coordinateToCompanyDetail(company: company)
     }
 }

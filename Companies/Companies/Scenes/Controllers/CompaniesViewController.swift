@@ -10,25 +10,28 @@ import UIKit
 import Moya
 import Lottie
 
-class CompaniesViewController: UIViewController, GetCompanies {
+
+protocol CompaniesPresenting {
+    func isPossible() -> Bool
+    func getEnterprises(withTarget target: TargetType)
+    func selectCompany(_ company: Companies)
+}
+
+class CompaniesViewController: UIViewController {
     
     
     // MARK: - Properties
     private lazy var companiesView = CompaniesView()
-    lazy var presenter = CompaniesPresenter(with: self)
-    var coordinator: CompaniesFlow?
+    var presenter: CompaniesPresenting?
     var animationView: AnimationView?
     
-    
-    // MARK: - Actions
-    @objc func searchTapped() {
-        setupSearchBar()
-        setupTableView()
+    init(presenter: CompaniesPresenting) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
     }
     
-    @objc func cancelTapped() {
-        companiesView.tableView.isHidden = true
-        companiesView.startLabel.isHidden = false
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     
@@ -43,31 +46,11 @@ class CompaniesViewController: UIViewController, GetCompanies {
         customizeNavigationController()
         companiesView.delegate = self
     }
-    
-    func setupTableView() {
-        if presenter.isPossible() && animationView == nil {
-            setupAnimation()
-        }
-        
-        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { [weak self] (_) in
-            guard let self = self else { return }
-            self.animationView?.stop()
-            self.animationView?.removeFromSuperview()
-        }
-        
-        getCompanies(withTarget: Session.enterprise(.all))
-        companiesView.tableView.isHidden = false
-        companiesView.startLabel.isHidden = true
-        view.addSubview(companiesView.tableView)
-        
-        companiesView.tableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        companiesView.tableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-    }
 }
 
 
-// MARK: - Presenter
-extension CompaniesViewController: CompaniesViewPresenter {
+// MARK: - Viewable
+extension CompaniesViewController: CompaniesViewable {
     @objc func customizeNavigationController() {
         navigationController?.isNavigationBarHidden = false
         navigationItem.hidesBackButton = true
@@ -79,17 +62,17 @@ extension CompaniesViewController: CompaniesViewPresenter {
         cancelTapped()
     }
     
-    func getCompanies(withTarget target: TargetType) {
-        getCompanies(target: target) { [weak self] (response, error) in
-            guard let self = self else { return }
-            guard error != nil else {
-                self.companiesView.enterprises = response
-                CompaniesPresenter.possible = true
-                self.companiesView.tableView.reloadData()
-                return
-            }
-            self.alertController("Warning", message: error ?? "Unknown")
-        }
+    func alert(withTitle title: String, andMessage message: String) {
+        alertController(title, message: message)
+    }
+    
+    func reloadData() {
+        companiesView.tableView.reloadData()
+    }
+    
+    func parseCompanies(_ response: Enterprises?) {
+        guard let enterprises = response else { return }
+        companiesView.enterprises = enterprises
     }
     
     func setupAnimation() {
@@ -107,12 +90,41 @@ extension CompaniesViewController: CompaniesViewPresenter {
         companiesView.tableView.rowHeight = UITableView.automaticDimension
         companiesView.tableView.estimatedRowHeight = 64
     }
+    
+    func setupTableView() {
+        if presenter?.isPossible() ?? false && animationView == nil {
+            setupAnimation()
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { [weak self] (_) in
+            guard let self = self else { return }
+            self.animationView?.stop()
+            self.animationView?.removeFromSuperview()
+        }
+        
+        presenter?.getEnterprises(withTarget: Session.enterprise(.all))
+        companiesView.tableView.isHidden = false
+        companiesView.startLabel.isHidden = true
+        view.addSubview(companiesView.tableView)
+        
+        companiesView.tableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        companiesView.tableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+    }
+    
+    @objc func searchTapped() {
+        setupSearchBar()
+        setupTableView()
+    }
+    
+    @objc func cancelTapped() {
+        companiesView.tableView.isHidden = true
+        companiesView.startLabel.isHidden = false
+    }
 }
 
 
-// MARK: - Search Controller
+// MARK: - SearchController
 extension CompaniesViewController: UISearchBarDelegate {
-    
     func setupSearchBar() {
         companiesView.searchBar.searchBarStyle = .prominent
         companiesView.searchBar.placeholder = "Search Companies"
@@ -126,9 +138,9 @@ extension CompaniesViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            getCompanies(withTarget: Session.enterprise(.all))
+            presenter?.getEnterprises(withTarget: Session.enterprise(.all))
         } else {
-            getCompanies(withTarget: Session.enterprise(.filter(name: searchText)))
+            presenter?.getEnterprises(withTarget: Session.enterprise(.filter(name: searchText)))
         }
     }
 }
@@ -137,6 +149,6 @@ extension CompaniesViewController: UISearchBarDelegate {
 // MARK: - Search Controller
 extension CompaniesViewController: CompaniesViewDelegate {
     func didSelectCompany(_ company: Companies) {
-        coordinator?.coordinateToCompanyDetail(company: company)
+        presenter?.selectCompany(company)
     }
 }
