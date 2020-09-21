@@ -101,8 +101,8 @@
 		5C39B91024805624001C63E1 /* Detail Company */ = {
 			isa = PBXGroup;
 			children = (
-				5C39B91324805799001C63E1 /* DetailView.swift */,
 				5C39B91124805645001C63E1 /* DetailCoordinator.swift */,
+				5C39B91324805799001C63E1 /* DetailView.swift */,
 			);
 			path = "Detail Company";
 			sourceTree = "<group>";
