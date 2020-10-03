@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Empresas-Ios-IOasys
 Projeto de inserção na equipe de desenvolvimento IOS - Ioasys
 =======
