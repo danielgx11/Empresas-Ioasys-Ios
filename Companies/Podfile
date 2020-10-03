@@ -8,5 +8,7 @@ target 'Companies' do
   # Pods for Companies
   pod 'Moya', '~> 14.0'
   pod 'lottie-ios'
+  pod 'Swinject'
+  pod 'SwinjectAutoregistration'
 
 end

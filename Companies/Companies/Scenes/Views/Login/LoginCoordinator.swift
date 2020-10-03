@@ -8,29 +8,27 @@
 
 import UIKit
 
+protocol LoginCoordinatorDelegate: AnyObject {
+    func didAuthenticate()
+}
 
 class LoginCoordinator: Coordinator {
     
     
     // MARK: - Properties
+    private let loginFactory: LoginFactory
     let navigationController: UINavigationController
+    weak var coordinatorDelegate: LoginCoordinatorDelegate?
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, loginFactory: LoginFactory, coordinatorDelegate: LoginCoordinatorDelegate) {
         self.navigationController = navigationController
+        self.loginFactory = loginFactory
+        self.coordinatorDelegate = coordinatorDelegate
     }
     
     func start() {
-        let loginPresenter = LoginPresenter(withCoordinator: self)
-        let loginViewController = LoginViewController(presenter: loginPresenter)
-        loginPresenter.attach(loginViewController)
+        let loginViewController = loginFactory.makeLoginViewController()
         navigationController.pushViewController(loginViewController, animated: true)
-    }
-    
-    
-    // MARK: - Flow Methods
-    func coordinateToCompaniesView() {
-        let companiesCoordinator = CompaniesCoordinator(navigationController: navigationController)
-        coordinate(to: companiesCoordinator)
     }
 }
 
@@ -38,6 +36,6 @@ class LoginCoordinator: Coordinator {
 // MARK: - SceneCoordinating
 extension LoginCoordinator: LoginSceneCoordinating {
     func showCompaniesView() {
-        coordinateToCompaniesView()
+        coordinatorDelegate?.didAuthenticate()
     }
 }

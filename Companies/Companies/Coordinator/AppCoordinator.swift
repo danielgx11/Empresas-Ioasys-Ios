@@ -12,18 +12,37 @@ class AppCoordinator: Coordinator {
     
     
     // MARK: - Properties
-    let window: UIWindow
+    private let coordinatorFactory: CoordinatorFactory!
+    let navigationController: UINavigationController
     
-    init(window: UIWindow) {
-        self.window = window
+    public init(navigationController: UINavigationController, coordinatorFactory: CoordinatorFactory) {
+        self.coordinatorFactory = coordinatorFactory
+        self.navigationController = navigationController
     }
-    
+
     func start() {
-        let navigationController = UINavigationController()
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
-        
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-        coordinate(to: loginCoordinator)
+        let loginCoordinator = coordinatorFactory?.makeLoginCoordinator()
+        coordinate(to: loginCoordinator!)
+    }
+}
+
+
+// MARK: - LoginCoordinatorDelegate
+extension AppCoordinator: LoginCoordinatorDelegate {
+    
+    func didAuthenticate() {
+        let companiesCoordinator = coordinatorFactory.makeCompaniesCoordinator()
+        coordinate(to: companiesCoordinator)
+    }
+}
+
+
+// MARK: - CompaniesCoordinatorDelegate
+extension AppCoordinator: CompaniesCoordinatorDelegate {
+    
+    func didSelectEnterprise(_ enterprise: Companies) {
+        let detailCoordinator = coordinatorFactory.makeDetailCoordinator()
+        detailCoordinator.selectedCompany = enterprise
+        coordinate(to: detailCoordinator)
     }
 }

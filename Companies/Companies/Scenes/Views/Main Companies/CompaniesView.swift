@@ -71,7 +71,7 @@ extension CompaniesView {
         
         self.addSubview(startLabel)
         
-        startLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        startLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true 
         startLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 }

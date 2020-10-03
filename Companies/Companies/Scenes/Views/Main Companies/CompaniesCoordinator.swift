@@ -8,36 +8,45 @@
 
 import UIKit
 
+protocol CompaniesCoordinatorDelegate: AnyObject {
+    func didSelectEnterprise(_ enterprise: Companies)
+}
+
 
 class CompaniesCoordinator: Coordinator {
     
     
     // MARK: - Properties
+    private let companiesFactory: CompaniesFactory
     let navigationController: UINavigationController
+    weak var coordinatorDelegate: CompaniesCoordinatorDelegate?
     
-    init(navigationController: UINavigationController) {
+    public init(navigationController: UINavigationController, companiesFactory: CompaniesFactory, coordinatorDelegate: CompaniesCoordinatorDelegate) {
         self.navigationController = navigationController
+        self.companiesFactory = companiesFactory
+        self.coordinatorDelegate = coordinatorDelegate
     }
     
     func start() {
-        let companiesPresenter = CompaniesPresenter(withCoordinator: self)
-        let companiesViewController = CompaniesViewController(presenter: companiesPresenter)
-        companiesPresenter.attach(companiesViewController)
+        let companiesViewController = companiesFactory.makeCompaniesViewController()
         navigationController.pushViewController(companiesViewController, animated: false)
-    }
-    
-    
-    // MARK: - Flow Methods
-    func coordinateToCompanyDetail(company: Companies) {
-        let detailCoordinator = DetailCoordinator(navigationController: navigationController, selectedCompany: company)
-        coordinate(to: detailCoordinator)
     }
 }
 
 
 // MARK: - SceneCoordinating
 extension CompaniesCoordinator: CompaniesSceneCoordinating {
+    
     func showCompanyDetail(company: Companies) {
-        coordinateToCompanyDetail(company: company)
+        coordinatorDelegate?.didSelectEnterprise(company)
+    }
+}
+
+
+// MARK: - LoginCoordinatorDelegate
+extension CompaniesCoordinator: LoginCoordinatorDelegate {
+    
+    func didAuthenticate() {
+        start()
     }
 }

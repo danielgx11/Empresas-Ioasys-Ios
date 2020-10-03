@@ -8,23 +8,24 @@
 
 import UIKit
 
+protocol DetailCoordinatorDelegate: AnyObject { }
 
 class DetailCoordinator: Coordinator {
     
     
     // MARK: - Properties
+    private let detailFactory: DetailFactory
     let navigationController: UINavigationController
-    var selectedCompany: Companies
     
-    init(navigationController: UINavigationController, selectedCompany: Companies) {
+    init(navigationController: UINavigationController, detailFactory: DetailFactory) {
         self.navigationController = navigationController
-        self.selectedCompany = selectedCompany
+        self.detailFactory = detailFactory
     }
     
+    var selectedCompany: Companies?
+    
     func start() {
-        let detailPresenter = DetailPresenter(withCoordinator: self)
-        let detailViewController = DetailViewController(presenter: detailPresenter)
-        detailPresenter.attatch(detailViewController)
+        let detailViewController = detailFactory.makeDetailViewController()
         detailViewController.enterprise = selectedCompany
         navigationController.present(detailViewController, animated: true)
     }

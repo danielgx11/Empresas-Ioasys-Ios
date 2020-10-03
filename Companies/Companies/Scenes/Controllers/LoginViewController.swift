@@ -56,9 +56,6 @@ class LoginViewController: UIViewController {
 
 // MARK: - LoginViewDelegate
 extension LoginViewController: LoginViewDelegate {
-    
-    #warning("Verificar como implementar este loginViewDelegate em conformidade com o presenter")
-    
     func logIn() {
         presenter.login()
     }
