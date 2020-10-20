@@ -10,5 +10,7 @@ target 'Companies' do
   pod 'lottie-ios'
   pod 'Swinject'
   pod 'SwinjectAutoregistration'
+  pod 'SwiftLint'
+  pod 'OxeNetworking'
 
 end
