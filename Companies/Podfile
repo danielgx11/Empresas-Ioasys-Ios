@@ -1,16 +1,68 @@
-# Uncomment the next line to define a global platform for your project
+source 'https://cdn.cocoapods.org/'
+source 'git@bitbucket.org:ioasys/ioasys-specs.git'
+
 platform :ios, '13.2'
+inhibit_all_warnings!
+use_frameworks!
+workspace 'Companies'
 
-target 'Companies' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+def sharedPods
+  pod 'SwiftLint'
+end
 
-  # Pods for Companies
+def networkingPods
   pod 'Moya', '~> 14.0'
-  pod 'lottie-ios'
+  pod 'OxeNetworking'
+end
+
+def diPods
   pod 'Swinject'
   pod 'SwinjectAutoregistration'
-  pod 'SwiftLint'
-  pod 'OxeNetworking'
+end
 
+def animationPods
+  pod 'lottie-ios'
+end
+
+target 'Companies' do
+  project 'Companies'
+  
+  sharedPods
+  networkingPods
+  diPods
+  animationPods
+
+end
+
+target 'Domain' do
+  project 'Domain/Domain'
+  
+  sharedPods
+  
+  target 'DomainTests'
+end
+
+target 'Networking' do
+  project 'Networking/Networking'
+
+  sharedPods
+  networkingPods
+
+  target 'NetworkingTests'
+end
+
+target 'AppData' do
+  project 'AppData/AppData'
+
+  sharedPods
+
+  target 'AppDataTests'
+end
+
+target 'Storage' do
+  project 'Storage/Storage'
+
+  sharedPods
+
+  target 'StorageTests'
 end
