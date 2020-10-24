@@ -10,6 +10,8 @@
 		506A1EA92544A55A000C1F2F /* AppData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1E9F2544A55A000C1F2F /* AppData.framework */; };
 		506A1EAE2544A55A000C1F2F /* AppDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A1EAD2544A55A000C1F2F /* AppDataTests.swift */; };
 		506A1EB02544A55A000C1F2F /* AppData.h in Headers */ = {isa = PBXBuildFile; fileRef = 506A1EA22544A55A000C1F2F /* AppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		506A1F2A2544A69B000C1F2F /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F292544A69B000C1F2F /* Domain.framework */; };
+		506A1F2B2544A69B000C1F2F /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F292544A69B000C1F2F /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE9A1B1EBEB3AF79CAEF2805 /* Pods_AppData_AppDataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCA4754682ACE5CDD8F04B22 /* Pods_AppData_AppDataTests.framework */; };
 		FA7A22C04DED5F0888FD1B63 /* Pods_AppData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FF2F2A72C0A951309B1E93 /* Pods_AppData.framework */; };
 /* End PBXBuildFile section */
@@ -24,6 +26,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		506A1F2C2544A69B000C1F2F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				506A1F2B2544A69B000C1F2F /* Domain.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3FC3F74EFFA820E0DA175190 /* Pods-AppData-AppDataTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppData-AppDataTests.debug.xcconfig"; path = "Target Support Files/Pods-AppData-AppDataTests/Pods-AppData-AppDataTests.debug.xcconfig"; sourceTree = "<group>"; };
 		506A1E9F2544A55A000C1F2F /* AppData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +48,7 @@
 		506A1EA82544A55A000C1F2F /* AppDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A1EAD2544A55A000C1F2F /* AppDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataTests.swift; sourceTree = "<group>"; };
 		506A1EAF2544A55A000C1F2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		506A1F292544A69B000C1F2F /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A386DF97D7F13EBEA68645D /* Pods-AppData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppData.debug.xcconfig"; path = "Target Support Files/Pods-AppData/Pods-AppData.debug.xcconfig"; sourceTree = "<group>"; };
 		67FF2F2A72C0A951309B1E93 /* Pods_AppData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5C0A25F3FA5A3107E0060F /* Pods-AppData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppData.release.xcconfig"; path = "Target Support Files/Pods-AppData/Pods-AppData.release.xcconfig"; sourceTree = "<group>"; };
@@ -44,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506A1F2A2544A69B000C1F2F /* Domain.framework in Frameworks */,
 				FA7A22C04DED5F0888FD1B63 /* Pods_AppData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +131,7 @@
 		F360A35A3AD8ED4B93494F32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				506A1F292544A69B000C1F2F /* Domain.framework */,
 				67FF2F2A72C0A951309B1E93 /* Pods_AppData.framework */,
 				DCA4754682ACE5CDD8F04B22 /* Pods_AppData_AppDataTests.framework */,
 			);
@@ -142,6 +161,7 @@
 				506A1E9B2544A55A000C1F2F /* Sources */,
 				506A1E9C2544A55A000C1F2F /* Frameworks */,
 				506A1E9D2544A55A000C1F2F /* Resources */,
+				506A1F2C2544A69B000C1F2F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

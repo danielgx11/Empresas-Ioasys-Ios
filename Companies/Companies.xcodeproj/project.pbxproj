@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		506A1F3C2544A701000C1F2F /* AppData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F3B2544A701000C1F2F /* AppData.framework */; };
+		506A1F3D2544A701000C1F2F /* AppData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F3B2544A701000C1F2F /* AppData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		506A1F402544A707000C1F2F /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F3F2544A707000C1F2F /* Storage.framework */; };
+		506A1F412544A707000C1F2F /* Storage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F3F2544A707000C1F2F /* Storage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		506A1F432544A70F000C1F2F /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F422544A70F000C1F2F /* Networking.framework */; };
+		506A1F442544A70F000C1F2F /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F422544A70F000C1F2F /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		506A1F462544A715000C1F2F /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F452544A715000C1F2F /* Domain.framework */; };
+		506A1F472544A715000C1F2F /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F452544A715000C1F2F /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		506A1FB42544BB26000C1F2F /* DomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A1FB32544BB26000C1F2F /* DomainAssembly.swift */; };
 		5C10F2E82523BB82005058D5 /* SwinjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C10F2E72523BB82005058D5 /* SwinjectExtensions.swift */; };
 		5C10F2F22523CA09005058D5 /* CompaniesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C10F2F12523CA09005058D5 /* CompaniesFactory.swift */; };
 		5C10F2F62523CA59005058D5 /* CompaniesFactoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C10F2F52523CA59005058D5 /* CompaniesFactoryImplementation.swift */; };
@@ -57,8 +66,30 @@
 		B23806AF8D14CEF199925002 /* Pods_Companies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1075121CC3C6ED9B5DBFA854 /* Pods_Companies.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		506A1F3E2544A701000C1F2F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				506A1F472544A715000C1F2F /* Domain.framework in Embed Frameworks */,
+				506A1F412544A707000C1F2F /* Storage.framework in Embed Frameworks */,
+				506A1F3D2544A701000C1F2F /* AppData.framework in Embed Frameworks */,
+				506A1F442544A70F000C1F2F /* Networking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1075121CC3C6ED9B5DBFA854 /* Pods_Companies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Companies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		506A1F3B2544A701000C1F2F /* AppData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		506A1F3F2544A707000C1F2F /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		506A1F422544A70F000C1F2F /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		506A1F452544A715000C1F2F /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		506A1FB32544BB26000C1F2F /* DomainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
 		5C10F2E72523BB82005058D5 /* SwinjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectExtensions.swift; sourceTree = "<group>"; };
 		5C10F2F12523CA09005058D5 /* CompaniesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesFactory.swift; sourceTree = "<group>"; };
 		5C10F2F52523CA59005058D5 /* CompaniesFactoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesFactoryImplementation.swift; sourceTree = "<group>"; };
@@ -117,13 +148,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506A1F462544A715000C1F2F /* Domain.framework in Frameworks */,
+				506A1F432544A70F000C1F2F /* Networking.framework in Frameworks */,
+				506A1F3C2544A701000C1F2F /* AppData.framework in Frameworks */,
 				B23806AF8D14CEF199925002 /* Pods_Companies.framework in Frameworks */,
+				506A1F402544A707000C1F2F /* Storage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		506A1FB22544BB13000C1F2F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				506A1FB32544BB26000C1F2F /* DomainAssembly.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		5C2509D42482D2DA001066AE /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +368,7 @@
 				5CEEDF6C251B97B100472DB0 /* CoordinatorFactoryAssembly.swift */,
 				5CEEDF70251B97BD00472DB0 /* CoordinatorAssembly.swift */,
 				5CEEDF74251B97CF00472DB0 /* ViewControllersFactoryAssembly.swift */,
+				506A1FB22544BB13000C1F2F /* Core */,
 				5CEEDF93251B9BD900472DB0 /* Features */,
 				5CEEDF52251B958D00472DB0 /* Factories */,
 			);
@@ -401,6 +445,10 @@
 		B3B0ED871BDDD66282834916 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				506A1F452544A715000C1F2F /* Domain.framework */,
+				506A1F422544A70F000C1F2F /* Networking.framework */,
+				506A1F3F2544A707000C1F2F /* Storage.framework */,
+				506A1F3B2544A701000C1F2F /* AppData.framework */,
 				1075121CC3C6ED9B5DBFA854 /* Pods_Companies.framework */,
 			);
 			name = Frameworks;
@@ -419,6 +467,7 @@
 				5C715D2024730A4D006C4142 /* Resources */,
 				5C715D4C2473127C006C4142 /* TODO and Errors display warning */,
 				FBBE7FEB4EFA4FE92E2C659D /* [CP] Embed Pods Frameworks */,
+				506A1F3E2544A701000C1F2F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -559,6 +608,7 @@
 				5C10F2E82523BB82005058D5 /* SwinjectExtensions.swift in Sources */,
 				5C5F5BE82524CA1900247A43 /* CompaniesFlowAssembly.swift in Sources */,
 				5C39B90F2480515D001C63E1 /* Authentication.swift in Sources */,
+				506A1FB42544BB26000C1F2F /* DomainAssembly.swift in Sources */,
 				5C715D4B2473117C006C4142 /* LoginView.swift in Sources */,
 				5C2509D82482F375001066AE /* GetCompanies.swift in Sources */,
 				5CEEDF80251B98A100472DB0 /* CoordinatorFactory.swift in Sources */,

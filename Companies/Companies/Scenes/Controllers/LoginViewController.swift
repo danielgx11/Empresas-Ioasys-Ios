@@ -94,4 +94,13 @@ extension LoginViewController: LoginViewable {
     func userDidLogin() {
         presenter.login()
     }
+    
+    #warning("Handle email & password errors")
+    func showEmailError(withMessage message: String) {
+        debugPrint(#function)
+    }
+    
+    func showPasswordError(withMessage message: String) {
+        debugPrint(#function)
+    }
 }

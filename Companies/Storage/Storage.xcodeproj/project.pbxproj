@@ -11,6 +11,10 @@
 		506A1ECF2544A59B000C1F2F /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1EC52544A59B000C1F2F /* Storage.framework */; };
 		506A1ED42544A59B000C1F2F /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A1ED32544A59B000C1F2F /* StorageTests.swift */; };
 		506A1ED62544A59B000C1F2F /* Storage.h in Headers */ = {isa = PBXBuildFile; fileRef = 506A1EC82544A59B000C1F2F /* Storage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		506A1F2E2544A6A7000C1F2F /* AppData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F2D2544A6A7000C1F2F /* AppData.framework */; };
+		506A1F2F2544A6A7000C1F2F /* AppData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F2D2544A6A7000C1F2F /* AppData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		506A1F392544A6C1000C1F2F /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F382544A6C1000C1F2F /* Domain.framework */; };
+		506A1F3A2544A6C1000C1F2F /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F382544A6C1000C1F2F /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF81DE2D9F75737AB5B6050F /* Pods_Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD9FD22AFC874656BE540D /* Pods_Storage.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +28,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		506A1F302544A6A7000C1F2F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				506A1F3A2544A6C1000C1F2F /* Domain.framework in Embed Frameworks */,
+				506A1F2F2544A6A7000C1F2F /* AppData.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1DD193292D2626BF41FF78A9 /* Pods-Storage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storage.debug.xcconfig"; path = "Target Support Files/Pods-Storage/Pods-Storage.debug.xcconfig"; sourceTree = "<group>"; };
 		420E342C547B15616D868CE8 /* Pods-Storage-StorageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storage-StorageTests.release.xcconfig"; path = "Target Support Files/Pods-Storage-StorageTests/Pods-Storage-StorageTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -33,6 +52,8 @@
 		506A1ECE2544A59B000C1F2F /* StorageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A1ED32544A59B000C1F2F /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 		506A1ED52544A59B000C1F2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		506A1F2D2544A6A7000C1F2F /* AppData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		506A1F382544A6C1000C1F2F /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF20D5ED7D51DE744DF09EF5 /* Pods-Storage-StorageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storage-StorageTests.debug.xcconfig"; path = "Target Support Files/Pods-Storage-StorageTests/Pods-Storage-StorageTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2DD9FD22AFC874656BE540D /* Pods_Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15696B19AECF5B42CC20B78 /* Pods_Storage_StorageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storage_StorageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506A1F392544A6C1000C1F2F /* Domain.framework in Frameworks */,
+				506A1F2E2544A6A7000C1F2F /* AppData.framework in Frameworks */,
 				CF81DE2D9F75737AB5B6050F /* Pods_Storage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +86,8 @@
 		2A0575E5C59AF9372CE5EFF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				506A1F382544A6C1000C1F2F /* Domain.framework */,
+				506A1F2D2544A6A7000C1F2F /* AppData.framework */,
 				C2DD9FD22AFC874656BE540D /* Pods_Storage.framework */,
 				D15696B19AECF5B42CC20B78 /* Pods_Storage_StorageTests.framework */,
 			);
@@ -142,6 +167,7 @@
 				506A1EC12544A59B000C1F2F /* Sources */,
 				506A1EC22544A59B000C1F2F /* Frameworks */,
 				506A1EC32544A59B000C1F2F /* Resources */,
+				506A1F302544A6A7000C1F2F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
