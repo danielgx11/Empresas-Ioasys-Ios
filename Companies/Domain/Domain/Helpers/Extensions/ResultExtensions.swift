@@ -7,6 +7,8 @@
 
 import Foundation
 
+public typealias GenericCompletion<T> = (_ result: Swift.Result<T, AnyError>) -> Void
+
 public extension Swift.Result {
     
     /// Returns the value if self represents a success, `nil` otherwise.

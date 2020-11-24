@@ -49,7 +49,7 @@ class LoginPresenter: LoginPresentable {
 
 extension LoginPresenter: LoginPresenting, Authentication {
     public func login() {
-        #warning("Networking treatment")
+        
         if let bodyParameters = view?.getCredentials() {
             doLogin(withCredentials: bodyParameters) { [weak self] (error) in
                 guard let self = self else { return }
@@ -59,6 +59,7 @@ extension LoginPresenter: LoginPresenting, Authentication {
                     return
                 }
                 self.view?.removeSpin()
+                #warning("Networking treatment")
 //                self.coordinator?.showCompaniesView()
                 guard
                     let email = bodyParameters["email"],

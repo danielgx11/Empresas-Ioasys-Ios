@@ -7,4 +7,7 @@
 
 import Foundation
 
-public protocol AuthenticateUseCaseProtocol: AnyObject { }
+public protocol AuthenticateUseCaseProtocol: AnyObject {
+    
+    func execute(_ form: LoginForm, completion: @escaping GenericCompletion<AuthenticationResponse>)
+}

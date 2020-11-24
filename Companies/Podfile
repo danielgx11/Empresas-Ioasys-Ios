@@ -66,3 +66,11 @@ target 'Storage' do
 
   target 'StorageTests'
 end
+
+target 'Commons' do
+  project 'Commons/Commons'
+
+  sharedPods
+
+  target 'CommonsTests'
+end
