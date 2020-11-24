@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		505E3A87256DCE670015BACF /* AuthenticationLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E3A86256DCE670015BACF /* AuthenticationLocalDataSourceProtocol.swift */; };
+		505E3A89256DCE790015BACF /* AuthenticationRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E3A88256DCE790015BACF /* AuthenticationRemoteDataSourceProtocol.swift */; };
+		505E3A8B256DCE8A0015BACF /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E3A8A256DCE8A0015BACF /* AuthenticationRepository.swift */; };
 		506A1EA92544A55A000C1F2F /* AppData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1E9F2544A55A000C1F2F /* AppData.framework */; };
 		506A1EAE2544A55A000C1F2F /* AppDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A1EAD2544A55A000C1F2F /* AppDataTests.swift */; };
 		506A1EB02544A55A000C1F2F /* AppData.h in Headers */ = {isa = PBXBuildFile; fileRef = 506A1EA22544A55A000C1F2F /* AppData.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,6 +45,9 @@
 
 /* Begin PBXFileReference section */
 		3FC3F74EFFA820E0DA175190 /* Pods-AppData-AppDataTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppData-AppDataTests.debug.xcconfig"; path = "Target Support Files/Pods-AppData-AppDataTests/Pods-AppData-AppDataTests.debug.xcconfig"; sourceTree = "<group>"; };
+		505E3A86256DCE670015BACF /* AuthenticationLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		505E3A88256DCE790015BACF /* AuthenticationRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		505E3A8A256DCE8A0015BACF /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		506A1E9F2544A55A000C1F2F /* AppData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A1EA22544A55A000C1F2F /* AppData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
 		506A1EA32544A55A000C1F2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +84,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		505E3A83256DCE150015BACF /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				505E3A8A256DCE8A0015BACF /* AuthenticationRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		505E3A84256DCE170015BACF /* RemoteDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				505E3A88256DCE790015BACF /* AuthenticationRemoteDataSourceProtocol.swift */,
+			);
+			path = RemoteDataSources;
+			sourceTree = "<group>";
+		};
+		505E3A85256DCE190015BACF /* LocalDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				505E3A86256DCE670015BACF /* AuthenticationLocalDataSourceProtocol.swift */,
+			);
+			path = LocalDataSources;
+			sourceTree = "<group>";
+		};
 		506A1E952544A55A000C1F2F = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +131,9 @@
 		506A1EA12544A55A000C1F2F /* AppData */ = {
 			isa = PBXGroup;
 			children = (
+				505E3A85256DCE190015BACF /* LocalDataSources */,
+				505E3A84256DCE170015BACF /* RemoteDataSources */,
+				505E3A83256DCE150015BACF /* Repositories */,
 				506A1EA22544A55A000C1F2F /* AppData.h */,
 				506A1EA32544A55A000C1F2F /* Info.plist */,
 			);
@@ -202,6 +235,7 @@
 				TargetAttributes = {
 					506A1E9E2544A55A000C1F2F = {
 						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1170;
 					};
 					506A1EA72544A55A000C1F2F = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -296,6 +330,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505E3A8B256DCE8A0015BACF /* AuthenticationRepository.swift in Sources */,
+				505E3A89256DCE790015BACF /* AuthenticationRemoteDataSourceProtocol.swift in Sources */,
+				505E3A87256DCE670015BACF /* AuthenticationLocalDataSourceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A386DF97D7F13EBEA68645D /* Pods-AppData.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9R4Y5B2V5Z;
@@ -462,6 +500,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -471,6 +510,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A5C0A25F3FA5A3107E0060F /* Pods-AppData.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9R4Y5B2V5Z;
@@ -498,6 +538,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3FC3F74EFFA820E0DA175190 /* Pods-AppData-AppDataTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9R4Y5B2V5Z;
 				INFOPLIST_FILE = AppDataTests/Info.plist;
@@ -517,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B059F18BD31FDADE67C72809 /* Pods-AppData-AppDataTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9R4Y5B2V5Z;
 				INFOPLIST_FILE = AppDataTests/Info.plist;

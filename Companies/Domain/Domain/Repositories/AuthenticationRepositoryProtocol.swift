@@ -10,4 +10,5 @@ import Foundation
 public protocol AuthenticationRepositoryProtocol: AnyObject {
     
     func login(_ form: LoginForm, completion: @escaping GenericCompletion<AuthenticationResponse>)
+    func getCredentials() throws -> Credentials
 }
