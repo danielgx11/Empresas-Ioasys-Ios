@@ -24,6 +24,10 @@ def animationPods
   pod 'lottie-ios'
 end
 
+def storagePods
+  pod 'KeychainAccess'
+end
+
 target 'Companies' do
   project 'Companies'
   
@@ -62,6 +66,7 @@ end
 target 'Storage' do
   project 'Storage/Storage'
 
+  storagePods
   sharedPods
 
   target 'StorageTests'

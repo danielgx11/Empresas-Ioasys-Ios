@@ -24,6 +24,8 @@
 		506A1F772544AF32000C1F2F /* LoginFormValidateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A1F762544AF32000C1F2F /* LoginFormValidateUseCase.swift */; };
 		506A1F7D2544B054000C1F2F /* LoginFormValidateUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A1F7C2544B054000C1F2F /* LoginFormValidateUseCaseProtocol.swift */; };
 		506A1F992544B121000C1F2F /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A1F982544B121000C1F2F /* LoginForm.swift */; };
+		50C73085258544E9007C5D06 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C73084258544E9007C5D06 /* String+Extensions.swift */; };
+		50C7308825854543007C5D06 /* InteractionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7308725854543007C5D06 /* InteractionError.swift */; };
 		50E17F82256B3F350083FB3A /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E17F81256B3F350083FB3A /* Credentials.swift */; };
 		81EE55E5D3229BE5453B615C /* Pods_Domain_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B93F2D1061AF57387BD1E7F /* Pods_Domain_DomainTests.framework */; };
 		D00630CA8908CE5B2CE1A103 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9C52ABFDB3F6FEDB72A7B4 /* Pods_Domain.framework */; };
@@ -62,6 +64,8 @@
 		506A1F762544AF32000C1F2F /* LoginFormValidateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormValidateUseCase.swift; sourceTree = "<group>"; };
 		506A1F7C2544B054000C1F2F /* LoginFormValidateUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormValidateUseCaseProtocol.swift; sourceTree = "<group>"; };
 		506A1F982544B121000C1F2F /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
+		50C73084258544E9007C5D06 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		50C7308725854543007C5D06 /* InteractionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionError.swift; sourceTree = "<group>"; };
 		50E17F81256B3F350083FB3A /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		830E41DFF8D428787C3E7CCB /* Pods-Domain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.debug.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.debug.xcconfig"; sourceTree = "<group>"; };
 		8C9C52ABFDB3F6FEDB72A7B4 /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +149,7 @@
 		5037845A25521AA900AF1FB4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				50C7308625854538007C5D06 /* Convention */,
 				5037846425521DD900AF1FB4 /* Request */,
 				5037845B25521AAE00AF1FB4 /* Responses */,
 			);
@@ -164,6 +169,7 @@
 			children = (
 				503784522552192600AF1FB4 /* Error+AnyError+Extension.swift */,
 				506A1F6E2544AC94000C1F2F /* ResultExtensions.swift */,
+				50C73084258544E9007C5D06 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -219,6 +225,14 @@
 				506A1F5A2544A869000C1F2F /* AuthenticateUseCase.swift */,
 			);
 			path = AuthenticateUseCase;
+			sourceTree = "<group>";
+		};
+		50C7308625854538007C5D06 /* Convention */ = {
+			isa = PBXGroup;
+			children = (
+				50C7308725854543007C5D06 /* InteractionError.swift */,
+			);
+			path = Convention;
 			sourceTree = "<group>";
 		};
 		50E17F7E256B3EB10083FB3A /* LoginForm */ = {
@@ -414,9 +428,11 @@
 				503784532552192600AF1FB4 /* Error+AnyError+Extension.swift in Sources */,
 				506A1F5B2544A869000C1F2F /* AuthenticateUseCase.swift in Sources */,
 				506A1F772544AF32000C1F2F /* LoginFormValidateUseCase.swift in Sources */,
+				50C73085258544E9007C5D06 /* String+Extensions.swift in Sources */,
 				506A1F632544AAD5000C1F2F /* EmailValidator.swift in Sources */,
 				506A1F672544AB9F000C1F2F /* PasswordValidator.swift in Sources */,
 				5037846125521AD700AF1FB4 /* AuthenticationResponse.swift in Sources */,
+				50C7308825854543007C5D06 /* InteractionError.swift in Sources */,
 				506A1F5F2544AA0A000C1F2F /* Validatable.swift in Sources */,
 				506A1F6B2544ABFC000C1F2F /* ContainerValidator.swift in Sources */,
 				50E17F82256B3F350083FB3A /* Credentials.swift in Sources */,

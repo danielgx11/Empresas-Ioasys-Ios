@@ -10,6 +10,8 @@
 		50E17FDD256B43A60083FB3A /* Commons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E17FD3256B43A60083FB3A /* Commons.framework */; };
 		50E17FE2256B43A60083FB3A /* CommonsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E17FE1256B43A60083FB3A /* CommonsTests.swift */; };
 		50E17FE4256B43A60083FB3A /* Commons.h in Headers */ = {isa = PBXBuildFile; fileRef = 50E17FD6256B43A60083FB3A /* Commons.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50FD26F025852CA00099CBC8 /* Defaultable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD26EF25852CA00099CBC8 /* Defaultable.swift */; };
+		50FD26F625852D150099CBC8 /* SetupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD26F525852D150099CBC8 /* SetupConstants.swift */; };
 		956F9B6754F9CCEE9982C7E3 /* Pods_Commons_CommonsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67CF55D401DF04C26014258 /* Pods_Commons_CommonsTests.framework */; };
 		C3302ED434F7DEB9D6A8123B /* Pods_Commons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD9DBF53ECB7A4BCF82B2E92 /* Pods_Commons.framework */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,8 @@
 		50E17FDC256B43A60083FB3A /* CommonsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E17FE1256B43A60083FB3A /* CommonsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonsTests.swift; sourceTree = "<group>"; };
 		50E17FE3256B43A60083FB3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50FD26EF25852CA00099CBC8 /* Defaultable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaultable.swift; sourceTree = "<group>"; };
+		50FD26F525852D150099CBC8 /* SetupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupConstants.swift; sourceTree = "<group>"; };
 		519DD77A1DB472BDFF55969B /* Pods-Commons.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commons.release.xcconfig"; path = "Target Support Files/Pods-Commons/Pods-Commons.release.xcconfig"; sourceTree = "<group>"; };
 		E67CF55D401DF04C26014258 /* Pods_Commons_CommonsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commons_CommonsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD9DBF53ECB7A4BCF82B2E92 /* Pods_Commons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +99,8 @@
 		50E17FD5256B43A60083FB3A /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				50FD26F425852D080099CBC8 /* Helpers */,
+				50FD26EE25852C880099CBC8 /* Protocols */,
 				50E17FD6256B43A60083FB3A /* Commons.h */,
 				50E17FD7256B43A60083FB3A /* Info.plist */,
 			);
@@ -108,6 +114,30 @@
 				50E17FE3256B43A60083FB3A /* Info.plist */,
 			);
 			path = CommonsTests;
+			sourceTree = "<group>";
+		};
+		50FD26EE25852C880099CBC8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				50FD26EF25852CA00099CBC8 /* Defaultable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		50FD26F325852CF10099CBC8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				50FD26F525852D150099CBC8 /* SetupConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		50FD26F425852D080099CBC8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				50FD26F325852CF10099CBC8 /* Constants */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		889622AD214FB5F3C4FC43CE /* Frameworks */ = {
@@ -183,6 +213,7 @@
 				TargetAttributes = {
 					50E17FD2256B43A60083FB3A = {
 						CreatedOnToolsVersion = 11.7;
+						LastSwiftMigration = 1220;
 					};
 					50E17FDB256B43A60083FB3A = {
 						CreatedOnToolsVersion = 11.7;
@@ -277,6 +308,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50FD26F025852CA00099CBC8 /* Defaultable.swift in Sources */,
+				50FD26F625852D150099CBC8 /* SetupConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 341653980C2F2A8C49CED19C /* Pods-Commons.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6PD7KXFUU8;
@@ -441,6 +475,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -450,6 +485,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 519DD77A1DB472BDFF55969B /* Pods-Commons.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6PD7KXFUU8;
@@ -477,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B9D1D0B5BA0776B3518387D /* Pods-Commons-CommonsTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PD7KXFUU8;
 				INFOPLIST_FILE = CommonsTests/Info.plist;
@@ -496,6 +533,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E5E852352B9AFF50EC14173 /* Pods-Commons-CommonsTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PD7KXFUU8;
 				INFOPLIST_FILE = CommonsTests/Info.plist;

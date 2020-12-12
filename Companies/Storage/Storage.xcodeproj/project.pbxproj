@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,12 @@
 		506A1F2F2544A6A7000C1F2F /* AppData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F2D2544A6A7000C1F2F /* AppData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		506A1F392544A6C1000C1F2F /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F382544A6C1000C1F2F /* Domain.framework */; };
 		506A1F3A2544A6C1000C1F2F /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506A1F382544A6C1000C1F2F /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50FD26C225852A290099CBC8 /* Keyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD26C125852A290099CBC8 /* Keyable.swift */; };
+		50FD26C525852A370099CBC8 /* KeychainStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD26C425852A370099CBC8 /* KeychainStoring.swift */; };
+		50FD26C825852A410099CBC8 /* UserDefaultsStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD26C725852A410099CBC8 /* UserDefaultsStoring.swift */; };
+		50FD26E625852B980099CBC8 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD26E525852B980099CBC8 /* KeychainStorage.swift */; };
+		50FD26E925852BA80099CBC8 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD26E825852BA80099CBC8 /* UserDefaultsStorage.swift */; };
+		50FD26EC25852C220099CBC8 /* AuthenticationLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FD26EB25852C220099CBC8 /* AuthenticationLocalDataSource.swift */; };
 		CF81DE2D9F75737AB5B6050F /* Pods_Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DD9FD22AFC874656BE540D /* Pods_Storage.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +60,12 @@
 		506A1ED52544A59B000C1F2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		506A1F2D2544A6A7000C1F2F /* AppData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		506A1F382544A6C1000C1F2F /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50FD26C125852A290099CBC8 /* Keyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyable.swift; sourceTree = "<group>"; };
+		50FD26C425852A370099CBC8 /* KeychainStoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoring.swift; sourceTree = "<group>"; };
+		50FD26C725852A410099CBC8 /* UserDefaultsStoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStoring.swift; sourceTree = "<group>"; };
+		50FD26E525852B980099CBC8 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		50FD26E825852BA80099CBC8 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
+		50FD26EB25852C220099CBC8 /* AuthenticationLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationLocalDataSource.swift; sourceTree = "<group>"; };
 		AF20D5ED7D51DE744DF09EF5 /* Pods-Storage-StorageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storage-StorageTests.debug.xcconfig"; path = "Target Support Files/Pods-Storage-StorageTests/Pods-Storage-StorageTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2DD9FD22AFC874656BE540D /* Pods_Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15696B19AECF5B42CC20B78 /* Pods_Storage_StorageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storage_StorageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +129,9 @@
 		506A1EC72544A59B000C1F2F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				50FD26BE258529FE0099CBC8 /* DataSource */,
+				50FD26C025852A0B0099CBC8 /* Storages */,
+				50FD26BF25852A050099CBC8 /* Protocols */,
 				506A1EC82544A59B000C1F2F /* Storage.h */,
 				506A1EC92544A59B000C1F2F /* Info.plist */,
 			);
@@ -130,6 +145,33 @@
 				506A1ED52544A59B000C1F2F /* Info.plist */,
 			);
 			path = StorageTests;
+			sourceTree = "<group>";
+		};
+		50FD26BE258529FE0099CBC8 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				50FD26EB25852C220099CBC8 /* AuthenticationLocalDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		50FD26BF25852A050099CBC8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				50FD26C125852A290099CBC8 /* Keyable.swift */,
+				50FD26C425852A370099CBC8 /* KeychainStoring.swift */,
+				50FD26C725852A410099CBC8 /* UserDefaultsStoring.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		50FD26C025852A0B0099CBC8 /* Storages */ = {
+			isa = PBXGroup;
+			children = (
+				50FD26E525852B980099CBC8 /* KeychainStorage.swift */,
+				50FD26E825852BA80099CBC8 /* UserDefaultsStorage.swift */,
+			);
+			path = Storages;
 			sourceTree = "<group>";
 		};
 		5A78DF4F94DB96296BFE7EA6 /* Pods */ = {
@@ -186,6 +228,7 @@
 				506A1ECA2544A59B000C1F2F /* Sources */,
 				506A1ECB2544A59B000C1F2F /* Frameworks */,
 				506A1ECC2544A59B000C1F2F /* Resources */,
+				3906A07E3A07866C692636D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,6 +251,7 @@
 				TargetAttributes = {
 					506A1EC42544A59B000C1F2F = {
 						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1220;
 					};
 					506A1ECD2544A59B000C1F2F = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -251,6 +295,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3906A07E3A07866C692636D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Storage-StorageTests/Pods-Storage-StorageTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Storage-StorageTests/Pods-Storage-StorageTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Storage-StorageTests/Pods-Storage-StorageTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		793A048A7D8D8CCD22FB1C0B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -302,6 +363,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50FD26E925852BA80099CBC8 /* UserDefaultsStorage.swift in Sources */,
+				50FD26C525852A370099CBC8 /* KeychainStoring.swift in Sources */,
+				50FD26EC25852C220099CBC8 /* AuthenticationLocalDataSource.swift in Sources */,
+				50FD26E625852B980099CBC8 /* KeychainStorage.swift in Sources */,
+				50FD26C825852A410099CBC8 /* UserDefaultsStoring.swift in Sources */,
+				50FD26C225852A290099CBC8 /* Keyable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +517,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1DD193292D2626BF41FF78A9 /* Pods-Storage.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9R4Y5B2V5Z;
@@ -468,6 +536,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -477,6 +546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB3E612800817ECBF5979082 /* Pods-Storage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9R4Y5B2V5Z;
@@ -504,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AF20D5ED7D51DE744DF09EF5 /* Pods-Storage-StorageTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9R4Y5B2V5Z;
 				INFOPLIST_FILE = StorageTests/Info.plist;
@@ -523,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 420E342C547B15616D868CE8 /* Pods-Storage-StorageTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9R4Y5B2V5Z;
 				INFOPLIST_FILE = StorageTests/Info.plist;
